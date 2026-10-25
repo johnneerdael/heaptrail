@@ -138,8 +138,8 @@ fn render_utf16_be(bytes: &[u8], total_size_bytes: usize) -> PreviewKind {
     // boundary, drop the trailing odd byte.
     let usable_len = bytes.len() - (bytes.len() % 2);
     let mut chars = Vec::with_capacity(usable_len / 2);
-    for pair in bytes[..usable_len].chunks_exact(2) {
-        chars.push(u16::from_be_bytes([pair[0], pair[1]]));
+    for pair in bytes[..usable_len].as_chunks::<2>().0 {
+        chars.push(u16::from_be_bytes(*pair));
     }
     let decoded = String::from_utf16_lossy(&chars);
     if is_text_like(&decoded) {
@@ -286,9 +286,10 @@ fn looks_repeated(bytes: &[u8]) -> bool {
     bytes.len() >= 16
         && (bytes.windows(2).all(|w| w[0] == w[1])
             || bytes
-                .chunks_exact(2)
-                .map(|c| [c[0], c[1]])
-                .all(|p| p == [bytes[0], bytes[1]]))
+                .as_chunks::<2>()
+                .0
+                .iter()
+                .all(|p| *p == [bytes[0], bytes[1]]))
 }
 
 fn looks_protobuf_like(bytes: &[u8]) -> bool {
