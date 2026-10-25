@@ -1,0 +1,18 @@
+$ heaptrail -i test-heap-dumps/hprof-32.bin --allocation-sites --top 5
+# exit 0
+Processing 275.69KiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+
+Top 5 allocation sites by bytes_allocated (of 464 total):
+
+  ─   62.01KiB  /         692 instances  char[]#<init>
+
+  ─   24.76KiB  /           9 instances  byte[]#<init>
+
+  ─   16.81KiB  /         702 instances  java.lang.String#<init>
+
+  ─   12.15KiB  /         304 instances  java.lang.Object[]#<init>
+
+  ─    2.21KiB  /          51 instances  java.lang.String[]#<init>
+
+
+File successfully processed in 1.866667ms

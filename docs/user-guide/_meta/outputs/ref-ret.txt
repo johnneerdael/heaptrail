@@ -1,0 +1,15 @@
+$ heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 1 --top 6 --retained-size
+# exit 0
+
+Found 122154 target instance(s) for java.util.ArrayList
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                     ref count  class retained
+  com.nexio.tv.domain.model.MetaPreview.genres                573412        57.37MiB
+  com.nexio.tv.domain.model.CatalogRow.items                   28697        58.58MiB
+  com.squareup.moshi.LinkedHashTreeMap$Node.value              13743        14.21MiB
+  com.nexio.tv.core.anime.AnimeIdMapRecord.evidence            12960         5.76MiB
+  java.util.Collections$UnmodifiableRandomAccessList.c          7613         3.64MiB
+  java.util.Collections$UnmodifiableRandomAccessList.list       7613         3.64MiB
+
+File successfully processed in 1.790006625s

@@ -1,0 +1,70 @@
+name: Docs
+
+# Build and check the user guide (docs/user-guide, mkdocs.yml) on every change to it.
+# On master, publish it to GitHub Pages.
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'docs/user-guide/**'
+      - 'docs/site-requirements.txt'
+      - 'mkdocs.yml'
+      - 'scripts/docs-*'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    paths:
+      - 'docs/user-guide/**'
+      - 'docs/site-requirements.txt'
+      - 'mkdocs.yml'
+      - 'scripts/docs-*'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: docs/site-requirements.txt
+      - name: Install the site toolchain
+        run: pip install -r docs/site-requirements.txt
+      - name: Check that no output block is stale
+        run: python3 scripts/docs-embed.py --check
+      - name: Check the pages against the tool
+        run: python3 scripts/docs-check.py
+      - name: Build the site
+        run: mkdocs build --strict
+      - name: Set the custom domain
+        run: echo heaptrail.neerdael.nl > build/user-guide-site/CNAME
+      - name: Upload the site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: build/user-guide-site
+
+  deploy:
+    name: Publish to GitHub Pages
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

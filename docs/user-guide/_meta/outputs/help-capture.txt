@@ -1,0 +1,17 @@
+$ heaptrail android-capture --help
+# exit 0
+Capture and validate an Android heap dump via adb
+
+Usage: heaptrail android-capture [OPTIONS] --package <PACKAGE> --out <DIR>
+
+Options:
+      --serial <SERIAL>                 adb serial/device id. When omitted, adb's default target is used
+      --package <PACKAGE>               Android application package name to capture
+      --out <DIR>                       Local output directory for the pulled hprof and transcript
+      --allocation-sites                Attempt allocation tracking setup before dump capture
+      --foreground                      Bring the package to foreground with `monkey -p <package> 1`
+      --series <COUNT>                  Number of validated HProf captures to collect for a diff-series run [default: 1]
+      --series-delay-seconds <SECONDS>  Seconds to wait between captures when --series is greater than 1 [default: 0]
+      --auto-mapping [<MODE>]           Discover the matching R8 mapping from a local Android Gradle project [possible values: strict, optional]
+      --project-root <DIR>              Android project root for capture transcript mapping metadata
+  -h, --help                            Print help

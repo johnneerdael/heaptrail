@@ -1,0 +1,8 @@
+$ heaptrail -i heap.hprof --json-out x.json
+# exit 2
+error: the following required arguments were not provided:
+  --json
+
+Usage: heaptrail --json --inputFile <INPUT_FILE> --json-out <PATH>
+
+For more information, try '--help'.

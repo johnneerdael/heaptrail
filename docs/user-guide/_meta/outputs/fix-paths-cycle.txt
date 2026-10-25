@@ -1,0 +1,23 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --paths-from-id 3606712464 --preview-bytes 80
+# exit 0
+
+Path from object_id=3606712464 (depth 12 step(s)):
+  start  ── id=3606712464
+         content: binary/repeated-fill, 16384 bytes total
+         00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00 |................|
+         00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00 |................|
+  hop 1 ── id=3606712424  (via java.io.BufferedWriter.cb)
+  hop 2 ── id=3606700208  (via java.io.PrintStream.textOut)
+  hop 3 ── id=3606700936  (via java.io.OutputStreamWriter.lock)
+  hop 4 ── id=3606700208  (via java.io.PrintStream.charOut)
+  hop 5 ── id=3606700936  (via java.io.OutputStreamWriter.lock)
+  hop 6 ── id=3606700208  (via java.io.PrintStream.charOut)
+  hop 7 ── id=3606700936  (via java.io.OutputStreamWriter.lock)
+  hop 8 ── id=3606700208  (via java.io.PrintStream.charOut)
+  hop 9 ── id=3606700936  (via java.io.OutputStreamWriter.lock)
+  hop10 ── id=3606700208  (via java.io.PrintStream.charOut)
+  hop11 ── id=3606700936  (via java.io.OutputStreamWriter.lock)
+  hop12 ── id=3606700208  (via java.io.PrintStream.charOut)
+  → stopped at --max-depth (chain may continue)
+
+File successfully processed in 19.298375ms

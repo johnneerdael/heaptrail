@@ -1,0 +1,3 @@
+$ heaptrail --diff-from after.hprof --diff-to before.hprof --top 100000 --json --json-out reports/diff.json > /dev/null && jq -e '(map(select(.class_name == "com.nexio.tv.domain.model.MetaPreview")) | first) as $c | $c.delta_count <= 1000' reports/diff.json
+# exit 1
+false

@@ -1,0 +1,15 @@
+$ heaptrail -i heap-b.hprof -l | sed -n '/List of Strings/,+12p'
+# exit 0
+List of Strings
+$$INSTANCE
+$$changed
+$$changed1
+$$default
+$$delegate_0
+$$delegatedProperties
+$$this$LaunchedEffect
+$$this$channelFlow
+$$this$coroutineScope
+$$this$flow
+$$this$launch
+$$this$produce

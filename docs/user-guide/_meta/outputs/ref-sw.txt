@@ -1,0 +1,15 @@
+$ heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 1 --top 6 --exclude-soft-weak
+# exit 0
+
+Found 122154 target instance(s) for java.util.ArrayList
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                     ref count
+  com.nexio.tv.domain.model.MetaPreview.genres                573412
+  com.nexio.tv.domain.model.CatalogRow.items                   28697
+  com.squareup.moshi.LinkedHashTreeMap$Node.value              13743
+  com.nexio.tv.core.anime.AnimeIdMapRecord.evidence            12960
+  java.util.Collections$UnmodifiableRandomAccessList.c          7613
+  java.util.Collections$UnmodifiableRandomAccessList.list       7613
+
+File successfully processed in 474.106ms

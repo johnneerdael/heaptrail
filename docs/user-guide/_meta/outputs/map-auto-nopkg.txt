@@ -1,0 +1,3 @@
+$ heaptrail -i heap.hprof --auto-mapping
+# exit 1
+error: mapping discovery failed: --auto-mapping requires --package

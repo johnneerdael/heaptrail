@@ -1,0 +1,8 @@
+$ heaptrail -i demo.hprof --paths-from-id 34095644696
+# exit 0
+
+Path from object_id=34095644696 (depth 0 step(s)):
+  start  ── id=34095644696
+  → orphan: no holder found in dump
+
+File successfully processed in 11.922333ms

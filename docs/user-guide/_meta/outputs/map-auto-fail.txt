@@ -1,0 +1,3 @@
+$ heaptrail -i launch.hprof --auto-mapping --package com.example.myapp --project-root /nonexistent -t 3
+# exit 1
+error: mapping discovery failed: no Gradle output metadata matched installed app version with an existing mapping file

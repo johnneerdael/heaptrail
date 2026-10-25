@@ -1,0 +1,7 @@
+$ heaptrail -i heap.hprof --mapping mapping.txt --auto-mapping --package com.example.myapp
+# exit 2
+error: the argument '--mapping <PATH>' cannot be used with '--auto-mapping [<MODE>]'
+
+Usage: heaptrail --inputFile <INPUT_FILE> --mapping <PATH> --package <PACKAGE>
+
+For more information, try '--help'.

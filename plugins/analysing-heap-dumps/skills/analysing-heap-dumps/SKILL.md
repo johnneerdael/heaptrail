@@ -879,8 +879,9 @@ Wall cost scales linearly with file size and number of streaming passes.
 
 ## Further reading
 
-- `USERGUIDE.md` in the repo: hands-on guide with worked Android-dump
-  examples (https://github.com/johnneerdael/heaptrail/blob/master/USERGUIDE.md).
-- `README.md` for cheat-sheet and install instructions.
-- `docs/feature-retainer-tracing.md` for the design rationale of the
-  multi-pass referrer engine.
+- The user guide, with a first-triage walkthrough, a mode chooser, recipes and
+  the full reference: https://heaptrail.neerdael.nl/ (sources in
+  `docs/user-guide/` in the repo).
+- How the modes read a dump, and why they differ in time and memory:
+  https://heaptrail.neerdael.nl/concepts/how-heaptrail-reads-a-dump/
+- `README.md` for the overview and install instructions.

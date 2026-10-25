@@ -1,0 +1,156 @@
+# name|max-lines (0 = all)|command   (runs in the work directory; see scripts/docs-capture.sh)
+#
+# Getting started: first triage
+first-summary|0|heaptrail -i heap.hprof -t 5
+first-suspects|0|heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 3
+first-referrers|0|heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview --hops 3 --top 10
+first-preview|0|heaptrail -i heap.hprof -t 3 --preview-bytes 200
+first-paths|0|heaptrail -i heap.hprof --paths-from-id 1661812752 --preview-bytes 200
+first-json|0|heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 3 --json --json-out reports/suspects.json
+first-jq|0|jq '.suspects[0] | {dominator_class, retained_bytes, heap_share_pct, accumulating_class, accumulating_count}' reports/suspects.json
+first-last-hop|0|heaptrail -i heap.hprof --find-referrers id:369633368 --hops 1
+
+# Command reference
+help-main|0|heaptrail --help
+help-capture|0|heaptrail android-capture --help
+version|0|heaptrail --version
+
+# Getting started: follow along (small JVM fixtures from the repository)
+fix-summary|0|heaptrail -i test-heap-dumps/hprof-64.bin -t 5
+fix-retained|0|heaptrail -i test-heap-dumps/hprof-64.bin --retained-size -t 5
+fix-referrers|0|heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers java.util.LinkedList --hops 2
+fix-paths-root|0|heaptrail -i test-heap-dumps/hprof-64.bin --paths-from-id 3606861808
+fix-paths-cycle|0|heaptrail -i test-heap-dumps/hprof-64.bin --paths-from-id 3606712464 --preview-bytes 80
+fix32-summary|0|heaptrail -i test-heap-dumps/hprof-32.bin -t 3
+fix-cycle-referrers|0|heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers id:3606700208 --hops 1
+fix32-alloc-hint|0|heaptrail -i test-heap-dumps/hprof-32.bin -t 2
+fix32-alloc|0|heaptrail -i test-heap-dumps/hprof-32.bin --allocation-sites --top 5
+
+# Concepts and holders: --exclude-soft-weak (rows of a wide class table, padding squeezed)
+sw-retained-plain|0|heaptrail -i heap.hprof --retained-size -t 3000 | grep -E '^\| .*(kotlin.reflect.jvm.internal.KTypeImpl|java.util.WeakHashMap.Entry|sun.misc.Cleaner) +\|' | head -3 | sed -E 's/ +\| +/ \| /g; s/ +\|$/ \|/'
+sw-retained-flag|0|heaptrail -i heap.hprof --retained-size --exclude-soft-weak -t 3000 | grep -E '^\| .*(kotlin.reflect.jvm.internal.KTypeImpl|java.util.WeakHashMap.Entry|sun.misc.Cleaner) +\|' | head -3 | sed -E 's/ +\| +/ \| /g; s/ +\|$/ \|/'
+
+# Capture: android-capture (against the fake adb)
+cap-single|0|heaptrail android-capture --package com.example.myapp --out dumps --foreground && cat dumps/*-transcript.txt
+cap-series|0|heaptrail android-capture --package com.example.myapp --out dumps --foreground --series 3 --series-delay-seconds 10
+cap-alloc|0|heaptrail android-capture --package com.example.myapp --out dumps --allocation-sites && cat dumps/*-transcript.txt
+cap-auto|0|heaptrail android-capture --package com.example.myapp --out dumps --auto-mapping --project-root myapp && cat dumps/*-transcript.txt
+cap-noproc|0|heaptrail android-capture --package com.example.myapp --out dumps
+cap-stall|0|heaptrail android-capture --package com.example.myapp --out dumps
+
+# Android: release-build mapping (demo mapping in _meta/fixtures/myapp, applied to a real obfuscated dump)
+map-raw|0|heaptrail -i launch.hprof -t 12
+map-manual|0|heaptrail -i launch.hprof --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt -t 12
+map-auto|0|heaptrail -i launch.hprof --auto-mapping --package com.example.myapp --project-root myapp -t 12
+map-auto-fail|0|heaptrail -i launch.hprof --auto-mapping --package com.example.myapp --project-root /nonexistent -t 3
+map-auto-optional|0|heaptrail -i launch.hprof --auto-mapping optional --package com.example.myapp --project-root /nonexistent -t 3
+map-json|0|heaptrail -i launch.hprof --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt -t 12 --json --json-out reports/mapped.json && jq -c '.top_allocated_classes[] | select(.obfuscated_class_name) | {class_name, obfuscated_class_name}' reports/mapped.json
+map-series|0|heaptrail --diff-series launch.hprof play.hprof soak.hprof --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt --diff-by bytes --top 4
+
+# JVM demo dump (assets/downloads/shop-demo.hprof.gz, built from _meta/fixtures/jvm-demo)
+jvm-summary|0|heaptrail -i demo.hprof -t 6
+jvm-suspects|0|heaptrail -i demo.hprof --leak-suspects --exclude-soft-weak --top 1
+jvm-referrers|0|heaptrail -i demo.hprof --find-referrers shop.Session --hops 2
+jvm-holder|0|heaptrail -i demo.hprof --find-referrers id:34095644696 --hops 1
+jvm-retained|0|heaptrail -i demo.hprof --retained-size -t 5
+jvm-paths|0|heaptrail -i demo.hprof --paths-from-id 34095644696
+cap-noadb|0|heaptrail android-capture --package com.example.myapp --out dumps
+cap-series-two|0|heaptrail android-capture --package com.example.myapp --out dumps --series 2
+
+# Analyze: summary, retained size, suspects, previews, lists
+sum-full|0|heaptrail -i heap.hprof -t 10
+sum-103|0|heaptrail -i heap-b.hprof -t 5
+sum-json|0|heaptrail -i heap.hprof -t 3 --json --json-out reports/summary.json && jq -c 'keys' reports/summary.json && jq -c '.top_allocated_classes[0]' reports/summary.json
+ret-table|0|heaptrail -i heap.hprof --retained-size -t 10
+ret-103|0|heaptrail -i heap-b.hprof --retained-size -t 5
+sus-103|0|heaptrail -i heap-b.hprof --leak-suspects --exclude-soft-weak --top 3
+sus-thr|0|heaptrail -i heap.hprof --leak-suspects=0.10 --exclude-soft-weak --top 5
+sus-below|0|heaptrail -i heap.hprof --leak-suspects=0.9 --top 3
+sus-fixture|0|heaptrail -i test-heap-dumps/hprof-64.bin --leak-suspects --top 2 --preview-bytes 100
+prev-103|0|heaptrail -i heap-b.hprof -t 3 --preview-bytes 200
+list-head|0|heaptrail -i heap-b.hprof -l | sed -n '/List of Strings/,+12p'
+list-arrays|0|heaptrail -i heap-b.hprof -l --preview-bytes 120 --list-arrays-min-bytes 100000 | sed -n '/Standalone large arrays/,$p'
+list-count|0|heaptrail -i heap-b.hprof -l --preview-bytes 40 --list-arrays-min-bytes 500000 | sed -n '/Standalone large arrays/,$p' | cut -c1-100
+bitmaps-err|0|heaptrail -i heap.hprof --bitmaps
+alloc-err|0|heaptrail -i heap.hprof --allocation-sites
+alloc-hint-none|0|heaptrail -i heap.hprof -t 1
+
+# Holders
+ref-hops1|0|heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview --hops 1 --top 5
+ref-id|0|heaptrail -i heap.hprof --find-referrers id:1661812752 --hops 1 --preview-bytes 200
+ref-ret|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 1 --top 6 --retained-size
+ref-sw|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 1 --top 6 --exclude-soft-weak
+ref-unknown|0|heaptrail -i heap.hprof --find-referrers com.example.Nope --hops 1
+ref-activity|0|heaptrail -i heap-b.hprof --find-referrers com.nexio.tv.MainActivity --hops 2
+glob-model|0|heaptrail -i heap.hprof --target-glob 'com.nexio.tv.domain.model.*' --hops 2 --top 8
+glob-grouped|0|heaptrail -i heap.hprof --target-glob 'com.nexio.tv.domain.model.*' --hops 2 --top 8 --group-holders
+glob-itr|0|heaptrail -i heap.hprof --target-glob '**$Itr' --hops 1 --top 8
+glob-conflict|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --target-glob 'java.*'
+paths-ret|0|heaptrail -i heap.hprof --paths-from-id 1661812752 --max-depth 12 --retained-size --preview-bytes 200
+paths-short|0|heaptrail -i heap.hprof --paths-from-id 1661812752 --max-depth 3
+paths-103|0|heaptrail -i heap-b.hprof --paths-from-id 1723142144 --preview-bytes 100
+merge-fold|0|heaptrail -i heap.hprof --paths-from-id 534941512 --merge-paths --retained-size --max-depth 12
+merge-textual|0|heaptrail -i heap.hprof --paths-from-id 534941512 --merge-paths --max-depth 12
+merge-sw|0|heaptrail -i heap.hprof --paths-from-id 534941512 --merge-paths --exclude-soft-weak --max-depth 12
+
+# Compare
+diff-count|0|heaptrail --diff-from before.hprof --diff-to after.hprof --top 10
+diff-bytes|0|heaptrail --diff-from before.hprof --diff-to after.hprof --diff-by bytes --top 10
+diff-swapped|0|heaptrail --diff-from after.hprof --diff-to before.hprof --top 6
+diff-self|0|heaptrail --diff-from heap.hprof --diff-to heap.hprof
+diff-shrunk|0|heaptrail --diff-from before.hprof --diff-to after.hprof --top 3000 | tail -4
+series-native|0|heaptrail --diff-series launch.hprof play.hprof soak.hprof --diff-by bytes --top 8 --native-context meminfo.txt
+series-meminfo|0|sed -n '/App Summary/,/TOTAL:/p' meminfo.txt
+series-two|0|heaptrail --diff-series launch.hprof play.hprof
+series-mapped|0|heaptrail --diff-series launch.hprof play.hprof soak.hprof --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt --diff-by bytes --top 4
+bitmaps-refs|0|heaptrail -i heap-b.hprof --find-referrers android.graphics.Bitmap --hops 1 --top 5
+
+# Recipes
+dup-list|0|heaptrail -i heap-b.hprof -l --preview-bytes 40 --list-arrays-min-bytes 500000 | sed -n '/Standalone large arrays/,$p' | cut -c1-110 | head -6
+dup-count|0|heaptrail -i heap-b.hprof -l --preview-bytes 40 --list-arrays-min-bytes 500000 | sed -n '/Standalone large arrays/,$p' | grep -c '544.01KiB'
+dup-paths|0|heaptrail -i heap-b.hprof --paths-from-id 1722261504 --preview-bytes 60
+dup-writer-holders|0|heaptrail -i heap-b.hprof --find-referrers com.google.gson.stream.JsonWriter --hops 1
+dup-writer-path|0|heaptrail -i heap-b.hprof --paths-from-id 337740240
+
+# Holders: edge cases
+ref-bytes|0|heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers 'byte[]'
+ref-bogus-id|0|heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers id:99999999999 --hops 1
+ref-hops5|0|heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview --hops 5 --top 2
+glob-linked|0|heaptrail -i test-heap-dumps/hprof-64.bin --target-glob 'java.util.Linked*' --hops 1 --top 3
+glob-nomatch|0|heaptrail -i test-heap-dumps/hprof-64.bin --target-glob 'nothing.matches.*'
+group-no-ref|0|heaptrail -i heap.hprof --group-holders
+group-ret|0|heaptrail -i heap.hprof --target-glob 'com.nexio.tv.domain.model.*' --hops 1 --top 4 --group-holders --retained-size
+paths-jq|0|heaptrail -i heap.hprof --paths-from-id 1661812752 --json --json-out reports/path.json > /dev/null && jq -r '.steps[] | "\(.holder_class) \(.via_field // ("[" + (.array_index|tostring) + "]"))"' reports/path.json
+merge-prim|0|heaptrail -i heap.hprof --paths-from-id 1661812752 --merge-paths
+merge-json|0|heaptrail -i heap.hprof --paths-from-id 534941512 --merge-paths --max-depth 3 --json --json-out reports/merge.json > /dev/null && jq -c '{target_label, instance_count, graph_verified, first_hop: (.root.children[0] | {source_class, field_name, instance_count})}' reports/merge.json
+ref-plain|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 1 --top 6
+ref-weak-obj|0|heaptrail -i heap-b.hprof --find-referrers java.lang.ref.WeakReference --hops 1 --top 3
+ref-weak-obj-sw|0|heaptrail -i heap-b.hprof --find-referrers java.lang.ref.WeakReference --hops 1 --top 3 --exclude-soft-weak
+pg-referrers|0|heaptrail -i soak.hprof --find-referrers p1.j --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt --hops 1 --top 4
+map-invalid|0|heaptrail -i jvm.hprof --mapping meminfo.txt
+map-missing|0|heaptrail -i heap.hprof --mapping /nope/mapping.txt
+map-both|0|heaptrail -i heap.hprof --mapping mapping.txt --auto-mapping --package com.example.myapp
+map-auto-nopkg|0|heaptrail -i heap.hprof --auto-mapping
+
+# Automate
+j-default|0|heaptrail -i jvm.hprof -t 1 --json | grep 'Output JSON'
+j-top|0|heaptrail -i heap.hprof -t 5 --json --json-out reports/summary.json > /dev/null && jq -r '.top_allocated_classes[] | [.class_name, .instance_count, .allocation_size_bytes] | @tsv' reports/summary.json
+j-diff-csv|0|heaptrail --diff-from before.hprof --diff-to after.hprof --top 5 --json --json-out reports/diff.json > /dev/null && jq -r '.[] | [.class_name, .delta_count, .delta_bytes] | @csv' reports/diff.json
+j-pretty|0|heaptrail -i heap.hprof -t 1 --json --json-out reports/summary.json > /dev/null && head -c 180 reports/summary.json
+ci-pass|0|heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 1 --json --json-out reports/suspects.json > /dev/null && jq -e '.suspects[0].heap_share_pct < 30' reports/suspects.json
+ci-fail|0|heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 1 --json --json-out reports/suspects.json > /dev/null && jq -e '.suspects[0].heap_share_pct < 20' reports/suspects.json
+ci-diff-pass|0|heaptrail --diff-from before.hprof --diff-to after.hprof --top 100000 --json --json-out reports/diff.json > /dev/null && jq -e '(map(select(.class_name == "com.nexio.tv.domain.model.MetaPreview")) | first) as $c | $c.delta_count <= 1000' reports/diff.json
+ci-diff-fail|0|heaptrail --diff-from after.hprof --diff-to before.hprof --top 100000 --json --json-out reports/diff.json > /dev/null && jq -e '(map(select(.class_name == "com.nexio.tv.domain.model.MetaPreview")) | first) as $c | $c.delta_count <= 1000' reports/diff.json
+ci-json-out-dir|0|heaptrail -i jvm.hprof --json --json-out /no/such/dir/x.json
+
+# Reference: errors
+conflict|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --paths-from-id 1
+diff-only-from|0|heaptrail --diff-from before.hprof
+err-no-input|0|heaptrail
+err-missing-file|0|heaptrail -i nope.hprof
+err-top-zero|0|heaptrail -i heap.hprof -t 0
+err-hops|0|heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 6
+err-json-out|0|heaptrail -i heap.hprof --json-out x.json
+err-empty|0|heaptrail -i empty.hprof
+err-garbage|0|heaptrail -i meminfo.txt
+err-truncated-small|0|heaptrail -i truncated-5mb.hprof

@@ -1,0 +1,77 @@
+$ heaptrail --help
+# exit 0
+JVM/Android heap dump (hprof) analyzer
+
+Usage: heaptrail [OPTIONS] [COMMAND]
+
+Commands:
+  android-capture  Capture and validate an Android heap dump via adb
+  help             Print this message or the help of the given subcommand(s)
+
+Options:
+  -i, --inputFile <INPUT_FILE>
+          Binary hprof input file. Required for summary, --find-referrers, and --paths-from-id modes. Not used in diff mode (see --diff-from/--diff-to)
+  -t, --top <TOP>
+          The top N results to display [default: 20]
+  -d, --debug
+          Debug info
+  -l, --listStrings
+          List all Strings found (summary mode)
+      --json
+          Additional JSON output
+      --json-out <PATH>
+          Write JSON output to this exact path. Requires --json. When omitted, --json keeps the current timestamped/default sidecar behavior
+      --native-context <PATH>
+          Optional Android dumpsys meminfo text to annotate diff-series reports
+      --mapping <PATH>
+          R8/ProGuard mapping file used to deobfuscate class and holder field names
+      --auto-mapping [<MODE>]
+          Discover the mapping file from a local Android Gradle project and an installed app version [possible values: strict, optional]
+      --project-root <DIR>
+          Android project root for --auto-mapping
+      --package <PACKAGE>
+          Android package/application id for --auto-mapping
+      --serial <SERIAL>
+          adb serial/device id for --auto-mapping
+      --preview-bytes <N>
+          Show first N bytes/chars of primitive arrays in summary, paths, find-referrers id:N, and (with -l) the standalone-array list. Default 0 (off); recommended 200. UTF-8 / UTF-16 BE auto-detect with control-char escaping; falls back to xxd-style hex on binary content. See "Content previews" in the user guide [default: 0]
+      --list-arrays-min-bytes <LIST_ARRAYS_MIN_BYTES>
+          Minimum total byte size for a standalone primitive array to appear in `-l` output. Effective only when both `-l` and `--preview-bytes` are set. Default 1024 [default: 1024]
+      --find-referrers <TARGET>
+          Find direct + N-hop referrers of a target. Accepts an FQ class name (e.g. `java.util.ArrayList`) or `id:<u64>` / a bare `<u64>` for a specific object id
+      --target-glob <PATTERN>
+          Find direct + N-hop referrers of every class matching this glob. Mutually exclusive with `--find-referrers`. Glob syntax: `*` matches within a package level, `**` crosses package levels, `?` matches one character, `[abc]` is a class. See "Target glob" in the user guide
+      --hops <HOPS>
+          Number of hops for referrer tracing. 1 = direct only, 2 = also through Object[] arrays, 3 = three-link chain [default: 2]
+      --include-statics
+          Include class statics as candidate referrers
+      --group-holders
+          Group referrer rows by owner family, holder class, and field label
+      --paths-from-id <ID>
+          Trace holder chain from this object id toward a GC root
+      --max-depth <MAX_DEPTH>
+          Maximum chain depth before giving up (paths mode) [default: 12]
+      --diff-from <PATH>
+          Baseline (older) hprof for diff
+      --diff-to <PATH>
+          Comparison (newer) hprof for diff
+      --diff-series <PATH>...
+          Ordered HProf snapshots for series diff. Requires at least 3 files
+      --diff-by <DIFF_BY>
+          Diff sort key (count = delta instances, bytes = delta shallow size) [default: count] [possible values: count, bytes]
+      --allocation-sites
+          Show per-class allocation sites with stack traces. Requires the dump to have been captured under allocation tracking (Android: `am profile start <pid>` before `am dumpheap`)
+      --retained-size
+          Compute and surface retained sizes via Lengauer–Tarjan dominator tree. Annotates summary's class table (re-sorted by retained), `--paths-from-id` hops, and `--find-referrers` holders. Adds ~250 MiB working memory and ~1–3 s wall time on a 200 MiB Android dump. Includes weak/soft/phantom-reference edges (graph-theoretic dominator-tree definition); pair with `--exclude-soft-weak` for MAT-style leak hunting. Default off
+      --exclude-soft-weak
+          Drop outgoing edges from java.lang.ref.{Soft,Weak,Phantom}Reference subclasses across path walks and the retained-size graph build. MAT's default leak-hunting filter; required on Android dumps where LeakCanary watchers and framework weak-refs would otherwise bury the real strong reference. Default off
+      --leak-suspects [<THRESHOLD>]
+          Auto-rank dominators with retained share ≥ THRESHOLD; emit narrative + path-to-root + content preview per suspect. Implies --retained-size. Top-N suspects bounded by --top. Always shows at least top-3 (flagged "below threshold" if applicable). Default threshold 0.05 (5%)
+      --merge-paths
+          Modifier on `--paths-from-id`. Fold paths-to-root for all instances of the start id's class into a single tree with branch counts. Pair with `--retained-size` for graph-verified convergence; otherwise textual prefix matching with a banner
+      --bitmaps
+          List top-N android.graphics.Bitmap instances by pixel-byte size. Reports width × height × config and pixel bytes; Java-heap or native location; one-line holder summary. Android dumps only
+  -h, --help
+          Print help
+  -V, --version
+          Print version

@@ -1,0 +1,10 @@
+$ heaptrail -i heap.hprof --find-referrers id:369633368 --hops 1
+# exit 0
+
+Found 1 target instance(s) for id:369633368
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)       ref count
+  android.app.ContextImpl.sSharedPrefsCache          1
+
+File successfully processed in 332.461375ms

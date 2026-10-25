@@ -1,0 +1,15 @@
+$ heaptrail --diff-from after.hprof --diff-to before.hprof --top 6
+# exit 0
+Processing 186.08MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+Class deltas (sorted, top 6 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+       +450170    +46817680 123382→573552 12.24MiB→56.89MiB  com.nexio.tv.domain.model.MetaPreview
+       +197372    -25990448 175423→372795 46.38MiB→21.59MiB  char[]
+       +108545     +1736720 95482→204027 1.46MiB→3.11MiB  java.lang.StringBuilder
+        +78472     +4185616 149115→227587 6.78MiB→10.77MiB  java.lang.Object[][]
+        +67168     +2686720   8122→75290 317.27KiB→2.87MiB  androidx.compose.runtime.external.kotlinx.collections.immutable.implementations.immutableMap.PersistentHashMapBuilder
+        +67162      +537296   8193→75355 64.01KiB→588.71KiB  androidx.compose.runtime.external.kotlinx.collections.immutable.internal.MutabilityOwnership
+
+File successfully processed in 255.9515ms

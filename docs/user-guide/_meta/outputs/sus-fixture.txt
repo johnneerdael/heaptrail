@@ -1,0 +1,26 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --leak-suspects --top 2 --preview-bytes 100
+# exit 0
+Heap: 2.37MiB total, 198.21KiB retained-reachable.
+Threshold: 5.0 % retained share. Showing 2 suspect(s) (2 above threshold).
+
+Suspect 1 — 634.77KiB (320.2 % of heap)
+  dominator: int[] (object_id=3607227400)
+  accumulating: 1 instances of int[], total 634.77KiB
+  preview: content: binary/repeated-fill, binary, 650000 bytes
+  path to GC root:
+  
+  Path from object_id=3607227400 (depth 0 step(s)):
+    start  ── id=3607227400
+    → orphan: no holder found in dump
+
+Suspect 2 — 634.73KiB (320.2 % of heap)
+  dominator: int[] (object_id=3608528056)
+  accumulating: 1 instances of int[], total 634.73KiB
+  preview: content: binary/repeated-fill, binary, 649968 bytes
+  path to GC root:
+  
+  Path from object_id=3608528056 (depth 0 step(s)):
+    start  ── id=3608528056
+    → orphan: no holder found in dump
+
+File successfully processed in 12.868667ms

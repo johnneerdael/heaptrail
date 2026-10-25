@@ -1,0 +1,10 @@
+$ heaptrail -i demo.hprof --find-referrers id:34095644696 --hops 1
+# exit 0
+
+Found 1 target instance(s) for id:34095644696
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  shop.SessionCache.BY_ID                       1
+
+File successfully processed in 11.957333ms

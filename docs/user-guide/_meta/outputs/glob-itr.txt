@@ -1,0 +1,20 @@
+$ heaptrail -i heap.hprof --target-glob '**$Itr' --hops 1 --top 8
+# exit 0
+
+Found 4 classes matching glob:**$Itr:
+  - java.util.ArrayList$Itr                     (1938 instances)
+  - java.util.AbstractList$Itr                  (8 instances)
+  - com.google.common.collect.ImmutableList$Itr (2 instances)
+  - kotlin.collections.builders.ListBuilder$Itr (1 instances)
+
+Found 1949 target instance(s) for glob:**$Itr
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                                                            ref count
+  com.nexio.tv.ui.screens.home.HomeViewModelPresentationPipelineKt$enrichHeroItemsPipeline$1.L$9          2
+  kotlin.sequences.FilteringSequence$iterator$1.iterator                                                  1
+  com.google.common.collect.ImmutableList.EMPTY_ITR                                                       1
+  kotlin.sequences.FlatteningSequence$iterator$1.iterator                                                 1
+  com.nexio.tv.core.metadata.router.ProviderPlanRunner$run$1.L$5                                          1
+
+File successfully processed in 440.806583ms

@@ -1,0 +1,158 @@
+/* heaptrail palette on Material for MkDocs, for both colour schemes.
+   Teal is the brand colour and amber marks "the thing to look at".
+   On white, teal is too light for text, so light-mode links use a deeper
+   teal (#0A7C69, 5.1:1) that passes WCAG AA. */
+:root {
+  --ht-ink: #0E1A2B;
+  --ht-paper: #F7FAFC;
+  --ht-teal: #19C3A1;
+  --ht-teal-deep: #0A7C69;
+  --ht-teal-bright: #3DDBC0;
+  --ht-amber: #FFB020;
+  --ht-blue: #4C8DFF;
+  --ht-gradient: linear-gradient(135deg, #19C3A1 0%, #2FA8E0 62%, #4C8DFF 100%);
+}
+
+/* Light (default) scheme */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--ht-ink);
+  --md-primary-fg-color--light: #243650;
+  --md-primary-fg-color--dark: #08111d;
+  --md-primary-bg-color: var(--ht-paper);
+  --md-primary-bg-color--light: rgba(247, 250, 252, 0.7);
+  --md-accent-fg-color: var(--ht-teal-deep);
+  --md-accent-fg-color--transparent: rgba(25, 195, 161, 0.1);
+  --md-accent-bg-color: #fff;
+  --md-default-bg-color: #ffffff;
+  --md-typeset-a-color: var(--ht-teal-deep);
+  --md-code-bg-color: #f1f5f7;
+  --md-typeset-mark-color: rgba(255, 176, 32, 0.4);
+  --ht-surface: #f5f9fa;
+  --ht-border: rgba(14, 26, 43, 0.12);
+  --ht-terminal-bg: #0E1A2B;
+}
+
+/* Dark (slate) scheme on the brand ink */
+[data-md-color-scheme="slate"] {
+  --md-hue: 215;
+  --md-primary-fg-color: #08111d;
+  --md-primary-fg-color--light: #16263b;
+  --md-primary-fg-color--dark: #050b13;
+  --md-primary-bg-color: var(--ht-paper);
+  --md-accent-fg-color: var(--ht-teal-bright);
+  --md-accent-fg-color--transparent: rgba(61, 219, 192, 0.1);
+  --md-default-bg-color: var(--ht-ink);
+  --md-default-bg-color--light: #15263b;
+  --md-default-bg-color--lighter: #1b2f47;
+  --md-default-fg-color: rgba(247, 250, 252, 0.9);
+  --md-default-fg-color--light: rgba(247, 250, 252, 0.68);
+  --md-typeset-color: rgba(247, 250, 252, 0.88);
+  --md-typeset-a-color: var(--ht-teal-bright);
+  --md-code-bg-color: #142437;
+  --md-code-fg-color: #e3eaf1;
+  --md-typeset-mark-color: rgba(255, 176, 32, 0.32);
+  --md-footer-bg-color: #08111d;
+  --md-footer-bg-color--dark: #050b13;
+  --ht-surface: #15263b;
+  --ht-border: rgba(247, 250, 252, 0.12);
+  --ht-terminal-bg: #0a1422;
+}
+
+/* Header: ink in both schemes, with the brand gradient as a thin rule */
+.md-header { box-shadow: none; border-bottom: 3px solid transparent; border-image: var(--ht-gradient) 1; }
+.md-tabs { background-color: var(--md-primary-fg-color); }
+.md-tabs__link { opacity: 0.78; }
+.md-tabs__link--active, .md-tabs__link:hover { opacity: 1; color: var(--ht-amber); }
+.md-header__button.md-logo img { height: 1.6rem; }
+
+/* Page titles that only screen readers need (the home page shows a hero instead) */
+.md-typeset .md-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Reading rhythm */
+.md-typeset { font-size: 0.8rem; line-height: 1.7; }
+.md-typeset h1 { font-weight: 800; letter-spacing: -0.02em; color: var(--md-default-fg-color); }
+.md-typeset h2 { font-weight: 700; letter-spacing: -0.01em; margin-top: 2em; }
+.md-typeset h3 { font-weight: 650; }
+.md-typeset .lead { font-size: 1.05em; color: var(--md-default-fg-color--light); margin-top: -0.4em; }
+
+/* Inline code in prose: placeholders and flags stand out a little */
+.md-typeset :not(pre) > code { border-radius: 4px; padding: 0.05em 0.35em; }
+
+/* Keyboard keys */
+.md-typeset kbd { border-radius: 4px; font-size: 0.78em; }
+
+/* Tables */
+.md-typeset table:not([class]) { border-radius: 8px; font-size: 0.74rem; border: 1px solid var(--ht-border); }
+.md-typeset table:not([class]) th { background: var(--ht-surface); font-weight: 650; }
+.md-typeset table:not([class]) td { vertical-align: top; }
+/* Keep flags and class names intact; let long patterns wrap inside the cell */
+.md-typeset table:not([class]) td code { white-space: pre-wrap; word-break: break-word; }
+
+/* Code and command output: rounded, with a title bar that reads as a prompt */
+.md-typeset .highlight, .md-typeset pre > code { border-radius: 8px; }
+.md-typeset .highlight .filename { font-family: var(--md-code-font-family); font-size: 0.68rem; letter-spacing: 0.01em; }
+.md-typeset .tabbed-set { border-radius: 8px; }
+/* Real tool output is wide. Scroll it; never wrap it, so columns stay aligned. */
+.md-typeset pre > code { white-space: pre; }
+
+/* Home hero */
+.ht-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 2rem; align-items: center; margin: 0.5rem 0 2.2rem; }
+.ht-hero__mark { width: 4.2rem; height: 4.2rem; margin: 0 0 0.6rem; }
+.md-typeset .ht-hero h1 { font-size: 2.3rem; margin: 0 0 0.3rem; line-height: 1.15; }
+.md-typeset .ht-hero h2 { font-size: 1.7rem; margin: 0 0 0.7rem; font-weight: 700; line-height: 1.2; color: var(--md-default-fg-color); letter-spacing: 0; }
+.ht-hero p { margin: 0 0 1rem; }
+.ht-hero .md-button { margin: 0.2rem 0.4rem 0.2rem 0; padding: 0.5em 1.2em; }
+.md-typeset .md-button:not(.md-button--primary) { color: var(--md-default-fg-color); border-color: currentColor; }
+.md-typeset .md-button:not(.md-button--primary):is(:hover, :focus) { color: var(--ht-ink); background: var(--ht-amber); border-color: var(--ht-amber); }
+.md-typeset .md-button--primary { background: var(--ht-gradient); border: 0; color: var(--ht-ink); font-weight: 700; }
+.md-typeset .md-button--primary:hover { filter: brightness(1.06); color: var(--ht-ink); }
+@media screen and (max-width: 60em) { .ht-hero { grid-template-columns: 1fr; } }
+@media screen and (max-width: 44.9375em) {
+  .ht-hero { margin-top: 0; }
+  .ht-hero__mark { width: 3rem; height: 3rem; }
+  .md-typeset .ht-hero h2 { font-size: 1.4rem; }
+  .ht-hero .md-button { display: block; text-align: center; margin-right: 0; }
+}
+
+/* Faux terminal used on the home page. The text inside is real tool output. */
+.ht-terminal { border-radius: 10px; background: var(--ht-terminal-bg); border: 1px solid var(--ht-border); box-shadow: 0 10px 34px rgba(8, 17, 29, 0.28); overflow: hidden; min-width: 0; }
+.ht-terminal__bar { display: flex; align-items: center; gap: 0.38rem; padding: 0.5rem 0.75rem; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.ht-terminal__bar i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255, 255, 255, 0.22); display: inline-block; }
+.ht-terminal__bar b { margin-left: 0.5rem; font: 500 0.68rem var(--md-code-font-family); color: rgba(255, 255, 255, 0.55); }
+.md-typeset .ht-terminal pre { margin: 0; background: transparent; padding: 0.85rem 1rem 1rem; overflow-x: auto; }
+.md-typeset .ht-terminal pre code { background: transparent; padding: 0; font-size: 0.55rem; line-height: 1.65; color: #dbe6ef; white-space: pre; }
+.ht-terminal .p { color: var(--ht-teal-bright); }
+.ht-terminal .d { color: rgba(219, 230, 239, 0.5); }
+.ht-terminal .hl { color: var(--ht-amber); font-weight: 600; }
+
+/* Cards */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card { border-radius: 12px; border-color: var(--ht-border); background: var(--ht-surface); transition: border-color 0.2s, transform 0.2s; }
+.md-typeset .grid.cards > ul > li:hover { border-color: var(--ht-teal); transform: translateY(-2px); box-shadow: none; }
+.md-typeset .grid.cards .lg { color: var(--ht-teal); }
+
+/* Recipe summary box (recipe pages) */
+.md-typeset .recipe-meta { border-left: 4px solid var(--ht-teal); background: var(--ht-surface); padding: 0.6rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.74rem; margin: 0 0 1.4em; }
+/* md_in_html wraps the spans in one <p>, so the row layout goes on that. */
+.md-typeset .recipe-meta p { display: flex; flex-direction: column; gap: 0.3rem; margin: 0; }
+.md-typeset .recipe-meta strong { color: var(--md-default-fg-color--light); font-weight: 600; margin-right: 0.3em; }
+
+
+/* Diagrams drawn as inline SVG take their colours from the page */
+.ht-diagram { margin: 1.4em auto; max-width: 46rem; }
+.ht-diagram svg { width: 100%; height: auto; display: block; }
+.ht-diagram figcaption { font-size: 0.72rem; color: var(--md-default-fg-color--light); margin-top: 0.4rem; }
+.ht-diagram .stroke { stroke: var(--md-default-fg-color--light); fill: none; }
+.ht-diagram .box { fill: var(--ht-surface); stroke: var(--ht-border); }
+.ht-diagram .hot { fill: var(--ht-amber); stroke: none; }
+.ht-diagram .teal { fill: var(--ht-teal); stroke: none; }
+.ht-diagram .ink { fill: var(--md-default-fg-color); font-family: var(--md-text-font-family); }
+.ht-diagram .dim { fill: var(--md-default-fg-color--light); font-family: var(--md-text-font-family); }
+.ht-diagram .mono { font-family: var(--md-code-font-family); }
+
+/* "Draft" page status in the navigation */
+:root { --md-status--draft: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.06 9 15 9.94 5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg>'); }
+.md-status--draft::after { mask-image: var(--md-status--draft); -webkit-mask-image: var(--md-status--draft); }
+
+/* Admonitions: slightly softer corners */
+.md-typeset .admonition, .md-typeset details { border-radius: 8px; }

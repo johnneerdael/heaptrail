@@ -1,0 +1,19 @@
+$ heaptrail -i heap.hprof --paths-from-id 1661812752 --preview-bytes 200
+# exit 0
+
+Path from object_id=1661812752 (depth 9 step(s)):
+  start  ── id=1661812752
+         content: JSON
+         {"schemaVersion":4,"languageEpoch":0,"languageTag":"en","posterProviderToken":"RPDB:-958971387","cat...
+  hop 1 ── id=1661812736  (via java.lang.String.value)
+  hop 2 ── id=364312776  (via java.util.HashMap$Node.value)
+  hop 3 ── id=364312696  (via java.util.HashMap$Node[][10])
+  hop 4 ── id=364312512  (via java.util.HashMap.table)
+  hop 5 ── id=364312344  (via android.app.SharedPreferencesImpl.mMap)
+  hop 6 ── id=529946832  (via java.lang.Object[][13])
+  hop 7 ── id=529946800  (via android.util.ArrayMap.mArray)
+  hop 8 ── id=529946720  (via java.lang.Object[][1])
+  hop 9 ── id=369633368  (via android.util.ArrayMap.mArray)
+  → orphan: no holder found in dump
+
+File successfully processed in 2.865853542s

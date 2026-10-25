@@ -1,0 +1,69 @@
+$ heaptrail -i heap-b.hprof -t 3 --preview-bytes 200
+# exit 0
+Processing 186.08MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+
+File content summary:
+
+UTF-8 Strings: 109275
+Classes loaded: 30698
+Classes unloaded: 0
+Stack traces: 1
+Stack frames: 0
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+35098 heap dumps containing in total 3481954 segments:
+..GC root unknown: 8
+..GC root thread objects: 109
+..GC root JNI global: 617
+..GC root JNI local: 103
+..GC root Java frame: 3392
+..GC root native stack: 210
+..GC root sticky class: 10839
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 1112708
+..GC object array dump: 226217
+..GC class dump: 30698
+..GC instance dump: 1825382
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 0 threads with stacktraces:
+
+Found a total of 145.32MiB of raw shallow heap objects in the dump.
+
+Top 3 raw shallow heap classes:
+
++------------+-----------+------------+------------------+
+| Total size | Instances |    Largest | Class name       |
++------------+-----------+------------+------------------+
+|   46.38MiB |    175423 |  544.01KiB | char[]           |
+|   30.63MiB |    894033 |  154.16KiB | byte[]           |
+|   19.75MiB |    862993 | 24.00bytes | java.lang.String |
++------------+-----------+------------+------------------+
+
+Top 3 largest instances:
+
++------------+-----------+-----------+------------+
+| Total size | Instances |   Largest | Class name |
++------------+-----------+-----------+------------+
+|   46.38MiB |    175423 | 544.01KiB | char[]     |
+|    2.10MiB |     40583 | 418.64KiB | int[]      |
+|   30.63MiB |    894033 | 154.16KiB | byte[]     |
++------------+-----------+-----------+------------+
+
+Largest array instances object ids (for retainer tracing):
+   544.01KiB object_id=1723142144 char[]
+             content: JSON
+             {"0019187198e2cd05a629f3ee787deb7c8b44dd45ab66e9559b94a9f397f16fc2":"https://artworks.thetvdb.com/ba...
+   418.64KiB object_id=2595270656 int[]
+             content: unknown binary, 428688 bytes total
+             00000000  00 00 00 cb 00 00 00 00  00 00 00 00 00 00 00 00 |................|
+             00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00 |................|
+   154.16KiB object_id=1740406800 byte[]
+             content: JSON
+             {"0019187198e2cd05a629f3ee787deb7c8b44dd45ab66e9559b94a9f397f16fc2":"https://artworks.thetvdb.com/banners/episodes/76733/213300.jpg","01a3fe...
+File successfully processed in 122.42325ms

@@ -1,0 +1,92 @@
+$ heaptrail -i heap.hprof --leak-suspects=0.10 --exclude-soft-weak --top 5
+# exit 0
+Heap: 141.81MiB total, 106.60MiB retained-reachable.
+Threshold: 10.0 % retained share. Showing 5 suspect(s) (5 above threshold).
+
+Suspect 1 — 27.98MiB (26.2 % of heap)
+  dominator: java.util.ArrayList (object_id=361762400)
+  accumulating: 262517 instances of com.nexio.tv.domain.model.MetaPreview, total 26.04MiB
+  path to GC root:
+  
+  Path from object_id=361762400 (depth 12 step(s)):
+    start  ── id=361762400
+    hop 1 ── id=320784056  (via kotlinx.coroutines.flow.StateFlowImpl._state$volatile)
+    hop 2 ── id=320788184  (via kotlinx.coroutines.flow.ReadonlyStateFlow.$$delegate_0)
+    hop 3 ── id=361760584  (via com.nexio.tv.ui.screens.home.HomeViewModel.fullCatalogRows)
+    hop 4 ── id=327606272  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 5 ── id=327606104  (via java.util.LinkedHashMap.tail)
+    hop 6 ── id=327606088  (via androidx.lifecycle.ViewModelStore.map)
+    hop 7 ── id=327606056  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 8 ── id=327605888  (via java.util.LinkedHashMap.tail)
+    hop 9 ── id=327605632  (via androidx.navigation.NavControllerViewModel.viewModelStores)
+    hop10 ── id=327600144  (via androidx.navigation.NavBackStackEntry.viewModelStoreProvider)
+    hop11 ── id=327599744  (via androidx.compose.animation.core.SeekableTransitionState.composedTargetState)
+    hop12 ── id=327599704  (via java.lang.Object[][5])
+    → stopped at --max-depth (chain may continue)
+
+Suspect 2 — 27.98MiB (26.2 % of heap)
+  dominator: java.lang.Object[] (object_id=320977512)
+  accumulating: 262517 instances of com.nexio.tv.domain.model.MetaPreview, total 26.04MiB
+  path to GC root:
+  
+  Path from object_id=320977512 (depth 12 step(s)):
+    start  ── id=320977512
+    hop 1 ── id=361762400  (via java.util.ArrayList.elementData)
+    hop 2 ── id=320784056  (via kotlinx.coroutines.flow.StateFlowImpl._state$volatile)
+    hop 3 ── id=320788184  (via kotlinx.coroutines.flow.ReadonlyStateFlow.$$delegate_0)
+    hop 4 ── id=361760584  (via com.nexio.tv.ui.screens.home.HomeViewModel.fullCatalogRows)
+    hop 5 ── id=327606272  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 6 ── id=327606104  (via java.util.LinkedHashMap.tail)
+    hop 7 ── id=327606088  (via androidx.lifecycle.ViewModelStore.map)
+    hop 8 ── id=327606056  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 9 ── id=327605888  (via java.util.LinkedHashMap.tail)
+    hop10 ── id=327605632  (via androidx.navigation.NavControllerViewModel.viewModelStores)
+    hop11 ── id=327600144  (via androidx.navigation.NavBackStackEntry.viewModelStoreProvider)
+    hop12 ── id=327599744  (via androidx.compose.animation.core.SeekableTransitionState.composedTargetState)
+    → stopped at --max-depth (chain may continue)
+
+Suspect 3 — 27.98MiB (26.2 % of heap)
+  dominator: java.util.ArrayList (object_id=361760560)
+  accumulating: 262497 instances of com.nexio.tv.domain.model.MetaPreview, total 26.04MiB
+  path to GC root:
+  
+  Path from object_id=361760560 (depth 0 step(s)):
+    start  ── id=361760560
+    → reached GC root: RootJavaFrame
+          root metadata: thread_serial=55 frame_index=4294967295
+          (thread name/frame metadata not in dump)
+
+Suspect 4 — 27.98MiB (26.2 % of heap)
+  dominator: java.lang.Object[] (object_id=320797680)
+  accumulating: 262497 instances of com.nexio.tv.domain.model.MetaPreview, total 26.04MiB
+  path to GC root:
+  
+  Path from object_id=320797680 (depth 1 step(s)):
+    start  ── id=320797680
+    hop 1 ── id=361760560  (via java.util.ArrayList.elementData)
+    → reached GC root: RootJavaFrame
+          root metadata: thread_serial=55 frame_index=4294967295
+          (thread name/frame metadata not in dump)
+
+Suspect 5 — 14.94MiB (14.0 % of heap)
+  dominator: com.nexio.tv.core.anime.AnimeIdMappingService (object_id=329824280)
+  accumulating: 318693 instances of java.lang.String, total 6.08MiB
+  path to GC root:
+  
+  Path from object_id=329824280 (depth 12 step(s)):
+    start  ── id=329824280
+    hop 1 ── id=320787600  (via com.nexio.tv.core.anime.projection.DefaultAnimeSeasonProjectionResolver.mappingService)
+    hop 2 ── id=320796536  (via com.nexio.tv.data.repository.DefaultTrackingScrobbleService.animeSeasonProjectionResolver)
+    hop 3 ── id=361760584  (via com.nexio.tv.ui.screens.home.HomeViewModel.trackingScrobbleService)
+    hop 4 ── id=327606272  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 5 ── id=327606104  (via java.util.LinkedHashMap.tail)
+    hop 6 ── id=327606088  (via androidx.lifecycle.ViewModelStore.map)
+    hop 7 ── id=327606056  (via java.util.LinkedHashMap$LinkedHashMapEntry.value)
+    hop 8 ── id=327605888  (via java.util.LinkedHashMap.tail)
+    hop 9 ── id=327605632  (via androidx.navigation.NavControllerViewModel.viewModelStores)
+    hop10 ── id=327600144  (via androidx.navigation.NavBackStackEntry.viewModelStoreProvider)
+    hop11 ── id=327599744  (via androidx.compose.animation.core.SeekableTransitionState.composedTargetState)
+    hop12 ── id=327599704  (via java.lang.Object[][5])
+    → stopped at --max-depth (chain may continue)
+
+File successfully processed in 7.79644575s

@@ -1,0 +1,4 @@
+$ heaptrail -i jvm.hprof --json --json-out /no/such/dir/x.json
+# exit 1
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+error: standard I/O error (No such file or directory (os error 2))

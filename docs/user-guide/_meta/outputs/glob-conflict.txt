@@ -1,0 +1,7 @@
+$ heaptrail -i heap.hprof --find-referrers java.util.ArrayList --target-glob 'java.*'
+# exit 2
+error: the argument '--find-referrers <TARGET>' cannot be used with '--target-glob <PATTERN>'
+
+Usage: heaptrail --inputFile <INPUT_FILE> --find-referrers <TARGET>
+
+For more information, try '--help'.

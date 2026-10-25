@@ -1,0 +1,3 @@
+$ heaptrail -i heap.hprof --paths-from-id 534941512 --merge-paths --max-depth 3 --json --json-out reports/merge.json > /dev/null && jq -c '{target_label, instance_count, graph_verified, first_hop: (.root.children[0] | {source_class, field_name, instance_count})}' reports/merge.json
+# exit 0
+{"target_label":"kotlin.reflect.jvm.internal.impl.serialization.deserialization.ProtoBasedClassDataFinder","instance_count":5,"graph_verified":false,"first_hop":{"source_class":"kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.BuiltInsPackageFragmentImpl","field_name":"classDataFinder","instance_count":5}}

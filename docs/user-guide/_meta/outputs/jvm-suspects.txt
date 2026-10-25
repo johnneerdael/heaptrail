@@ -1,0 +1,15 @@
+$ heaptrail -i demo.hprof --leak-suspects --exclude-soft-weak --top 1
+# exit 0
+Heap: 16.97MiB total, 16.68MiB retained-reachable.
+Threshold: 5.0 % retained share. Showing 1 suspect(s) (1 above threshold).
+
+Suspect 1 — 15.79MiB (94.7 % of heap)
+  dominator: java.util.HashMap (object_id=34095644696)
+  accumulating: 4000 instances of byte[], total 15.65MiB
+  path to GC root:
+  
+  Path from object_id=34095644696 (depth 0 step(s)):
+    start  ── id=34095644696
+    → orphan: no holder found in dump
+
+File successfully processed in 29.461167ms

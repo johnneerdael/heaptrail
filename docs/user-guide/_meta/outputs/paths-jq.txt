@@ -1,0 +1,11 @@
+$ heaptrail -i heap.hprof --paths-from-id 1661812752 --json --json-out reports/path.json > /dev/null && jq -r '.steps[] | "\(.holder_class) \(.via_field // ("[" + (.array_index|tostring) + "]"))"' reports/path.json
+# exit 0
+java.lang.String value
+java.util.HashMap$Node value
+java.util.HashMap$Node[] [10]
+java.util.HashMap table
+android.app.SharedPreferencesImpl mMap
+java.lang.Object[] [13]
+android.util.ArrayMap mArray
+java.lang.Object[] [1]
+android.util.ArrayMap mArray

@@ -1,0 +1,106 @@
+$ heaptrail -i demo.hprof --retained-size -t 5
+# exit 0
+Processing 19.82MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+File content summary:
+
+UTF-8 Strings: 42070
+Classes loaded: 717
+Classes unloaded: 0
+Stack traces: 8
+Stack frames: 23
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+24 heap dumps containing in total 39010 segments:
+..GC root unknown: 0
+..GC root thread objects: 7
+..GC root JNI global: 42
+..GC root JNI local: 0
+..GC root Java frame: 29
+..GC root native stack: 0
+..GC root sticky class: 581
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 13839
+..GC object array dump: 2006
+..GC class dump: 717
+..GC instance dump: 21789
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 4 threads with stacktraces:
+
+Thread 1
+  at java.lang.Thread.sleep0 (Thread.java:native method)
+  at java.lang.Thread.sleep (Thread.java:509)
+  at shop.Main.main (Main.java:14)
+
+Thread 2
+  at java.lang.ref.Reference.waitForReferencePendingList (Reference.java:native method)
+  at java.lang.ref.Reference.processPendingReferences (Reference.java:246)
+  at java.lang.ref.Reference$ReferenceHandler.run (Reference.java:208)
+
+Thread 3
+  at java.lang.Object.wait0 (Object.java:native method)
+  at java.lang.Object.wait (Object.java:366)
+  at java.lang.Object.wait (Object.java:339)
+  at java.lang.ref.NativeReferenceQueue.await (NativeReferenceQueue.java:48)
+  at java.lang.ref.ReferenceQueue.remove0 (ReferenceQueue.java:158)
+  at java.lang.ref.NativeReferenceQueue.remove (NativeReferenceQueue.java:89)
+  at java.lang.ref.Finalizer$FinalizerThread.run (Finalizer.java:173)
+
+Thread 4
+  at jdk.internal.misc.Unsafe.park (Unsafe.java:native method)
+  at java.util.concurrent.locks.LockSupport.parkNanos (LockSupport.java:269)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await (AbstractQueuedSynchronizer.java:1886)
+  at java.lang.ref.ReferenceQueue.await (ReferenceQueue.java:71)
+  at java.lang.ref.ReferenceQueue.remove0 (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:218)
+  at jdk.internal.ref.CleanerImpl.run (CleanerImpl.java:140)
+  at java.lang.Thread.runWith (Thread.java:1596)
+  at java.lang.Thread.run (Thread.java:1583)
+  at jdk.internal.misc.InnocuousThread.run (InnocuousThread.java:186)
+
+Found a total of 17.64MiB of raw shallow heap objects in the dump.
+
+Top 5 classes by retained heap (dominator tree):
+
++-----------+-----------+----------+------------+--------------------------+
+|   Shallow | Instances | Retained |    Largest | Class name               |
++-----------+-----------+----------+------------+--------------------------+
+| 141.42KiB |      3017 | 18.51MiB | 48.00bytes | java.util.HashMap$Node   |
+|  16.69KiB |       267 | 15.90MiB | 64.00bytes | java.util.HashMap        |
+|  75.50KiB |       264 | 15.89MiB |   32.02KiB | java.util.HashMap$Node[] |
+|  16.05MiB |     11902 | 15.83MiB |   11.83KiB | byte[]                   |
+|  62.50KiB |      2000 | 15.66MiB | 32.00bytes | shop.Session             |
++-----------+-----------+----------+------------+--------------------------+
+
+Top 5 largest instances:
+
++------------+-----------+----------+-----------------------------------------------+
+| Total size | Instances |  Largest | Class name                                    |
++------------+-----------+----------+-----------------------------------------------+
+|  235.23KiB |      1142 | 59.99KiB | java.lang.Object[]                            |
+|   75.50KiB |       264 | 32.02KiB | java.util.HashMap$Node[]                      |
+|   45.47KiB |        22 | 16.02KiB | java.util.concurrent.ConcurrentHashMap$Node[] |
+|   32.77KiB |         8 | 16.02KiB | char[]                                        |
+|   16.05MiB |     11902 | 11.83KiB | byte[]                                        |
++------------+-----------+----------+-----------------------------------------------+
+
+Largest array instances object ids (for retainer tracing):
+    59.99KiB object_id=34358418760 java.lang.Object[]
+    32.02KiB object_id=34343684728 java.util.HashMap$Node[]
+    16.02KiB object_id=34358593912 java.util.concurrent.ConcurrentHashMap$Node[]
+    16.02KiB object_id=34095516544 char[]
+    11.83KiB object_id=34357761104 byte[]
+
+Largest retained instances object ids:
+    15.79MiB object_id=34095644696 java.util.HashMap
+    15.79MiB object_id=34343684728 java.util.HashMap$Node[]
+   121.69KiB object_id=34096569216 java.lang.Object[]
+    59.98KiB object_id=34358418760 java.lang.Object[]
+    39.07KiB object_id=34358678152 java.util.concurrent.ConcurrentHashMap
+File successfully processed in 30.799292ms

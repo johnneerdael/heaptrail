@@ -1,0 +1,3 @@
+$ heaptrail -i heap-b.hprof -l --preview-bytes 40 --list-arrays-min-bytes 500000 | sed -n '/Standalone large arrays/,$p' | grep -c '544.01KiB'
+# exit 0
+28

@@ -1,0 +1,7 @@
+$ heaptrail -i heap.hprof -t 5 --json --json-out reports/summary.json > /dev/null && jq -r '.top_allocated_classes[] | [.class_name, .instance_count, .allocation_size_bytes] | @tsv' reports/summary.json
+# exit 0
+com.nexio.tv.domain.model.MetaPreview	573552	59649408
+byte[]	940474	26541296
+char[]	372795	22639616
+java.lang.String	908414	21801936
+java.lang.Object[][]	227587	11292768

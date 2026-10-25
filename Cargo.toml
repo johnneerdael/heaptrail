@@ -8,8 +8,11 @@ authors = [
 description = "Production-grade leak hunting at the CLI for JVM/Android hprof dumps: retained-size dominators, leak suspects, R8 mapping deobfuscation, content previews, bitmap mode, snapshot diff. LLM-friendly."
 repository = "https://github.com/johnneerdael/heaptrail"
 homepage = "https://github.com/johnneerdael/heaptrail"
+documentation = "https://heaptrail.neerdael.nl/"
 license = "Apache-2.0"
 readme = "README.md"
+# The user guide is published as a site, so it stays out of the crate.
+exclude = ["/docs/", "/scripts/", "/mkdocs.yml"]
 categories = ["command-line-utilities"]
 keywords = ["heap-dump", "hprof", "android", "jvm", "memory-leak"]
 edition = "2024"

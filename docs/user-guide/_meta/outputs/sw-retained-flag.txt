@@ -1,0 +1,5 @@
+$ heaptrail -i heap.hprof --retained-size --exclude-soft-weak -t 3000 | grep -E '^\| .*(kotlin.reflect.jvm.internal.KTypeImpl|java.util.WeakHashMap.Entry|sun.misc.Cleaner) +\|' | head -3 | sed -E 's/ +\| +/ \| /g; s/ +\|$/ \|/'
+# exit 0
+|  768.00bytes | 32 | 709.45KiB | 24.00bytes | kotlin.reflect.jvm.internal.KTypeImpl |
+|     51.09KiB | 1308 | 45.98KiB | 40.00bytes | sun.misc.Cleaner |
+|      1.37KiB | 35 | 1.23KiB | 40.00bytes | java.util.WeakHashMap$Entry |

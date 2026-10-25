@@ -1,0 +1,13 @@
+$ heaptrail -i heap-b.hprof --paths-from-id 1722261504 --preview-bytes 60
+# exit 0
+
+Path from object_id=1722261504 (depth 3 step(s)):
+  start  ── id=1722261504
+         content: JSON
+         {"0019187198e2cd05a629f3ee787d...
+  hop 1 ── id=337883608  (via java.lang.StringBuffer.value)
+  hop 2 ── id=337883584  (via java.io.StringWriter.buf)
+  hop 3 ── id=337883680  (via com.google.gson.stream.JsonWriter.out)
+  → orphan: no holder found in dump
+
+File successfully processed in 838.855791ms

@@ -1,0 +1,14 @@
+$ heaptrail -i heap-b.hprof --find-referrers android.graphics.Bitmap --hops 1 --top 5
+# exit 0
+
+Found 20 target instance(s) for android.graphics.Bitmap
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                          ref count
+  sun.misc.Cleaner.referent                                            20
+  coil.memory.RealStrongMemoryCache$InternalValue.bitmap               18
+  android.graphics.drawable.BitmapDrawable$BitmapState.mBitmap         17
+  androidx.compose.ui.graphics.AndroidImageBitmap.bitmap               16
+  java.lang.ref.WeakReference.referent                                  1
+
+File successfully processed in 341.318666ms

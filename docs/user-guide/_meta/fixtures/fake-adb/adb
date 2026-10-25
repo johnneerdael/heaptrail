@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# A stand-in for `adb`, used only by scripts/docs-capture.sh to record what
+# `heaptrail android-capture` and `--auto-mapping` print, without a device.
+# It answers the handful of commands heaptrail sends and nothing else.
+#
+#   FAKE_ADB_STATE  scratch directory standing in for the device's /data/local/tmp
+#   FAKE_ADB_HPROF  file that `am dumpheap` "writes"
+#   FAKE_ADB_MODE   ok (default) | no-process (pidof prints nothing) | stall (dump stays 0 bytes)
+set -u
+state=${FAKE_ADB_STATE:?}
+src=${FAKE_ADB_HPROF:?}
+mode=${FAKE_ADB_MODE:-ok}
+mkdir -p "$state/dev"
+size_of() { wc -c <"$1" | tr -d ' '; }
+
+[ "${1:-}" = "-s" ] && shift 2
+cmd=${1:-}
+shift || true
+case "$cmd" in
+  pull)
+    cp "$state/dev/$(basename "$1")" "$2" || exit 1
+    echo "$1: 1 file pulled, 0 skipped. 91.4 MB/s ($(size_of "$2") bytes in 0.036s)"
+    ;;
+  shell)
+    sub=${1:-}
+    shift || true
+    case "$sub" in
+      pidof) [ "$mode" = no-process ] || echo 4242 ;;
+      monkey)
+        echo "Events injected: 1"
+        echo "## Network stats: elapsed time=12ms (0ms mobile, 0ms wifi, 12ms not connected)"
+        ;;
+      dumpsys)
+        case "${1:-}" in
+          window)
+            echo "  mCurrentFocus=Window{4f2a9c1 u0 com.example.myapp/com.example.myapp.MainActivity}"
+            echo "  mFocusedApp=ActivityRecord{8d31e77 u0 com.example.myapp/.MainActivity t112}"
+            ;;
+          package)
+            echo "Packages:"
+            echo "  Package [com.example.myapp] (b7c10d2):"
+            echo "    versionCode=214 minSdk=26 targetSdk=35"
+            echo "    versionName=2.7.1"
+            ;;
+        esac
+        ;;
+      sh) rm -f "$state"/dev/* ;;
+      am)
+        case "${1:-}" in
+          dumpheap)
+            if [ "$mode" = stall ]; then : >"$state/dev/$(basename "$3")"; else cp "$src" "$state/dev/$(basename "$3")"; fi
+            ;;
+        esac
+        ;;
+      ls)
+        f="$state/dev/$(basename "$2")"
+        [ -f "$f" ] || { echo "ls: $2: No such file or directory"; exit 1; }
+        echo "-rw------- 1 shell shell $(size_of "$f") 2026-10-25 17:02 $2"
+        ;;
+      rm) rm -f "$state/dev/$(basename "${!#}")" ;;
+    esac
+    ;;
+esac
+exit 0

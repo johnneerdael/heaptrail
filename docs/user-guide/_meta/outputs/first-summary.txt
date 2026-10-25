@@ -1,0 +1,68 @@
+$ heaptrail -i heap.hprof -t 5
+# exit 0
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+File content summary:
+
+UTF-8 Strings: 109331
+Classes loaded: 30744
+Classes unloaded: 0
+Stack traces: 1
+Stack frames: 0
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+54063 heap dumps containing in total 4572970 segments:
+..GC root unknown: 237445
+..GC root thread objects: 47
+..GC root JNI global: 612
+..GC root JNI local: 41
+..GC root Java frame: 1381
+..GC root native stack: 82
+..GC root sticky class: 10847
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 1356562
+..GC object array dump: 359794
+..GC class dump: 30744
+..GC instance dump: 2575415
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 0 threads with stacktraces:
+
+Found a total of 171.21MiB of raw shallow heap objects in the dump.
+
+Top 5 raw shallow heap classes:
+
++------------+-----------+-------------+---------------------------------------+
+| Total size | Instances |     Largest | Class name                            |
++------------+-----------+-------------+---------------------------------------+
+|   56.89MiB |    573552 | 104.00bytes | com.nexio.tv.domain.model.MetaPreview |
+|   25.31MiB |    940474 |    28.63KiB | byte[]                                |
+|   21.59MiB |    372795 |     5.64MiB | char[]                                |
+|   20.79MiB |    908414 |  24.00bytes | java.lang.String                      |
+|   10.77MiB |    227587 |   123.52KiB | java.lang.Object[][]                  |
++------------+-----------+-------------+---------------------------------------+
+
+Top 5 largest instances:
+
++------------+-----------+-----------+-----------------------------------------------+
+| Total size | Instances |   Largest | Class name                                    |
++------------+-----------+-----------+-----------------------------------------------+
+|   21.59MiB |    372795 |   5.64MiB | char[]                                        |
+|    2.09MiB |     40545 | 418.64KiB | int[]                                         |
+|  752.16KiB |        10 | 128.02KiB | com.squareup.moshi.LinkedHashTreeMap$Node[][] |
+|   10.77MiB |    227587 | 123.52KiB | java.lang.Object[][]                          |
+|  161.81KiB |      2084 |  50.07KiB | long[]                                        |
++------------+-----------+-----------+-----------------------------------------------+
+
+Largest array instances object ids (for retainer tracing):
+     5.64MiB object_id=1661812752 char[]
+   418.64KiB object_id=2595270656 int[]
+   128.02KiB object_id=342360064 com.squareup.moshi.LinkedHashTreeMap$Node[][]
+   123.52KiB object_id=518041528 java.lang.Object[][]
+    50.07KiB object_id=2743599104 long[]
+File successfully processed in 159.906875ms

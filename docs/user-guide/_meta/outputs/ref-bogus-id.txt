@@ -1,0 +1,9 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers id:99999999999 --hops 1
+# exit 0
+
+Found 1 target instance(s) for id:99999999999
+
+=== Direct referrers (1-hop) ===
+  (none)
+
+File successfully processed in 3.192209ms

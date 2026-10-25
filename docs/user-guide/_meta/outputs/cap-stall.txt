@@ -1,0 +1,3 @@
+$ heaptrail android-capture --package com.example.myapp --out dumps
+# exit 1
+error: android capture failed: device hprof size did not change for 60s while waiting for dump to finish: /data/local/tmp/com-example-myapp-20261025-165538.hprof (last observed size: 0 bytes)

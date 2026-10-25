@@ -1,0 +1,65 @@
+$ heaptrail -i heap.hprof -t 3 --json --json-out reports/summary.json && jq -c 'keys' reports/summary.json && jq -c '.top_allocated_classes[0]' reports/summary.json
+# exit 0
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+Output JSON result file reports/summary.json
+
+File content summary:
+
+UTF-8 Strings: 109331
+Classes loaded: 30744
+Classes unloaded: 0
+Stack traces: 1
+Stack frames: 0
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+54063 heap dumps containing in total 4572970 segments:
+..GC root unknown: 237445
+..GC root thread objects: 47
+..GC root JNI global: 612
+..GC root JNI local: 41
+..GC root Java frame: 1381
+..GC root native stack: 82
+..GC root sticky class: 10847
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 1356562
+..GC object array dump: 359794
+..GC class dump: 30744
+..GC instance dump: 2575415
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 0 threads with stacktraces:
+
+Found a total of 171.21MiB of raw shallow heap objects in the dump.
+
+Top 3 raw shallow heap classes:
+
++------------+-----------+-------------+---------------------------------------+
+| Total size | Instances |     Largest | Class name                            |
++------------+-----------+-------------+---------------------------------------+
+|   56.89MiB |    573552 | 104.00bytes | com.nexio.tv.domain.model.MetaPreview |
+|   25.31MiB |    940474 |    28.63KiB | byte[]                                |
+|   21.59MiB |    372795 |     5.64MiB | char[]                                |
++------------+-----------+-------------+---------------------------------------+
+
+Top 3 largest instances:
+
++------------+-----------+-----------+-----------------------------------------------+
+| Total size | Instances |   Largest | Class name                                    |
++------------+-----------+-----------+-----------------------------------------------+
+|   21.59MiB |    372795 |   5.64MiB | char[]                                        |
+|    2.09MiB |     40545 | 418.64KiB | int[]                                         |
+|  752.16KiB |        10 | 128.02KiB | com.squareup.moshi.LinkedHashTreeMap$Node[][] |
++------------+-----------+-----------+-----------------------------------------------+
+
+Largest array instances object ids (for retainer tracing):
+     5.64MiB object_id=1661812752 char[]
+   418.64KiB object_id=2595270656 int[]
+   128.02KiB object_id=342360064 com.squareup.moshi.LinkedHashTreeMap$Node[][]
+File successfully processed in 135.844042ms
+["top_allocated_classes","top_largest_instances"]
+{"class_name":"com.nexio.tv.domain.model.MetaPreview","instance_count":573552,"largest_allocation_bytes":104,"allocation_size_bytes":59649408}

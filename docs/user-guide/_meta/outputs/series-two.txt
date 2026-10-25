@@ -1,0 +1,3 @@
+$ heaptrail --diff-series launch.hprof play.hprof
+# exit 1
+error: invalid Hprof file - "--diff-series requires at least 3 HProf files"

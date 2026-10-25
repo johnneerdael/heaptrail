@@ -1,0 +1,13 @@
+$ heaptrail android-capture --package com.example.myapp --out dumps --foreground --series 3 --series-delay-seconds 10
+# exit 0
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+Captured heap dump series:
+  dumps/com-example-myapp-20261025-165514-01.hprof
+  dumps/com-example-myapp-20261025-165514-02.hprof
+  dumps/com-example-myapp-20261025-165514-03.hprof
+Diff-series command: heaptrail --diff-series dumps/com-example-myapp-20261025-165514-01.hprof dumps/com-example-myapp-20261025-165514-02.hprof dumps/com-example-myapp-20261025-165514-03.hprof --diff-by bytes
+Dump size: 9642270 bytes
+AllocationSites present: false
+Transcript: dumps/com-example-myapp-20261025-165514-transcript.txt

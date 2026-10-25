@@ -1,0 +1,63 @@
+$ heaptrail -i launch.hprof --auto-mapping optional --package com.example.myapp --project-root /nonexistent -t 3
+# exit 0
+warning: mapping discovery failed: no Gradle output metadata matched installed app version with an existing mapping file
+Processing 78.90MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+
+File content summary:
+
+UTF-8 Strings: 81120
+Classes loaded: 20360
+Classes unloaded: 0
+Stack traces: 1
+Stack frames: 0
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+19057 heap dumps containing in total 1740433 segments:
+..GC root unknown: 8
+..GC root thread objects: 53
+..GC root JNI global: 609
+..GC root JNI local: 46
+..GC root Java frame: 1772
+..GC root native stack: 97
+..GC root sticky class: 10815
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 356168
+..GC object array dump: 78248
+..GC class dump: 20360
+..GC instance dump: 1016899
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 0 threads with stacktraces:
+
+Found a total of 54.28MiB of raw shallow heap objects in the dump.
+
+Top 3 raw shallow heap classes:
+
++------------+-----------+------------+----------------------+
+| Total size | Instances |    Largest | Class name           |
++------------+-----------+------------+----------------------+
+|   17.53MiB |    301745 |    1.38MiB | byte[]               |
+|    6.40MiB |    279513 | 24.00bytes | java.lang.String     |
+|    3.79MiB |     66700 |   42.16KiB | java.lang.Object[][] |
++------------+-----------+------------+----------------------+
+
+Top 3 largest instances:
+
++------------+-----------+-----------+------------+
+| Total size | Instances |   Largest | Class name |
++------------+-----------+-----------+------------+
+|   17.53MiB |    301745 |   1.38MiB | byte[]     |
+|    2.42MiB |     37934 | 418.64KiB | int[]      |
+|    1.12MiB |      5919 | 117.41KiB | char[]     |
++------------+-----------+-----------+------------+
+
+Largest array instances object ids (for retainer tracing):
+     1.38MiB object_id=2207146000 byte[]
+   418.64KiB object_id=2795687936 int[]
+   117.41KiB object_id=2790711312 char[]
+File successfully processed in 91.100292ms

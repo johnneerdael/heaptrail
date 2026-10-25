@@ -1,0 +1,35 @@
+$ heaptrail -i heap-b.hprof --find-referrers com.nexio.tv.MainActivity --hops 2
+# exit 0
+
+Found 1 target instance(s) for com.nexio.tv.MainActivity
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                                                     ref count
+  androidx.compose.ui.graphics.layer.ViewLayer.mContext                                          122
+  java.lang.Object[][]                                                                            82
+  coil.request.ImageRequest.context                                                               47
+  coil.size.DisplaySizeResolver.context                                                           14
+  android.widget.ImageButton.mContext                                                             12
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernCarouselCard$2$1$1.$context                  8
+  android.widget.LinearLayout.mContext                                                             7
+  androidx.compose.foundation.AndroidEdgeEffectOverscrollFactory.context                           6
+  android.widget.FrameLayout.mContext                                                              4
+  com.nexio.tv.ui.screens.home.ModernHomeContentKt$ModernHomeContent$10$1.$lifecycleOwner          4
+  android.widget.TextView.mContext                                                                 4
+  java.util.LinkedHashMap$LinkedHashMapEntry.value                                                 4
+  com.nexio.tv.MainActivity$onCreate$6$2$1$1$17$1.this$0                                           4
+  com.nexio.tv.MainActivity$onCreate$6$2$1$1$19$1.this$0                                           4
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernRowSection$1$5$1.$context                    3
+  com.android.internal.policy.PhoneLayoutInflater.mContext                                         3
+  androidx.compose.foundation.EdgeEffectWrapper.context                                            3
+  androidx.compose.runtime.StaticValueHolder.value                                                 3
+  com.nexio.tv.MainActivity$onCreate$6$2$1$1$13$1.this$0                                           3
+  android.view.View.mContext                                                                       3
+
+=== 2-hop referrers (X holds Object[] which holds target) ===
+  holder.field (or class[] for arrays)       ref count
+  androidx.compose.runtime.SlotWriter.slots         12
+  androidx.compose.runtime.SlotTable.slots          12
+  android.util.SparseArray.mValues                   1
+
+File successfully processed in 480.590084ms

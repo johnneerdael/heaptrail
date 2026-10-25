@@ -1,0 +1,6 @@
+$ heaptrail --diff-from before.hprof --diff-to after.hprof --top 3000 | tail -4
+# exit 0
+       -197372    +25990448 372795→175423 21.59MiB→46.38MiB  char[]
+       -450170    -46817680 573552→123382 56.89MiB→12.24MiB  com.nexio.tv.domain.model.MetaPreview
+
+File successfully processed in 275.543416ms

@@ -1,0 +1,9 @@
+$ heaptrail -i heap-b.hprof --find-referrers com.google.gson.stream.JsonWriter --hops 1
+# exit 0
+
+Found 28 target instance(s) for com.google.gson.stream.JsonWriter
+
+=== Direct referrers (1-hop) ===
+  (none)
+
+File successfully processed in 355.252208ms
