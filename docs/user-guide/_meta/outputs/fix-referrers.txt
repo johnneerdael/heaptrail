@@ -1,0 +1,10 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers java.util.LinkedList --hops 2
+# exit 0
+
+Found 190 target instance(s) for java.util.LinkedList
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  java.util.HashMap$Node.value                190
+
+File successfully processed in 4.978792ms

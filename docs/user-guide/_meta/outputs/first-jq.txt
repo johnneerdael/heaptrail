@@ -1,0 +1,9 @@
+$ jq '.suspects[0] | {dominator_class, retained_bytes, heap_share_pct, accumulating_class, accumulating_count}' reports/suspects.json
+# exit 0
+{
+  "dominator_class": "java.util.ArrayList",
+  "retained_bytes": 29336318,
+  "heap_share_pct": 26.24489,
+  "accumulating_class": "com.nexio.tv.domain.model.MetaPreview",
+  "accumulating_count": 262517
+}

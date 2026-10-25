@@ -1,0 +1,11 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --paths-from-id 3606861808
+# exit 0
+
+Path from object_id=3606861808 (depth 1 step(s)):
+  start  ── id=3606861808
+  hop 1 ── id=3606600864  (via java.lang.Thread.contextClassLoader)
+  → reached GC root: RootThreadObject
+        root metadata: thread_serial=9 stack_trace_serial=10 thread_object_id=3606600864
+        (thread name/frame metadata not in dump)
+
+File successfully processed in 3.622583ms

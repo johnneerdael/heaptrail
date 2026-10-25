@@ -1,0 +1,14 @@
+$ sed -n '/App Summary/,/TOTAL:/p' meminfo.txt
+# exit 0
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:    43152
+         Native Heap:    88852
+                Code:    29688
+               Stack:      224
+            Graphics:        0
+       Private Other:    18536
+              System:     6440
+ 
+               TOTAL:   186892       TOTAL SWAP PSS:       45

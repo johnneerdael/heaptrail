@@ -1,0 +1,95 @@
+$ heaptrail -i heap.hprof --target-glob 'com.nexio.tv.domain.model.*' --hops 2 --top 8
+# exit 0
+
+Found 66 classes matching glob:com.nexio.tv.domain.model.*:
+  - com.nexio.tv.domain.model.MetaPreview                        (573552 instances)
+  - com.nexio.tv.domain.model.CatalogRow                         (28697 instances)
+  - com.nexio.tv.domain.model.HydratedHomeFieldTrace             (3938 instances)
+  - com.nexio.tv.domain.model.ResolvedSlot                       (1248 instances)
+  - com.nexio.tv.domain.model.ProviderIds                        (547 instances)
+  - com.nexio.tv.domain.model.HomeDisplayMetadata                (297 instances)
+  - com.nexio.tv.domain.model.HydratedHomeOverlay                (280 instances)
+  - com.nexio.tv.domain.model.RailItemPreview                    (160 instances)
+  - com.nexio.tv.domain.model.RailRankingMetadata                (160 instances)
+  - com.nexio.tv.domain.model.RailDisplaySeed                    (160 instances)
+  - com.nexio.tv.domain.model.TrailerDisplayState                (144 instances)
+  - com.nexio.tv.domain.model.WatchProgress                      (117 instances)
+  - com.nexio.tv.domain.model.ResolvedDisplayFields              (104 instances)
+  - com.nexio.tv.domain.model.TitleRating                        (104 instances)
+  - com.nexio.tv.domain.model.ResolvedDisplayFieldSlots          (104 instances)
+  - com.nexio.tv.domain.model.ResolvedDisplayItem                (104 instances)
+  - com.nexio.tv.domain.model.RatingSeed                         (80 instances)
+  - com.nexio.tv.domain.model.CatalogDescriptor                  (76 instances)
+  - com.nexio.tv.domain.model.AddonResource                      (65 instances)
+  - com.nexio.tv.domain.model.CatalogExtra                       (56 instances)
+  - com.nexio.tv.domain.model.Addon                              (37 instances)
+  - com.nexio.tv.domain.model.MDBListRatingsResult               (33 instances)
+  - com.nexio.tv.domain.model.MDBListRatings                     (33 instances)
+  - com.nexio.tv.domain.model.MetaCastMember                     (15 instances)
+  - com.nexio.tv.domain.model.ProviderId                         (8 instances)
+  - com.nexio.tv.domain.model.HomeItemHydrationState             (7 instances)
+  - com.nexio.tv.domain.model.ContentType                        (6 instances)
+  - com.nexio.tv.domain.model.AppTheme                           (6 instances)
+  - com.nexio.tv.domain.model.HydrationState                     (6 instances)
+  - com.nexio.tv.domain.model.DisplaySourceRank                  (6 instances)
+  - com.nexio.tv.domain.model.AddonParserPreset                  (6 instances)
+  - com.nexio.tv.domain.model.RailSource                         (6 instances)
+  - com.nexio.tv.domain.model.ContentIdentity                    (6 instances)
+  - com.nexio.tv.domain.model.RailHydrationState                 (5 instances)
+  - com.nexio.tv.domain.model.TvdbValidationStatus               (5 instances)
+  - com.nexio.tv.domain.model.LibraryListTab                     (5 instances)
+  - com.nexio.tv.domain.model.SubtitleTranslationProvider        (4 instances)
+  - com.nexio.tv.domain.model.ArtworkTypeKey                     (4 instances)
+  - com.nexio.tv.domain.model.LibrarySourceMode                  (4 instances)
+  - com.nexio.tv.domain.model.SourcePayloadQuality               (4 instances)
+  - com.nexio.tv.domain.model.RailPreviewCatalogRowRecord        (4 instances)
+  - com.nexio.tv.domain.model.AppFont                            (3 instances)
+  - com.nexio.tv.domain.model.PosterRatingsProvider              (3 instances)
+  - com.nexio.tv.domain.model.LibraryListTab$Type                (3 instances)
+  - com.nexio.tv.domain.model.HomeLayout                         (3 instances)
+  - com.nexio.tv.domain.model.PosterShape                        (3 instances)
+  - com.nexio.tv.domain.model.UserProfile                        (3 instances)
+  - com.nexio.tv.domain.model.MetaCompany                        (3 instances)
+  - com.nexio.tv.domain.model.MetaCompanyKind                    (2 instances)
+  - com.nexio.tv.domain.model.TrackingProvider                   (2 instances)
+  - com.nexio.tv.domain.model.TitleRatingSource                  (2 instances)
+  - com.nexio.tv.domain.model.FirstPaintSource                   (2 instances)
+  - com.nexio.tv.domain.model.FocusedPosterTrailerPlaybackTarget (2 instances)
+  - com.nexio.tv.domain.model.WyzieSettings                      (1 instances)
+  - com.nexio.tv.domain.model.PosterShape$Companion              (1 instances)
+  - com.nexio.tv.domain.model.AuthState$FullAccount              (1 instances)
+  - com.nexio.tv.domain.model.WyzieSettings$Companion            (1 instances)
+  - com.nexio.tv.domain.model.AuthState$Loading                  (1 instances)
+  - com.nexio.tv.domain.model.MDBListSettings                    (1 instances)
+  - com.nexio.tv.domain.model.RatingValueValidator               (1 instances)
+  - com.nexio.tv.domain.model.ContentType$Companion              (1 instances)
+  - com.nexio.tv.domain.model.ResolvedSlot$Companion             (1 instances)
+  - com.nexio.tv.domain.model.WatchProgress$Companion            (1 instances)
+  - com.nexio.tv.domain.model.TmdbSettings                       (1 instances)
+  - com.nexio.tv.domain.model.ArtworkProviderChoiceKey$Companion (1 instances)
+  - com.nexio.tv.domain.model.RatingDisplayFormatter             (1 instances)
+
+Found 610247 target instance(s) for glob:com.nexio.tv.domain.model.*
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                            ref count
+  java.lang.Object[][]                                               689620
+  com.nexio.tv.domain.model.MetaPreview.firstPaintSource             573552
+  com.nexio.tv.domain.model.MetaPreview.type                         573552
+  com.nexio.tv.domain.model.MetaPreview.firstPaintStableIds          573552
+  com.nexio.tv.domain.model.MetaPreview.posterShape                  573552
+  com.nexio.tv.domain.model.MetaPreview.firstPaintRailSource         573440
+  com.nexio.tv.domain.model.MetaPreview.firstPaintSourceProvider     573440
+  com.nexio.tv.domain.model.MetaPreview.ratingSource                 573432
+
+=== 2-hop referrers (X holds Object[] which holds target) ===
+  holder.field (or class[] for arrays)                              ref count
+  java.util.ArrayList.elementData                                       29105
+  kotlinx.coroutines.flow.internal.CombineKt$combineInternal$2.L$0         25
+  kotlin.enums.EnumEntriesList.entries                                     24
+  androidx.compose.runtime.SlotTable.slots                                 15
+  androidx.compose.runtime.SlotWriter.slots                                15
+  java.util.LinkedHashMap$LinkedHashMapEntry.value                          9
+  java.util.Arrays$ArrayList.a                                              3
+
+File successfully processed in 725.731541ms

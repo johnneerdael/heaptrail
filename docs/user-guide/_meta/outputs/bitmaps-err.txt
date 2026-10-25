@@ -1,0 +1,3 @@
+$ heaptrail -i heap.hprof --bitmaps
+# exit 1
+error: android.graphics.Bitmap class is not loaded in this dump; bitmap accounting has nothing to report. This can happen on Android dumps from screens that have not used Bitmap-backed images.

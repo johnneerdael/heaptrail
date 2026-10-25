@@ -1,0 +1,7 @@
+$ heaptrail -i truncated-5mb.hprof
+# exit 101
+Processing 4.77MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+thread 'main' (76088808) panicked at src/rendered_result.rs:507:14:
+Results can't be empty
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

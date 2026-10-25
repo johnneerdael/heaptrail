@@ -1,0 +1,3 @@
+$ heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 1 --json --json-out reports/suspects.json > /dev/null && jq -e '.suspects[0].heap_share_pct < 20' reports/suspects.json
+# exit 1
+false

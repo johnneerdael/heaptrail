@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "artifactType": { "type": "APK", "kind": "Directory" },
+  "applicationId": "com.example.myapp",
+  "variantName": "universalRelease",
+  "elements": [
+    {
+      "type": "UNIVERSAL",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 214,
+      "versionName": "2.7.1",
+      "outputFile": "app-universal-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

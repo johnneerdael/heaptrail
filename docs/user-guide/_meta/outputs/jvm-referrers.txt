@@ -1,0 +1,10 @@
+$ heaptrail -i demo.hprof --find-referrers shop.Session --hops 2
+# exit 0
+
+Found 2000 target instance(s) for shop.Session
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  java.util.HashMap$Node.value               2000
+
+File successfully processed in 15.749125ms

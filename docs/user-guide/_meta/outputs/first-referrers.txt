@@ -1,0 +1,36 @@
+$ heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview --hops 3 --top 10
+# exit 0
+
+Found 573552 target instance(s) for com.nexio.tv.domain.model.MetaPreview
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                                                             ref count
+  java.lang.Object[][]                                                                                603715
+  com.nexio.tv.ui.screens.home.ModernCarouselItem.metaPreview                                            249
+  com.nexio.tv.ui.screens.home.CachedCarouselItem.source                                                 120
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernRowSection$1$6$2$1$6$2$1.$metaPreview                8
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernRowSection$1$6$2$1$6$1$1.$nextCatalogItem            8
+  com.nexio.tv.ui.screens.home.HomeHydrationCoordinator$hydrate$1.L$0                                      3
+  com.nexio.tv.ui.screens.home.HomeViewModelPresentationPipelineKt$enrichHeroItemsPipeline$1.L$12          2
+  java.util.LinkedHashMap$LinkedHashMapEntry.value                                                         1
+
+=== 2-hop referrers (X holds Object[] which holds target) ===
+  holder.field (or class[] for arrays)       ref count
+  java.util.ArrayList.elementData                28681
+  androidx.compose.runtime.SlotTable.slots           8
+  androidx.compose.runtime.SlotWriter.slots          8
+
+=== 3-hop referrers (X holds Y which holds Object[] which holds target) ===
+  holder.field (or class[] for arrays)                                                                      ref count
+  com.nexio.tv.domain.model.CatalogRow.items                                                                    28673
+  java.util.ArrayList$ListItr.this$0                                                                             2592
+  java.util.ArrayList$Itr.this$0                                                                                 1918
+  kotlin.collections.CollectionsKt___CollectionsKt$asSequence$$inlined$Sequence$1.$this_asSequence$inlined       1882
+  androidx.compose.runtime.SlotReader.table                                                                        16
+  androidx.compose.runtime.SlotWriter.table                                                                         8
+  androidx.compose.runtime.CompositionImpl.slotTable                                                                8
+  androidx.compose.runtime.ComposerImpl.slotTable                                                                   8
+  com.nexio.tv.ui.screens.home.HomeUiState.heroItems                                                                4
+  com.nexio.tv.ui.screens.home.HomeViewModelCatalogPipelineKt$updateCatalogRowsPipeline$2$4.$baseHeroItems          3
+
+File successfully processed in 892.17275ms

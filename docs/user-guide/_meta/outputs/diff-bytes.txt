@@ -1,0 +1,19 @@
+$ heaptrail --diff-from before.hprof --diff-to after.hprof --diff-by bytes --top 10
+# exit 0
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+Processing 186.08MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+
+Class deltas (sorted, top 10 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+       -197372    +25990448 372795→175423 21.59MiB→46.38MiB  char[]
+        -46441     +5574248 940474→894033 25.31MiB→30.63MiB  byte[]
+        +32284     +1033088    621→32905 19.41KiB→1.00MiB  java.util.TreeMap$TreeMapEntry
+        +17537      +841776    547→18084 25.64KiB→847.69KiB  com.nexio.tv.domain.model.ProviderIds
+        +31615      +758760    657→32272 15.40KiB→756.38KiB  com.google.gson.reflect.TypeToken
+         +4349      +139168  13508→17857 422.12KiB→558.03KiB  java.util.LinkedHashMap$LinkedHashMapEntry
+         +1393      +100296       0→1393 0.00bytes→97.95KiB  com.nexio.tv.core.tvdb.TvEpisodeMetadata
+          +868       +77792    1440→2308 243.08KiB→319.05KiB  java.util.HashMap$Node[][]
+         +3140       +75360       0→3140 0.00bytes→73.59KiB  com.nexio.tv.core.metadata.router.MetadataLocalizationRejectedCandidate
+         +1571       +50272       2→1573 64.00bytes→49.16KiB  com.nexio.tv.core.metadata.router.MetadataLocalizationFieldTrace
+
+File successfully processed in 270.735625ms

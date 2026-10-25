@@ -69,7 +69,7 @@ pub struct Cli {
     /// find-referrers id:N, and (with -l) the standalone-array list.
     /// Default 0 (off); recommended 200. UTF-8 / UTF-16 BE auto-detect
     /// with control-char escaping; falls back to xxd-style hex on
-    /// binary content. See USERGUIDE §B.
+    /// binary content. See "Content previews" in the user guide.
     #[arg(long = "preview-bytes", value_name = "N", default_value_t = 0)]
     pub preview_bytes: u32,
 
@@ -89,7 +89,7 @@ pub struct Cli {
     /// Find direct + N-hop referrers of every class matching this glob.
     /// Mutually exclusive with `--find-referrers`. Glob syntax: `*` matches
     /// within a package level, `**` crosses package levels, `?` matches one
-    /// character, `[abc]` is a class. See USERGUIDE §F.
+    /// character, `[abc]` is a class. See "Target glob" in the user guide.
     #[arg(
         long = "target-glob",
         value_name = "PATTERN",

@@ -1,0 +1,4 @@
+$ heaptrail -i heap.hprof --allocation-sites
+# exit 1
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+error: no AllocationSites records in this dump (capture with `am profile start <pid>`)

@@ -1,0 +1,62 @@
+$ heaptrail android-capture --package com.example.myapp --out dumps --auto-mapping --project-root myapp && cat dumps/*-transcript.txt
+# exit 0
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+Captured heap dump: dumps/com-example-myapp-20261025-165537.hprof
+Dump size: 3214090 bytes
+AllocationSites present: false
+Transcript: dumps/com-example-myapp-20261025-165537-transcript.txt
+heaptrail android-capture transcript
+
+package: com.example.myapp
+serial: (adb default)
+pid: 4242
+foreground_requested: false
+allocation_sites_requested: false
+local_hprof: dumps/com-example-myapp-20261025-165537.hprof
+dump_size_bytes: 3214090
+allocation_sites_present: false
+mapping_path: myapp/app/build/outputs/mapping/universalRelease/mapping.txt
+mapping_source: auto
+pg_map_id: 3c1f9a07be41d2c85e6a90b7d4f21e08
+pg_map_hash: SHA-256 7d5be0c4a1f2936b88d0e5c7a4419f0236ab8c5d17e3f4a9b2c60d815e7f3a24
+
+foreground_evidence:
+  mCurrentFocus=Window{4f2a9c1 u0 com.example.myapp/com.example.myapp.MainActivity}
+  mFocusedApp=ActivityRecord{8d31e77 u0 com.example.myapp/.MainActivity t112}
+
+commands:
+$ adb shell pidof com.example.myapp
+status: 0
+stdout:
+4242
+
+$ adb shell dumpsys window
+status: 0
+stdout:
+  mCurrentFocus=Window{4f2a9c1 u0 com.example.myapp/com.example.myapp.MainActivity}
+  mFocusedApp=ActivityRecord{8d31e77 u0 com.example.myapp/.MainActivity t112}
+
+$ adb shell sh -c rm -f /data/local/tmp/*.hprof /data/local/tmp/heaptrail-alloc.trace
+status: 0
+
+$ adb shell am dumpheap 4242 /data/local/tmp/com-example-myapp-20261025-165537.hprof
+status: 0
+
+$ adb shell ls -l /data/local/tmp/com-example-myapp-20261025-165537.hprof
+status: 0
+stdout:
+-rw------- 1 shell shell 3214090 2026-10-25 17:02 /data/local/tmp/com-example-myapp-20261025-165537.hprof
+
+$ adb shell ls -l /data/local/tmp/com-example-myapp-20261025-165537.hprof
+status: 0
+stdout:
+-rw------- 1 shell shell 3214090 2026-10-25 17:02 /data/local/tmp/com-example-myapp-20261025-165537.hprof
+
+$ adb pull /data/local/tmp/com-example-myapp-20261025-165537.hprof dumps/com-example-myapp-20261025-165537.hprof
+status: 0
+stdout:
+/data/local/tmp/com-example-myapp-20261025-165537.hprof: 1 file pulled, 0 skipped. 91.4 MB/s (3214090 bytes in 0.036s)
+
+$ adb shell rm -f /data/local/tmp/com-example-myapp-20261025-165537.hprof
+status: 0
+

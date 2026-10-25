@@ -1,0 +1,12 @@
+$ heaptrail -i heap.hprof --find-referrers id:1661812752 --hops 1 --preview-bytes 200
+# exit 0
+
+Found 1 target instance(s) for id:1661812752
+  preview: content: JSON
+    {"schemaVersion":4,"languageEpoch":0,"languageTag":"en","posterProviderToken":"RPDB:-958971387","cat...
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  java.lang.String.value                        1
+
+File successfully processed in 476.058916ms

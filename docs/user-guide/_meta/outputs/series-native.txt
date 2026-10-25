@@ -1,0 +1,65 @@
+$ heaptrail --diff-series launch.hprof play.hprof soak.hprof --diff-by bytes --top 8 --native-context meminfo.txt
+# exit 0
+Processing 78.90MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+Processing 84.86MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+Processing 84.72MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+
+Diff series snapshots:
+  [0] launch.hprof - 6918 classes, 54.28MiB shallow
+  [1] play.hprof - 6918 classes, 58.54MiB shallow
+  [2] soak.hprof - 6921 classes, 58.43MiB shallow
+
+Step 0 -> 1 top 8 deltas:
+
+Class deltas (sorted, top 8 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+        +13984      +668848  66700→80684 3.79MiB→4.43MiB  java.lang.Object[][]
+        +17152      +548864  22512→39664 703.50KiB→1.21MiB  a3.t
+        +17914      +429936  57212→75126 1.31MiB→1.72MiB  java.util.ArrayList
+         +7021      +329952  37934→44955 2.42MiB→2.74MiB  int[]
+         +4800      +307200   6300→11100 393.75KiB→693.75KiB  f1.f
+         +7642      +183408  10044→17686 235.41KiB→414.52KiB  i1.a
+         +7552      +181248  10055→17607 235.66KiB→412.66KiB  y1.b
+         +4697      +157584   9842→14539 438.30KiB→592.19KiB  long[]
+
+Step 1 -> 2 top 8 deltas:
+
+Class deltas (sorted, top 8 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+         +1463       +58520   9919→11382 387.46KiB→444.61KiB  p1.j
+          +656       +18368    7503→8159 1.16MiB→1.18MiB  char[]
+          +167       +17368    1116→1283 113.34KiB→130.30KiB  d1.q2
+          +510       +12240 280970→281480 6.43MiB→6.44MiB  java.lang.String
+          +730       +11680  12670→13400 197.97KiB→209.38KiB  s1.l
+          +203       +11368    1752→1955 95.81KiB→106.91KiB  z1.z
+          +702       +11232    4655→5357 72.73KiB→83.70KiB  f1.g
+          +164       +10496    1074→1238 67.12KiB→77.38KiB  p1.b
+
+Total first -> last top 8 deltas:
+     +611568 bytes       13482 count  java.lang.Object[][]
+     +463104 bytes       14472 count  a3.t
+     +367536 bytes       15314 count  java.util.ArrayList
+     +336232 bytes        6951 count  int[]
+     +259200 bytes        4050 count  f1.f
+     +205200 bytes        5130 count  p1.j
+     +154632 bytes        6443 count  i1.a
+     +152928 bytes        6372 count  y1.b
+
+Monotonic growth candidates (top 8):
+     +336232 bytes        6951 count  int[]
+     +205200 bytes        5130 count  p1.j
+      +82560 bytes        5160 count  s1.l
+      +62720 bytes        2240 count  char[]
+      +58552 bytes         563 count  d1.q2
+      +47208 bytes        1967 count  java.lang.String
+      +46144 bytes         824 count  z1.z
+      +38688 bytes        2418 count  f1.g
+
+Native context (dumpsys meminfo, PSS KiB):
+  Java Heap:   43152 KiB
+  Native Heap: 88852 KiB
+  Graphics:    0 KiB
+  TOTAL:       186892 KiB
+  warning: missing meminfo row: GL
+
+File successfully processed in 225.99ms

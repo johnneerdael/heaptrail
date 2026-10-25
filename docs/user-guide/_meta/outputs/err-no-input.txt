@@ -1,0 +1,3 @@
+$ heaptrail
+# exit 1
+error: missing required `--inputFile <path>` for the selected mode

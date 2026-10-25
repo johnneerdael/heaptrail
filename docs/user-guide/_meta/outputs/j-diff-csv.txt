@@ -1,0 +1,7 @@
+$ heaptrail --diff-from before.hprof --diff-to after.hprof --top 5 --json --json-out reports/diff.json > /dev/null && jq -r '.[] | [.class_name, .delta_count, .delta_bytes] | @csv' reports/diff.json
+# exit 0
+"java.util.TreeMap$TreeMapEntry",32284,1033088
+"com.google.gson.reflect.TypeToken",31615,758760
+"com.nexio.tv.domain.model.ProviderIds",17537,841776
+"java.util.LinkedHashMap$LinkedHashMapEntry",4349,139168
+"com.nexio.tv.core.metadata.router.MetadataLocalizationRejectedCandidate",3140,75360

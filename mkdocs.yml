@@ -1,0 +1,214 @@
+site_name: heaptrail user guide
+site_description: Find what is holding your memory. Learn to capture, analyse and compare JVM and Android heap dumps with heaptrail, the fast command-line analyzer.
+site_url: https://heaptrail.neerdael.nl/
+repo_url: https://github.com/johnneerdael/heaptrail
+repo_name: johnneerdael/heaptrail
+edit_uri: edit/master/docs/user-guide/
+docs_dir: docs/user-guide
+site_dir: build/user-guide-site
+copyright: heaptrail is free, open-source software (Apache-2.0). It began as a fork of hprof-slurp and is not affiliated with Eclipse MAT, VisualVM, LeakCanary or Android Studio.
+
+# Writer-only material lives beside the pages but is not published.
+exclude_docs: |
+  _meta/
+  _snippets/
+
+theme:
+  name: material
+  language: en
+  logo: assets/brand/mark.svg
+  favicon: assets/brand/favicon.png
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil-outline
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Follow the system setting
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+
+extra_css:
+  - stylesheets/heaptrail.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/johnneerdael/heaptrail
+      name: heaptrail on GitHub
+    - icon: fontawesome/brands/rust
+      link: https://crates.io/crates/heaptrail
+      name: heaptrail on crates.io
+
+plugins:
+  - search:
+      # Keep Material's punctuation/CamelCase/version boundaries; add $ and %.
+      separator: '[\s\-$%,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path: docs/user-guide/_snippets
+      auto_append:
+        - abbreviations.md
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# Strict builds (`mkdocs build --strict`) turn every one of these into an error.
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    anchors: warn
+    absolute_links: warn
+    unrecognized_links: warn
+
+nav:
+- Home: index.md
+- Get started:
+  - getting-started/index.md
+  - Download and install: getting-started/install.md
+  - Your first triage: getting-started/first-triage.md
+  - Follow along with the bundled files: getting-started/follow-along.md
+  - Choose the right mode: getting-started/choose-a-mode.md
+  - What's new: getting-started/whats-new.md
+- Capture:
+  - capture/index.md
+  - android-capture: capture/android-capture.md
+  - Capture a series: capture/capture-a-series.md
+  - Capture by hand on Android: capture/manual-android.md
+  - Allocation tracking: capture/allocation-tracking.md
+  - JVM dumps: capture/jvm.md
+  - Handle dumps safely: capture/handle-dumps-safely.md
+- Analyze:
+  - analyze/index.md
+  - Summary: analyze/summary.md
+  - Retained size: analyze/retained-size.md
+  - Leak suspects: analyze/leak-suspects.md
+  - Content previews: analyze/preview-bytes.md
+  - List strings and arrays: analyze/list-strings.md
+  - Bitmaps: analyze/bitmaps.md
+  - Allocation sites: analyze/allocation-sites.md
+  - Recipes:
+    - Identify a giant array: analyze/recipes/identify-a-giant-array.md
+    - Find duplicate payloads: analyze/recipes/find-duplicate-payloads.md
+    - Triage an unfamiliar dump: analyze/recipes/triage-an-unfamiliar-dump.md
+- Trace holders:
+  - holders/index.md
+  - Find referrers: holders/find-referrers.md
+  - Target glob: holders/target-glob.md
+  - Group holders: holders/group-holders.md
+  - Paths to a GC root: holders/paths-to-root.md
+  - Merge paths: holders/merge-paths.md
+  - Exclude weak references: holders/exclude-soft-weak.md
+  - Recipes:
+    - Who holds an activity: holders/recipes/who-holds-an-activity.md
+    - Find the static that holds a cache: holders/recipes/find-the-static-that-holds-a-cache.md
+- Compare:
+  - compare/index.md
+  - Snapshot diff: compare/diff.md
+  - Diff a series: compare/diff-series.md
+  - Native context: compare/native-context.md
+  - Recipes:
+    - Playback growth: compare/recipes/playback-growth.md
+    - Before and after an interaction: compare/recipes/before-and-after-an-interaction.md
+- Android:
+  - android/index.md
+  - Deobfuscate release builds: android/deobfuscate-release-builds.md
+  - Auto-mapping: android/auto-mapping.md
+  - What is different about Android dumps: android/android-heaps.md
+- Automate:
+  - automate/index.md
+  - JSON output: automate/json-output.md
+  - Gate a build on a leak threshold: automate/ci-gates.md
+  - The Claude Code plugin: automate/claude-code-plugin.md
+- Concepts:
+  - concepts/index.md
+  - Shallow and retained size: concepts/shallow-and-retained.md
+  - GC roots and paths: concepts/gc-roots-and-paths.md
+  - Reference strength: concepts/reference-strength.md
+  - Object ids: concepts/object-ids.md
+  - How heaptrail reads a dump: concepts/how-heaptrail-reads-a-dump.md
+- Reference:
+  - reference/index.md
+  - Command line: reference/command-line.md
+  - Mode compatibility: reference/mode-compatibility.md
+  - JSON schemas: reference/json-schemas.md
+  - GC root kinds: reference/gc-root-kinds.md
+  - HPROF formats: reference/hprof-formats.md
+  - Errors and exit codes: reference/errors-and-exit-codes.md
+  - Performance: reference/performance.md
+  - Limitations: reference/limitations.md
+  - Glossary: reference/glossary.md
+- Help:
+  - FAQ: help/faq.md
+  - Troubleshooting: help/troubleshooting.md
+  - About: help/about.md

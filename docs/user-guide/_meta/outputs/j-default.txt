@@ -1,0 +1,3 @@
+$ heaptrail -i jvm.hprof -t 1 --json | grep 'Output JSON'
+# exit 0
+Output JSON result file heaptrail-1792947497099.json

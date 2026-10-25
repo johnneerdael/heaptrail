@@ -1,0 +1,95 @@
+$ heaptrail -i heap.hprof --retained-size -t 10
+# exit 0
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+File content summary:
+
+UTF-8 Strings: 109331
+Classes loaded: 30744
+Classes unloaded: 0
+Stack traces: 1
+Stack frames: 0
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+54063 heap dumps containing in total 4572970 segments:
+..GC root unknown: 237445
+..GC root thread objects: 47
+..GC root JNI global: 612
+..GC root JNI local: 41
+..GC root Java frame: 1381
+..GC root native stack: 82
+..GC root sticky class: 10847
+..GC root thread block: 0
+..GC root monitor used: 0
+..GC primitive array dump: 1356562
+..GC object array dump: 359794
+..GC class dump: 30744
+..GC instance dump: 2575415
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 0 threads with stacktraces:
+
+Found a total of 171.21MiB of raw shallow heap objects in the dump.
+
+Top 10 classes by retained heap (dominator tree):
+
++-------------+-----------+-----------+-------------+-----------------------------------------------+
+|     Shallow | Instances |  Retained |     Largest | Class name                                    |
++-------------+-----------+-----------+-------------+-----------------------------------------------+
+|     2.80MiB |    122154 | 126.84MiB |  24.00bytes | java.util.ArrayList                           |
+|     1.53MiB |     28697 |  58.58MiB |  56.00bytes | com.nexio.tv.domain.model.CatalogRow          |
+|    56.89MiB |    573552 |  57.37MiB | 104.00bytes | com.nexio.tv.domain.model.MetaPreview         |
+|    20.79MiB |    908414 |  30.65MiB |  24.00bytes | java.lang.String                              |
+|    21.59MiB |    372795 |  16.37MiB |     5.64MiB | char[]                                        |
+|     8.13KiB |       347 |  15.17MiB |  24.00bytes | kotlin.SynchronizedLazyImpl                   |
+|  80.00bytes |         2 |  14.94MiB |  40.00bytes | com.nexio.tv.core.anime.AnimeIdMapAsset       |
+|  16.00bytes |         1 |  14.94MiB |  16.00bytes | com.nexio.tv.core.anime.AnimeIdMappingService |
+| 480.00bytes |        10 |  14.94MiB |  48.00bytes | com.squareup.moshi.LinkedHashTreeMap          |
+|     3.68MiB |     80397 |  14.21MiB |  48.00bytes | com.squareup.moshi.LinkedHashTreeMap$Node     |
++-------------+-----------+-----------+-------------+-----------------------------------------------+
+
+Top 10 largest instances:
+
++------------+-----------+-----------+-------------------------------------------------+
+| Total size | Instances |   Largest | Class name                                      |
++------------+-----------+-----------+-------------------------------------------------+
+|   21.59MiB |    372795 |   5.64MiB | char[]                                          |
+|    2.09MiB |     40545 | 418.64KiB | int[]                                           |
+|  752.16KiB |        10 | 128.02KiB | com.squareup.moshi.LinkedHashTreeMap$Node[][]   |
+|   10.77MiB |    227587 | 123.52KiB | java.lang.Object[][]                            |
+|  161.81KiB |      2084 |  50.07KiB | long[]                                          |
+|   25.31MiB |    940474 |  28.63KiB | byte[]                                          |
+|  243.08KiB |      1440 |  16.02KiB | java.util.HashMap$Node[][]                      |
+|   41.41KiB |       167 |   8.02KiB | java.util.concurrent.ConcurrentHashMap$Node[][] |
+|    6.77KiB |        77 |   4.02KiB | int[][][]                                       |
+|    4.02KiB |         1 |   4.02KiB | org.apache.xpath.objects.XObject[][]            |
++------------+-----------+-----------+-------------------------------------------------+
+
+Largest array instances object ids (for retainer tracing):
+     5.64MiB object_id=1661812752 char[]
+   418.64KiB object_id=2595270656 int[]
+   128.02KiB object_id=342360064 com.squareup.moshi.LinkedHashTreeMap$Node[][]
+   123.52KiB object_id=518041528 java.lang.Object[][]
+    50.07KiB object_id=2743599104 long[]
+    28.63KiB object_id=1717379088 byte[]
+    16.02KiB object_id=1871562064 java.util.HashMap$Node[][]
+     8.02KiB object_id=1940013040 java.util.concurrent.ConcurrentHashMap$Node[][]
+     4.02KiB object_id=1871836952 int[][][]
+     4.02KiB object_id=1870481760 org.apache.xpath.objects.XObject[][]
+
+Largest retained instances object ids:
+    27.98MiB object_id=361762400 java.util.ArrayList
+    27.98MiB object_id=320977512 java.lang.Object[]
+    27.98MiB object_id=361760560 java.util.ArrayList
+    27.98MiB object_id=320797680 java.lang.Object[]
+    14.94MiB object_id=329824280 com.nexio.tv.core.anime.AnimeIdMappingService
+    14.94MiB object_id=338604528 kotlin.SynchronizedLazyImpl
+    14.94MiB object_id=338604792 com.nexio.tv.core.anime.AnimeIdMapAsset
+     7.41MiB object_id=338605000 com.nexio.tv.core.anime.AnimeIdMapIndexes
+     6.79MiB object_id=369633368 android.util.ArrayMap
+     6.79MiB object_id=529946720 java.lang.Object[]
+File successfully processed in 1.632367542s

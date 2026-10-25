@@ -1,0 +1,14 @@
+$ heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview --hops 1 --top 5
+# exit 0
+
+Found 573552 target instance(s) for com.nexio.tv.domain.model.MetaPreview
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                                                           ref count
+  java.lang.Object[][]                                                                              603715
+  com.nexio.tv.ui.screens.home.ModernCarouselItem.metaPreview                                          249
+  com.nexio.tv.ui.screens.home.CachedCarouselItem.source                                               120
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernRowSection$1$6$2$1$6$1$1.$nextCatalogItem          8
+  com.nexio.tv.ui.screens.home.ModernHomeRowsKt$ModernRowSection$1$6$2$1$6$2$1.$metaPreview              8
+
+File successfully processed in 466.056708ms

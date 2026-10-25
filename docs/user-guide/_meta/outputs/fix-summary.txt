@@ -1,0 +1,102 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin -t 5
+# exit 0
+Processing 3.07MiB binary hprof file in 'JAVA PROFILE 1.0.1' format.
+
+File content summary:
+
+UTF-8 Strings: 10768
+Classes loaded: 474
+Classes unloaded: 0
+Stack traces: 10
+Stack frames: 20
+Start threads: 0
+Allocation sites: 0
+End threads: 0
+Control settings: 0
+CPU samples: 0
+Heap summaries: 0
+1 heap dumps containing in total 8715 segments:
+..GC root unknown: 0
+..GC root thread objects: 9
+..GC root JNI global: 5
+..GC root JNI local: 0
+..GC root Java frame: 22
+..GC root native stack: 0
+..GC root sticky class: 413
+..GC root thread block: 0
+..GC root monitor used: 4
+..GC primitive array dump: 2891
+..GC object array dump: 748
+..GC class dump: 474
+..GC instance dump: 4149
+AllocationSites: not present (capture with `am profile start <pid>`)
+
+Found 7 threads with stacktraces:
+
+Thread 1
+  at java.lang.Object.wait (Object.java:native method)
+  at java.lang.Object.wait (Object.java:502)
+  at simple.Data.get (Data.java:47)
+  at simple.Consumer.run (Consumer.java:56)
+
+Thread 2
+  at java.lang.Thread.sleep (Thread.java:native method)
+  at simple.Producer.run (Producer.java:64)
+
+Thread 3
+  at simple.Consumer.run (Consumer.java:60)
+
+Thread 4
+  at simple.Producer.run (Producer.java:57)
+
+Thread 5
+  at java.lang.Object.wait (Object.java:native method)
+  at java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run (Finalizer.java:209)
+
+Thread 6
+  at java.lang.Object.wait (Object.java:native method)
+  at java.lang.Object.wait (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run (Reference.java:153)
+
+Thread 7
+  at java.lang.Object.wait (Object.java:native method)
+  at java.lang.Thread.join (Thread.java:1252)
+  at java.lang.Thread.join (Thread.java:1326)
+  at simple.Monitor.main (Monitor.java:64)
+
+Found a total of 2.51MiB of raw shallow heap objects in the dump.
+
+Top 5 raw shallow heap classes:
+
++------------+-----------+------------+--------------------+
+| Total size | Instances |    Largest | Class name         |
++------------+-----------+------------+--------------------+
+|    1.99MiB |       436 |  634.78KiB | int[]              |
+|  194.89KiB |      1991 |   16.02KiB | char[]             |
+|   85.23KiB |       443 |    8.02KiB | byte[]             |
+|   47.38KiB |      1516 | 32.00bytes | java.lang.String   |
+|   45.42KiB |       560 |    8.02KiB | java.lang.Object[] |
++------------+-----------+------------+--------------------+
+
+Top 5 largest instances:
+
++------------+-----------+-----------+--------------------------+
+| Total size | Instances |   Largest | Class name               |
++------------+-----------+-----------+--------------------------+
+|    1.99MiB |       436 | 634.78KiB | int[]                    |
+|  194.89KiB |      1991 |  16.02KiB | char[]                   |
+|   85.23KiB |       443 |   8.02KiB | byte[]                   |
+|   45.42KiB |       560 |   8.02KiB | java.lang.Object[]       |
+|    5.91KiB |        18 |   2.02KiB | java.util.HashMap$Node[] |
++------------+-----------+-----------+--------------------------+
+
+Largest array instances object ids (for retainer tracing):
+   634.78KiB object_id=3607227400 int[]
+    16.02KiB object_id=3606712464 char[]
+     8.02KiB object_id=3606691640 byte[]
+     8.02KiB object_id=3606636656 java.lang.Object[]
+     2.02KiB object_id=3606990376 java.util.HashMap$Node[]
+File successfully processed in 4.476833ms

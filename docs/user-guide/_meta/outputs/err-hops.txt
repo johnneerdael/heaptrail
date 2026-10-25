@@ -1,0 +1,5 @@
+$ heaptrail -i heap.hprof --find-referrers java.util.ArrayList --hops 6
+# exit 2
+error: invalid value '6' for '--hops <HOPS>': 6 is not in 1..=5
+
+For more information, try '--help'.

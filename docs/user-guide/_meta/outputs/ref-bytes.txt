@@ -1,0 +1,3 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers 'byte[]'
+# exit 1
+error: target class not found in dump: `byte[]`

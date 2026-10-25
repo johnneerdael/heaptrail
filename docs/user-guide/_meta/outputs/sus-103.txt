@@ -1,0 +1,69 @@
+$ heaptrail -i heap-b.hprof --leak-suspects --exclude-soft-weak --top 3
+# exit 0
+Heap: 120.99MiB total, 52.66MiB retained-reachable.
+Threshold: 5.0 % retained share. Showing 3 suspect(s) (3 above threshold).
+
+Suspect 1 — 14.94MiB (28.4 % of heap)
+  dominator: com.nexio.tv.core.anime.AnimeIdMappingService (object_id=333406600)
+  accumulating: 318693 instances of byte[], total 2.05MiB
+  path to GC root:
+  
+  Path from object_id=333406600 (depth 12 step(s)):
+    start  ── id=333406600
+    hop 1 ── id=317356280  (via dagger.internal.DoubleCheck.instance)
+    hop 2 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.animeIdMappingServiceProvider)
+    hop 3 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 4 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 5 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 6 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 7 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 8 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 9 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop10 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop11 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop12 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    → stopped at --max-depth (chain may continue)
+
+Suspect 2 — 14.94MiB (28.4 % of heap)
+  dominator: kotlin.SynchronizedLazyImpl (object_id=333426296)
+  accumulating: 318693 instances of byte[], total 2.05MiB
+  path to GC root:
+  
+  Path from object_id=333426296 (depth 12 step(s)):
+    start  ── id=333426296
+    hop 1 ── id=333406600  (via com.nexio.tv.core.anime.AnimeIdMappingService.asset$delegate)
+    hop 2 ── id=317356280  (via dagger.internal.DoubleCheck.instance)
+    hop 3 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.animeIdMappingServiceProvider)
+    hop 4 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 5 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 6 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 7 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 8 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 9 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop10 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop11 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop12 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    → stopped at --max-depth (chain may continue)
+
+Suspect 3 — 14.94MiB (28.4 % of heap)
+  dominator: com.nexio.tv.core.anime.AnimeIdMapAsset (object_id=374912088)
+  accumulating: 318693 instances of java.lang.String, total 6.08MiB
+  path to GC root:
+  
+  Path from object_id=374912088 (depth 12 step(s)):
+    start  ── id=374912088
+    hop 1 ── id=333426296  (via kotlin.SynchronizedLazyImpl._value)
+    hop 2 ── id=333406600  (via com.nexio.tv.core.anime.AnimeIdMappingService.asset$delegate)
+    hop 3 ── id=317356280  (via dagger.internal.DoubleCheck.instance)
+    hop 4 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.animeIdMappingServiceProvider)
+    hop 5 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 6 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 7 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop 8 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop 9 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop10 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    hop11 ── id=317356072  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.singletonCImpl)
+    hop12 ── id=330322432  (via com.nexio.tv.DaggerNexioApplication_HiltComponents_SingletonC$SingletonCImpl.addonRepositoryImplProvider)
+    → stopped at --max-depth (chain may continue)
+
+File successfully processed in 5.388681375s

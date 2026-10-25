@@ -1,0 +1,36 @@
+<figure class="ht-diagram" style="max-width: 30rem">
+<svg viewBox="0 0 480 440" role="img" aria-labelledby="ht-path-title ht-path-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="ht-path-title">A path from a GC root to a list of objects</title>
+<desc id="ht-path-desc">A GC root holds a NavControllerViewModel, which holds a ViewModelStore, which holds HomeViewModel, which holds a StateFlow, which holds an ArrayList of 262,517 MetaPreview objects.</desc>
+<defs><marker id="ht-arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g class="stroke" stroke-width="1.8" style="color: var(--md-default-fg-color--light)">
+<path d="M130 50 L130 82" marker-end="url(#ht-arr2)"/>
+<path d="M130 130 L130 162" marker-end="url(#ht-arr2)"/>
+<path d="M130 210 L130 242" marker-end="url(#ht-arr2)"/>
+<path d="M130 290 L130 322" marker-end="url(#ht-arr2)"/>
+<path d="M130 370 L130 402" marker-end="url(#ht-arr2)"/>
+</g>
+<rect x="30" y="6" width="200" height="44" rx="22" class="box"/>
+<text x="130" y="26" text-anchor="middle" class="ink" font-size="15" font-weight="700">GC root</text>
+<text x="130" y="42" text-anchor="middle" class="dim" font-size="12">keeps everything below alive</text>
+<rect x="10" y="86" width="240" height="44" rx="8" class="box"/>
+<text x="130" y="114" text-anchor="middle" class="ink mono" font-size="14" font-weight="700">NavControllerViewModel</text>
+<rect x="10" y="166" width="240" height="44" rx="8" class="box"/>
+<text x="130" y="194" text-anchor="middle" class="ink mono" font-size="14" font-weight="700">ViewModelStore</text>
+<rect x="10" y="246" width="240" height="44" rx="8" class="box"/>
+<text x="130" y="274" text-anchor="middle" class="ink mono" font-size="14" font-weight="700">HomeViewModel</text>
+<rect x="10" y="326" width="240" height="44" rx="8" class="box"/>
+<text x="130" y="354" text-anchor="middle" class="ink mono" font-size="14" font-weight="700">StateFlow</text>
+<rect x="10" y="406" width="240" height="30" rx="8" class="box" stroke="#FFB020" stroke-width="2.6"/>
+<text x="130" y="426" text-anchor="middle" class="ink mono" font-size="14" font-weight="700">ArrayList</text>
+<g class="dim mono" font-size="14">
+<text x="146" y="70">holds</text>
+<text x="146" y="150">.viewModelStores</text>
+<text x="146" y="230">.map</text>
+<text x="146" y="310">.fullCatalogRows</text>
+<text x="146" y="390">._state</text>
+</g>
+<text x="266" y="426" class="ink" font-size="14" font-weight="600">262,517 MetaPreview</text>
+</svg>
+<figcaption>Modeled on the first-triage investigation and shortened. Each arrow reads “holds”, and the label is the field that does the holding. heaptrail prints a chain like this from the bottom up, one hop per line. The real chain had more hops, and heaptrail stopped at its depth limit before it reached a root.</figcaption>
+</figure>

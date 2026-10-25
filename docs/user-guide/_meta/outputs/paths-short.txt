@@ -1,0 +1,11 @@
+$ heaptrail -i heap.hprof --paths-from-id 1661812752 --max-depth 3
+# exit 0
+
+Path from object_id=1661812752 (depth 3 step(s)):
+  start  ── id=1661812752
+  hop 1 ── id=1661812736  (via java.lang.String.value)
+  hop 2 ── id=364312776  (via java.util.HashMap$Node.value)
+  hop 3 ── id=364312696  (via java.util.HashMap$Node[][10])
+  → stopped at --max-depth (chain may continue)
+
+File successfully processed in 825.408583ms

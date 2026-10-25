@@ -1,0 +1,17 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --target-glob 'java.util.Linked*' --hops 1 --top 3
+# exit 0
+
+Found 3 classes matching glob:java.util.Linked*:
+  - java.util.LinkedList$Node     (378 instances)
+  - java.util.LinkedList          (190 instances)
+  - java.util.LinkedHashMap$Entry (16 instances)
+
+Found 584 target instance(s) for glob:java.util.Linked*
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  java.util.LinkedList.last                   190
+  java.util.HashMap$Node.value                190
+  java.util.LinkedList.first                  190
+
+File successfully processed in 4.777666ms

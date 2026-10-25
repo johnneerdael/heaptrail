@@ -1,0 +1,3 @@
+$ heaptrail android-capture --package com.example.myapp --out dumps
+# exit 1
+error: standard I/O error (No such file or directory (os error 2))

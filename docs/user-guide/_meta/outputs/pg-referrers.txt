@@ -1,0 +1,14 @@
+$ heaptrail -i soak.hprof --find-referrers p1.j --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt --hops 1 --top 4
+# exit 0
+Using mapping: myapp/app/build/outputs/mapping/universalRelease/mapping.txt
+
+Found 11382 target instance(s) for com.example.myapp.player.PlaybackState
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  p1.b.j                                     1238
+  p1.b.a                                     1238
+  p1.b0.j                                     276
+  p1.b0.a                                     276
+
+File successfully processed in 207.95975ms

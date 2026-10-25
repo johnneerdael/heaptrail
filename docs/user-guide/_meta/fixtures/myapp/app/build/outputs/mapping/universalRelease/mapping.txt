@@ -1,0 +1,14 @@
+# compiler: R8
+# compiler_version: 8.5.35
+# min_api: 26
+# pg_map_id: 3c1f9a07be41d2c85e6a90b7d4f21e08
+# pg_map_hash: SHA-256 7d5be0c4a1f2936b88d0e5c7a4419f0236ab8c5d17e3f4a9b2c60d815e7f3a24
+com.example.myapp.player.TrackQueue -> a3.t:
+    java.util.List items -> a
+    int position -> b
+    void advance() -> c
+com.example.myapp.player.PlaybackState -> p1.j:
+    long positionMs -> a
+    boolean playing -> b
+com.example.myapp.ui.PosterCache -> f1.f:
+    java.util.Map entries -> a

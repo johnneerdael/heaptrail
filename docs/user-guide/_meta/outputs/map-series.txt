@@ -1,0 +1,43 @@
+$ heaptrail --diff-series launch.hprof play.hprof soak.hprof --mapping myapp/app/build/outputs/mapping/universalRelease/mapping.txt --diff-by bytes --top 4
+# exit 0
+Using mapping: myapp/app/build/outputs/mapping/universalRelease/mapping.txt
+Processing 78.90MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+Processing 84.86MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+Processing 84.72MiB binary hprof file in 'JAVA PROFILE 1.0.3' format.
+
+Diff series snapshots:
+  [0] launch.hprof - 6918 classes, 54.28MiB shallow
+  [1] play.hprof - 6918 classes, 58.54MiB shallow
+  [2] soak.hprof - 6921 classes, 58.43MiB shallow
+
+Step 0 -> 1 top 4 deltas:
+
+Class deltas (sorted, top 4 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+        +13984      +668848  66700→80684 3.79MiB→4.43MiB  java.lang.Object[][]
+        +17152      +548864  22512→39664 703.50KiB→1.21MiB  com.example.myapp.player.TrackQueue
+        +17914      +429936  57212→75126 1.31MiB→1.72MiB  java.util.ArrayList
+         +7021      +329952  37934→44955 2.42MiB→2.74MiB  int[]
+
+Step 1 -> 2 top 4 deltas:
+
+Class deltas (sorted, top 4 shown):
+        Δcount       Δbytes   count(a→b)   bytes(a→b)  class
+         +1463       +58520   9919→11382 387.46KiB→444.61KiB  com.example.myapp.player.PlaybackState
+          +656       +18368    7503→8159 1.16MiB→1.18MiB  char[]
+          +167       +17368    1116→1283 113.34KiB→130.30KiB  d1.q2
+          +510       +12240 280970→281480 6.43MiB→6.44MiB  java.lang.String
+
+Total first -> last top 4 deltas:
+     +611568 bytes       13482 count  java.lang.Object[][]
+     +463104 bytes       14472 count  com.example.myapp.player.TrackQueue
+     +367536 bytes       15314 count  java.util.ArrayList
+     +336232 bytes        6951 count  int[]
+
+Monotonic growth candidates (top 4):
+     +336232 bytes        6951 count  int[]
+     +205200 bytes        5130 count  com.example.myapp.player.PlaybackState
+      +82560 bytes        5160 count  s1.l
+      +62720 bytes        2240 count  char[]
+
+File successfully processed in 229.914959ms

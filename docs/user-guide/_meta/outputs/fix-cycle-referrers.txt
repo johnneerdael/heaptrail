@@ -1,0 +1,12 @@
+$ heaptrail -i test-heap-dumps/hprof-64.bin --find-referrers id:3606700208 --hops 1
+# exit 0
+
+Found 1 target instance(s) for id:3606700208
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)  ref count
+  java.io.OutputStreamWriter.lock               1
+  sun.nio.cs.StreamEncoder.out                  1
+  java.lang.System.out                          1
+
+File successfully processed in 3.430625ms

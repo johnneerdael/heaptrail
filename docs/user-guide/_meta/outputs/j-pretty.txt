@@ -1,0 +1,3 @@
+$ heaptrail -i heap.hprof -t 1 --json --json-out reports/summary.json > /dev/null && head -c 180 reports/summary.json
+# exit 0
+{"top_allocated_classes":[{"class_name":"com.nexio.tv.domain.model.MetaPreview","instance_count":573552,"largest_allocation_bytes":104,"allocation_size_bytes":59649408}],"top_large

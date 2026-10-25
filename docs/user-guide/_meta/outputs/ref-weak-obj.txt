@@ -1,0 +1,12 @@
+$ heaptrail -i heap-b.hprof --find-referrers java.lang.ref.WeakReference --hops 1 --top 3
+# exit 0
+
+Found 333 target instance(s) for java.lang.ref.WeakReference
+
+=== Direct referrers (1-hop) ===
+  holder.field (or class[] for arrays)                ref count
+  java.lang.Object[][]                                      124
+  java.lang.ref.WeakReference.pendingNext                    46
+  android.graphics.drawable.VectorDrawable.mCallback         43
+
+File successfully processed in 341.693667ms

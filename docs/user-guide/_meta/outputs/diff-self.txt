@@ -1,0 +1,8 @@
+$ heaptrail --diff-from heap.hprof --diff-to heap.hprof
+# exit 0
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.
+
+No per-class deltas — the two snapshots match.
+
+File successfully processed in 308.535125ms

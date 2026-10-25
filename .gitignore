@@ -23,4 +23,13 @@ perf.data.old
 
 # Heap dump fixtures (large; never commit captured dumps)
 *.hprof
-docs/
+
+# User guide (MkDocs): build output and the local virtualenv
+/build/
+/.venv/
+
+# Local working plans stay local (docs/ used to be ignored wholesale)
+/docs/superpowers/plans/
+
+# Python bytecode from the docs scripts
+__pycache__/
