@@ -98,7 +98,7 @@ heaptrail has one default mode, the summary, and selects every other mode with a
 | `--json-out <PATH>` | | Write the JSON to exactly this path. Needs `--json`. The folder must exist. |
 | `-d`, `--debug` | off | Print every record's tag while parsing. For heaptrail development; the output runs to more than a hundred thousand lines. |
 | `-h`, `--help` | | Print help. |
-| `-V`, `--version` | | Print the version, as `heaptrail 1.4.0`. |
+| `-V`, `--version` | | Print the version, as `heaptrail <version>`. |
 
 ## Modes
 

@@ -111,8 +111,9 @@ cargo build --release
 heaptrail --version
 ```
 
+<!-- output: version.txt -->
 ```text
-heaptrail 1.4.0
+heaptrail 1.4.1
 ```
 
 If your shell says `command not found` (or `'heaptrail' is not recognized` on Windows),

@@ -23,6 +23,16 @@ To see which version you have, run `heaptrail --version`. To upgrade, see
 | `android-capture --series`, stall detection while capturing | 1.3.1 |
 | Cleanup of old dumps on the device | 1.4.0 |
 
+## 1.4.1 — October 25, 2026
+
+The user guide is now a site. Nothing about how heaptrail reads a dump changes.
+
+- The guide you are reading replaces `USERGUIDE.md` and the long `README.md`. Every block of output in it comes from a real run.
+- `README.md` is a short front door, `USERGUIDE.md` maps the old sections to the new pages, and the guide's [glossary](../reference/glossary.md) replaces `glossary.md`.
+- `--help` for `--preview-bytes` and `--target-glob` names the guide page instead of a `USERGUIDE.md` section.
+- The `analysing-heap-dumps` Claude Code plugin points at the guide. Update the plugin to get the new text.
+- The crate links to the guide as its documentation, and its package no longer carries the guide sources.
+
 ## 1.4.0 — May 25, 2026
 
 Repeated Android captures no longer fill the device's `/data` partition.
