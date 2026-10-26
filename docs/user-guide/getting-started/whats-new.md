@@ -23,6 +23,15 @@ To see which version you have, run `heaptrail --version`. To upgrade, see
 | `android-capture --series`, stall detection while capturing | 1.3.1 |
 | Cleanup of old dumps on the device | 1.4.0 |
 
+## 1.4.2 — October 26, 2026
+
+HeapTrail has its own identity now. Nothing about how it reads a dump changes.
+
+- The README opens with the HeapTrail banner, in a light and a dark version, and the crate page on crates.io shows the same README.
+- This guide is set in the HeapTrail colours (amber on Night, with a light and a dark theme) and in Space Grotesk, Inter and IBM Plex Mono, which the site now serves itself.
+- The product is written HeapTrail in prose, and `heaptrail` only where it is the command.
+- The highlighted objects in the two diagrams on [Shallow and retained size](../concepts/shallow-and-retained.md) and [GC roots and paths](../concepts/gc-roots-and-paths.md) now show up. A style rule had been hiding the highlight.
+
 ## 1.4.1 — October 25, 2026
 
 The user guide is now a site. Nothing about how HeapTrail reads a dump changes.
