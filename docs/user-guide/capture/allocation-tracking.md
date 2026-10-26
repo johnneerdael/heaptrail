@@ -70,7 +70,7 @@ Treat allocation tracking on Android as *opportunistic*. `am profile start` retu
 tracking was requested. It does not guarantee that the runtime writes allocation records into the next dump on that
 device or build.
 
-In heaptrail's own testing on rooted Android TV hardware, `am profile start` succeeded but the tracked dump stayed 0 bytes,
+In HeapTrail's own testing on rooted Android TV hardware, `am profile start` succeeded but the tracked dump stayed 0 bytes,
 while ordinary dumps worked. The helper then fails with:
 
 ```text

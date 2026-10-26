@@ -10,10 +10,10 @@ Complete, exact and for looking things up. Every table here is checked against t
 | Which flags work with which mode | [Mode compatibility](mode-compatibility.md) |
 | Every field of every JSON file | [JSON schemas](json-schemas.md) |
 | The meaning of a GC root kind | [GC root kinds](gc-root-kinds.md) |
-| Which dump formats heaptrail reads | [HPROF formats](hprof-formats.md) |
+| Which dump formats HeapTrail reads | [HPROF formats](hprof-formats.md) |
 | An error message, and what to do | [Errors and exit codes](errors-and-exit-codes.md) |
 | How long a mode takes and how much memory it needs | [Performance](performance.md) |
-| What heaptrail cannot do | [Limitations](limitations.md) |
+| What HeapTrail cannot do | [Limitations](limitations.md) |
 | A term in one line | [Glossary](glossary.md) |
 
 ## The command in one glance

@@ -1,12 +1,12 @@
 # Get started
 
-heaptrail answers memory questions about a heap dump: what is big, what keeps it
+HeapTrail answers memory questions about a heap dump: what is big, what keeps it
 alive, and what grew. You give it an `.hprof` file and one flag, and it prints a
 report. This section gets it installed and walks you through a first investigation.
 
 ## Start here
 
-1. [Install heaptrail](install.md). One `cargo install` or a prebuilt binary.
+1. [Install HeapTrail](install.md). One `cargo install` or a prebuilt binary.
 2. [Your first triage](first-triage.md). A real investigation, from the first
    summary to the field that causes the leak. About 15 minutes.
 3. [Choose the right mode](choose-a-mode.md). Pick the command that answers the
@@ -33,15 +33,15 @@ to see what grew.
 
 | Your goal | Page |
 |---|---|
-| Install or upgrade heaptrail | [Download and install](install.md) |
+| Install or upgrade HeapTrail | [Download and install](install.md) |
 | Run a complete investigation once, end to end | [Your first triage](first-triage.md) |
-| Try heaptrail with the small dumps in the repository | [Follow along with the bundled files](follow-along.md) |
+| Try HeapTrail with the small dumps in the repository | [Follow along with the bundled files](follow-along.md) |
 | Decide which flag to use | [Choose the right mode](choose-a-mode.md) |
 | See what changed in a release | [What's new](whats-new.md) |
 
 ## About the examples
 
-Output in this guide is real: it was captured by running heaptrail, and the pages quote it verbatim. The files are named the same way everywhere.
+Output in this guide is real: it was captured by running `heaptrail`, and the pages quote it verbatim. The files are named the same way everywhere.
 
 | File | What it is |
 |---|---|
@@ -53,7 +53,7 @@ Output in this guide is real: it was captured by running heaptrail, and the page
 | `test-heap-dumps/*.bin` | The two small JVM dumps in the repository. |
 
 Your numbers will differ. Only the small JVM dumps ship with the repository, so on any other page treat the output as a picture of what your own dump will print.
-The `android-capture` examples come from heaptrail's own code running against a stand-in for `adb`, so they show exactly what it prints without needing a device.
+The `android-capture` examples come from HeapTrail's own code running against a stand-in for `adb`, so they show exactly what it prints without needing a device.
 
 ## Related
 

@@ -74,8 +74,8 @@ thread-owned root also names the thread and, for a Java frame, the method on top
         at android.app.SharedPreferencesImpl$EditorImpl.commitToMemory(SharedPreferencesImpl.java:478)
 ```
 
-(That layout is from a dump that has thread records. Neither sample dump has them.) When it does not, heaptrail prints the raw serial numbers it has, as above, with
-`(thread name/frame metadata not in dump)`, so you can tell a gap in the dump from a gap in heaptrail.
+(That layout is from a dump that has thread records. Neither sample dump has them.) When it does not, HeapTrail prints the raw serial numbers it has, as above, with
+`(thread name/frame metadata not in dump)`, so you can tell a gap in the dump from a gap in HeapTrail.
 
 A path stopped by the depth limit:
 

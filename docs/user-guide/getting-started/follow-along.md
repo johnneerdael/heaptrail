@@ -5,7 +5,7 @@ try every basic mode in a few milliseconds each, without capturing anything. The
 examples elsewhere in this guide use bigger Android dumps that are not published, so this
 page is the one place where you can run the commands and get exactly the output shown.
 
-You need a clone of the repository and a heaptrail build. Run every command from the
+You need a clone of the repository and a HeapTrail build. Run every command from the
 repository root.
 
 ```bash
@@ -21,7 +21,7 @@ export PATH="$PWD/target/release:$PATH"
 | `test-heap-dumps/hprof-32.bin` | A 275 KiB dump with 4-byte ids, from the JDK 8 `jhat` tests. It also holds allocation-site records. |
 
 Both files use the `JAVA PROFILE 1.0.1` format. Android dumps from `am dumpheap` use 1.0.3.
-heaptrail reads all three; see [HPROF formats](../reference/hprof-formats.md).
+HeapTrail reads all three; see [HPROF formats](../reference/hprof-formats.md).
 
 ## 1. The summary
 
@@ -139,7 +139,7 @@ Path from object_id=3606861808 (depth 1 step(s)):
 
 The class loader is held by a `Thread` through its `contextClassLoader` field, and that thread object
 is itself a GC root (`RootThreadObject`). The chain ends because it reached something the runtime
-always keeps alive. The `root metadata` line is what heaptrail knows about the thread when the dump has no
+always keeps alive. The `root metadata` line is what HeapTrail knows about the thread when the dump has no
 thread name.
 
 ## 5. A path that goes in circles

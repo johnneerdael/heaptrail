@@ -73,7 +73,7 @@ heaptrail -i heap.hprof --find-referrers com.nexio.tv.domain.model.MetaPreview -
 Here the 603,715 slots resolve to 28,681 `ArrayList.elementData` arrays, and to `CatalogRow.items` one hop later. Start with `--hops 2` for any class that lives in collections. Each extra hop costs one more pass over the
 file, about 0.2 seconds on a 224 MiB dump.
 
-`--hops` accepts 1 to 5, but heaptrail reports at most three hops. A value of 4 or 5 prints the same three sections as 3.
+`--hops` accepts 1 to 5, but HeapTrail reports at most three hops. A value of 4 or 5 prints the same three sections as 3.
 
 ## Target an object { #target-an-object }
 

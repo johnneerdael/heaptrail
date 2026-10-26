@@ -6,7 +6,7 @@ command's output points to the next one.
 
 Before you start:
 
-- [ ] heaptrail is [installed](install.md) (`heaptrail --version` prints a version).
+- [ ] HeapTrail is [installed](install.md) (`heaptrail --version` prints a version).
 - [ ] You have a heap dump. Use your own, or read along: every output below comes from
   a real dump of an Android TV app, so your numbers will differ. To run the commands
   yourself on a file from the repository, see [Follow along with the bundled files](follow-along.md).
@@ -215,7 +215,7 @@ previews, and a view model that outlives the screen keeps all of it.
 ## 4. Identify the biggest array
 
 Back to the 5.64 MiB `char[]` from step 1. A class name tells you nothing about what is in an
-array, so ask heaptrail to show the first bytes.
+array, so ask HeapTrail to show the first bytes.
 
 ```bash
 heaptrail -i heap.hprof -t 3 --preview-bytes 200

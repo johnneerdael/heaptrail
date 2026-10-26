@@ -2,7 +2,7 @@
 
 Use these methods when [`android-capture`](android-capture.md) is not an option: you have no `adb` on this machine, you
 want a profile from Android Studio, or you need a feature the helper does not offer. The result is the same kind of
-`.hprof` file, and every heaptrail mode reads it.
+`.hprof` file, and every HeapTrail mode reads it.
 
 ## With adb
 
@@ -34,7 +34,7 @@ Replace `29481` with the id from step 1.
     size stays the same for a minute or more, stop and read `adb logcat` for lines about `dumpheap` or `hprof`.
     Do not analyze an empty file.
 
-The file uses 4-byte object ids and the `JAVA PROFILE 1.0.3` format on current Android. heaptrail reads both
+The file uses 4-byte object ids and the `JAVA PROFILE 1.0.3` format on current Android. HeapTrail reads both
 id sizes and all three format versions. You do not need `hprof-conv`, which exists only to convert very old Dalvik dumps.
 
 For two dumps around an action, repeat steps 3 to 5 with a different file name each time:
@@ -64,7 +64,7 @@ If you turn on **Record memory allocations** before you capture, the dump also c
 
 Perfetto's *Java heap dump* data source writes a heap dump in a compatible format. Follow Perfetto's
 [Java heap dump guide](https://perfetto.dev/docs/data-sources/java-heap-dumps), then give the resulting file to
-heaptrail as it is.
+HeapTrail as it is.
 
 ## Related
 

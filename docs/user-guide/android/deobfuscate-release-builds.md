@@ -1,7 +1,7 @@
 # Deobfuscate release builds
 
 Release builds of an Android app are shrunk and renamed by R8 (or ProGuard) before they ship, so a heap dump from one is full of names such as `a3.t`, `p1.j` and `zh.l1`. The build also writes a
-**mapping file** that records what each short name stands for. `--mapping` hands that file to heaptrail, which then prints the real names.
+**mapping file** that records what each short name stands for. `--mapping` hands that file to HeapTrail, which then prints the real names.
 
 ```bash
 heaptrail -i heap.hprof --mapping app/build/outputs/mapping/universalRelease/mapping.txt --leak-suspects --exclude-soft-weak
@@ -71,7 +71,7 @@ Top 12 raw shallow heap classes:
 +------------+-----------+------------+--------------------------------------------+
 ```
 
-`a3.t` became `com.example.myapp.player.TrackQueue`, and heaptrail printed the file it used. The rows for `x7.k`, `v7.t` and the others did not change, because the mapping file in this example covers only three names. It
+`a3.t` became `com.example.myapp.player.TrackQueue`, and HeapTrail printed the file it used. The rows for `x7.k`, `v7.t` and the others did not change, because the mapping file in this example covers only three names. It
 is a small demonstration file, with invented class names, not the app's real mapping. A real mapping covers every renamed class.
 
 `Using mapping:` is the first line of the output, so a report that shows it is a report with a mapping applied.
@@ -92,7 +92,7 @@ For a variant called `universalRelease`, that is `app/build/outputs/mapping/univ
 
 ## What gets restored
 
-heaptrail reads the class lines and the field lines of the mapping file. It restores:
+HeapTrail reads the class lines and the field lines of the mapping file. It restores:
 
 - **Class names**, in every report, including array types such as `a3.t[]`.
 - **Field names**, for holders in [referrers](../holders/find-referrers.md), [paths](../holders/paths-to-root.md) and merged paths: `p1.b.j` becomes the real field name when the mapping has it.
@@ -180,7 +180,7 @@ heaptrail -i jvm.hprof --mapping meminfo.txt
 error: invalid mapping file meminfo.txt at line 1: expected class mapping with ` -> `
 ```
 
-`--mapping` and `--auto-mapping` cannot be used together. clap rejects the combination before heaptrail reads anything.
+`--mapping` and `--auto-mapping` cannot be used together. clap rejects the combination before HeapTrail reads anything.
 
 ## Gotchas
 

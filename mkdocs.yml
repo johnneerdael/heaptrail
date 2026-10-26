@@ -1,12 +1,12 @@
-site_name: heaptrail user guide
-site_description: Find what is holding your memory. Learn to capture, analyse and compare JVM and Android heap dumps with heaptrail, the fast command-line analyzer.
+site_name: HeapTrail user guide
+site_description: Find what is holding your memory. Learn to capture, analyse and compare JVM and Android heap dumps with HeapTrail, the fast command-line analyzer.
 site_url: https://heaptrail.neerdael.nl/
 repo_url: https://github.com/johnneerdael/heaptrail
 repo_name: johnneerdael/heaptrail
 edit_uri: edit/master/docs/user-guide/
 docs_dir: docs/user-guide
 site_dir: build/user-guide-site
-copyright: heaptrail is free, open-source software (Apache-2.0). It began as a fork of hprof-slurp and is not affiliated with Eclipse MAT, VisualVM, LeakCanary or Android Studio.
+copyright: HeapTrail is free, open-source software (Apache-2.0). It began as a fork of hprof-slurp and is not affiliated with Eclipse MAT, VisualVM, LeakCanary or Android Studio.
 
 # Writer-only material lives beside the pages but is not published.
 exclude_docs: |
@@ -16,11 +16,11 @@ exclude_docs: |
 theme:
   name: material
   language: en
-  logo: assets/brand/mark.svg
-  favicon: assets/brand/favicon.png
-  font:
-    text: Inter
-    code: JetBrains Mono
+  custom_dir: docs/overrides
+  logo: assets/brand/heaptrail-mark-on-dark.svg
+  favicon: assets/brand/favicon.svg
+  # Fonts are self-hosted from assets/fonts (see stylesheets/heaptrail.css).
+  font: false
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil-outline
@@ -71,10 +71,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/johnneerdael/heaptrail
-      name: heaptrail on GitHub
+      name: HeapTrail on GitHub
     - icon: fontawesome/brands/rust
       link: https://crates.io/crates/heaptrail
-      name: heaptrail on crates.io
+      name: HeapTrail on crates.io
 
 plugins:
   - search:
@@ -118,6 +118,10 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        # The 16 supporting glyphs from the brand kit, as :heaptrail-trace: and so on.
+        custom_icons:
+          - docs/overrides/.icons
 
 # Strict builds (`mkdocs build --strict`) turn every one of these into an error.
 validation:
@@ -196,7 +200,7 @@ nav:
   - GC roots and paths: concepts/gc-roots-and-paths.md
   - Reference strength: concepts/reference-strength.md
   - Object ids: concepts/object-ids.md
-  - How heaptrail reads a dump: concepts/how-heaptrail-reads-a-dump.md
+  - How HeapTrail reads a dump: concepts/how-heaptrail-reads-a-dump.md
 - Reference:
   - reference/index.md
   - Command line: reference/command-line.md

@@ -4,7 +4,7 @@
 heaptrail [OPTIONS] [COMMAND]
 ```
 
-heaptrail has one default mode, the summary, and selects every other mode with a flag. The only subcommand is `android-capture`. Run `heaptrail --help` for the version of this table that matches your build.
+HeapTrail has one default mode, the summary, and selects every other mode with a flag. The only subcommand is `android-capture`. Run `heaptrail --help` for the version of this table that matches your build.
 
 ??? example "Full `--help` output of this version"
 
@@ -96,7 +96,7 @@ heaptrail has one default mode, the summary, and selects every other mode with a
 | `-t`, `--top <TOP>` | `20` | Rows to show. Must be at least 1. See [Mode compatibility](mode-compatibility.md) for the modes it applies to. |
 | `--json` | off | Also write the result as a JSON file. |
 | `--json-out <PATH>` | | Write the JSON to exactly this path. Needs `--json`. The folder must exist. |
-| `-d`, `--debug` | off | Print every record's tag while parsing. For heaptrail development; the output runs to more than a hundred thousand lines. |
+| `-d`, `--debug` | off | Print every record's tag while parsing. For HeapTrail development; the output runs to more than a hundred thousand lines. |
 | `-h`, `--help` | | Print help. |
 | `-V`, `--version` | | Print the version, as `heaptrail <version>`. |
 
@@ -186,9 +186,9 @@ See [android-capture](../capture/android-capture.md).
 ## Value rules
 
 - **`--top`** must be at least 1.
-- **`--hops`** must be 1 to 5. Anything else is rejected before heaptrail starts.
+- **`--hops`** must be 1 to 5. Anything else is rejected before HeapTrail starts.
 - **`--paths-from-id`** takes digits only. An id that is not in the dump gives an empty path, not an error.
-- **`--leak-suspects`** takes a fraction, normally between 0 and 1. heaptrail does not check the range, and uses what you give it: `2.0` prints `Threshold: 200.0 %`.
+- **`--leak-suspects`** takes a fraction, normally between 0 and 1. HeapTrail does not check the range, and uses what you give it: `2.0` prints `Threshold: 200.0 %`.
 - **`--diff-by`** is `count` or `bytes`.
 - **File arguments** must exist, and must not be empty.
 

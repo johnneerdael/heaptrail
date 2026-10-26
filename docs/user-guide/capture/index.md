@@ -1,6 +1,6 @@
 # Capture a heap dump
 
-heaptrail analyzes a heap dump; it does not attach to a running process. This section covers
+HeapTrail analyzes a heap dump; it does not attach to a running process. This section covers
 getting a good dump: from an Android device, from a JVM, and in a series for timeline work.
 The quality of the dump limits everything that follows.
 
@@ -27,8 +27,8 @@ The quality of the dump limits everything that follows.
 
 Check these before you spend time analyzing:
 
-- [ ] The file is not empty. heaptrail refuses a 0-byte file with `input hprof is 0 bytes`.
-- [ ] The file is complete. heaptrail does not verify that, and a cut-off file can give a partial report. Compare its size with what the device or JVM reported.
+- [ ] The file is not empty. HeapTrail refuses a 0-byte file with `input hprof is 0 bytes`.
+- [ ] The file is complete. HeapTrail does not verify that, and a cut-off file can give a partial report. Compare its size with what the device or JVM reported.
 - [ ] It was taken in the state you care about. A dump of an app on its profile picker answers questions about the picker.
 - [ ] You know which build it came from. For a release build, keep the matching R8 mapping file, so class names can be [restored](../android/index.md).
 - [ ] `heaptrail -i dump.hprof` runs and prints a sensible `Processing … binary hprof file` line.
@@ -58,5 +58,5 @@ A heap dump contains everything the process held in memory: tokens, cookies, use
 ## Related
 
 - [Analyze](../analyze/index.md) is what to do with the file.
-- [HPROF formats](../reference/hprof-formats.md) lists the dump formats heaptrail reads.
+- [HPROF formats](../reference/hprof-formats.md) lists the dump formats HeapTrail reads.
 - [Troubleshooting](../help/troubleshooting.md) covers empty, truncated and unreadable dumps.

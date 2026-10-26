@@ -42,7 +42,7 @@ Suspect 1 — 27.98MiB (26.2 % of heap)
 
 **The two header lines**
 
-- `Heap: 141.81MiB total, 106.60MiB retained-reachable.` The first figure is every object in heaptrail's graph. The second is what the GC
+- `Heap: 141.81MiB total, 106.60MiB retained-reachable.` The first figure is every object in HeapTrail's graph. The second is what the GC
   roots can reach. Percentages are relative to the *second* figure. See [Shallow and retained size](../concepts/shallow-and-retained.md#total-reachable-and-unreachable).
 - `Threshold: 5.0 % retained share. Showing 3 suspect(s) (3 above threshold).` A suspect has to retain at least this share of the reachable heap to
   count as above the threshold.
@@ -83,7 +83,7 @@ Read the group as one finding, and follow the path of the outermost one. [Your f
 
 ### The threshold, and the top-three fallback
 
-If no object clears the threshold, heaptrail does not print an empty report. It falls back to the top three objects and labels each
+If no object clears the threshold, HeapTrail does not print an empty report. It falls back to the top three objects and labels each
 `below threshold`:
 
 ```bash
@@ -138,7 +138,7 @@ each provider points back at the component. The useful finding is in the first h
 
 ## More than 100 %, and orphans
 
-A dump can contain garbage: objects the runtime has not freed yet. heaptrail ranks those too. A suspect can then show more than 100 % of the reachable heap,
+A dump can contain garbage: objects the runtime has not freed yet. HeapTrail ranks those too. A suspect can then show more than 100 % of the reachable heap,
 and its path ends with `orphan`, because nothing reaches it.
 
 ```bash

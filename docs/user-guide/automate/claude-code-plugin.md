@@ -1,7 +1,7 @@
 # The Claude Code plugin
 
 The repository doubles as a [Claude Code](https://claude.com/claude-code) plugin marketplace. Installing the plugin gives Claude a skill, `analysing-heap-dumps`, that switches on when you talk about heap dumps. Claude then runs
-heaptrail for you, installs it if it is missing, and works through the same loop you would: summary, suspects, referrers, paths, diff.
+HeapTrail for you, installs it if it is missing, and works through the same loop you would: summary, suspects, referrers, paths, diff.
 
 ## Install it
 
@@ -29,7 +29,7 @@ I have a 235 MB Android hprof at /tmp/heap.hprof. The app is using way more
 memory than expected. What's going on?
 ```
 
-The skill is triggered by things like a `.hprof` file in the conversation, `am dumpheap`, `jmap -dump`, "memory leak", "retained size", "OutOfMemoryError" and "what holds this object". Claude checks that heaptrail is on your `PATH`, runs
+The skill is triggered by things like a `.hprof` file in the conversation, `am dumpheap`, `jmap -dump`, "memory leak", "retained size", "OutOfMemoryError" and "what holds this object". Claude checks that HeapTrail is on your `PATH`, runs
 `cargo install heaptrail` if it is not, and then follows the skill's workflow.
 
 ## What the skill tells Claude to do
@@ -64,7 +64,7 @@ another agent's instructions.
 
 ## Working with an agent
 
-Whichever agent runs heaptrail, a few habits make the result more useful:
+Whichever agent runs `heaptrail`, a few habits make the result more useful:
 
 - **Give it the dump path and the question.** "What holds `com.example.Foo`?" and "Is memory growing between these three dumps?" are answerable. "Fix my leak" is not.
 - **Give it the mapping.** Without it, an agent reasons about `a3.t`.
@@ -76,4 +76,4 @@ Whichever agent runs heaptrail, a few habits make the result more useful:
 
 - [Choose the right mode](../getting-started/choose-a-mode.md) is the same map the skill follows.
 - [JSON output](json-output.md) for the files an agent should write.
-- [Install heaptrail](../getting-started/install.md) if you want it on your `PATH` without the plugin.
+- [Install HeapTrail](../getting-started/install.md) if you want it on your `PATH` without the plugin.

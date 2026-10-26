@@ -9,7 +9,7 @@ heaptrail -i heap.hprof --bitmaps -t 20
 
 !!! warning "This mode does not run on either sample dump"
     `--bitmaps` reads the fields `mWidth`, `mHeight` and `mConfig` from each `android.graphics.Bitmap`. Some Android builds do not have those
-    fields in the Java object, and then heaptrail cannot size the bitmaps. **Neither of the two Android dumps used in this guide has them**, so the report below shows
+    fields in the Java object, and then HeapTrail cannot size the bitmaps. **Neither of the two Android dumps used in this guide has them**, so the report below shows
     the layout with illustrative values, and the error is real. If the command fails on your dump, see [When it fails](#when-it-fails).
 
 ## The report
@@ -31,7 +31,7 @@ Total bitmap pixel bytes: 80.00MiB across 3 instances.
 |---|---|
 | `pixel_bytes` | `width × height × 4`, in binary units. |
 | `dimensions` | The bitmap's `mWidth × mHeight`. |
-| `config` | Always `ARGB_8888` in this version. heaptrail does not read the real `Bitmap.Config`. |
+| `config` | Always `ARGB_8888` in this version. HeapTrail does not read the real `Bitmap.Config`. |
 | `location` | `java` if the bitmap has a `mBuffer` array on the Java heap (pre-Android 8), `native` otherwise. |
 | `object_id` | The id to give to [`--paths-from-id`](../holders/paths-to-root.md). |
 
@@ -40,7 +40,7 @@ The total adds up only the rows shown, so it depends on `--top`.
 ### Java heap or native?
 
 Before Android 8 (API 26), a bitmap's pixels lived in a Java `byte[]`, and that array is in the dump and counted in the heap totals. From Android 8 on, the pixels are in native memory. The
-dump holds only a handle. For those bitmaps, heaptrail *estimates* `width × height × 4`. Native memory is not part of the heap dump, so the number is an estimate, not
+dump holds only a handle. For those bitmaps, HeapTrail *estimates* `width × height × 4`. Native memory is not part of the heap dump, so the number is an estimate, not
 a measurement. A bitmap with a different pixel format, or with stride padding, takes a different amount.
 
 ## When it fails { #when-it-fails }
@@ -50,13 +50,13 @@ a measurement. A bitmap with a different pixel format, or with stride padding, t
 error: android.graphics.Bitmap class is not loaded in this dump; bitmap accounting has nothing to report. This can happen on Android dumps from screens that have not used Bitmap-backed images.
 ```
 
-This message is misleading in one case. It says the class "is not loaded", but the real cause can be that its fields are not the ones heaptrail expects. Check which it is:
+This message is misleading in one case. It says the class "is not loaded", but the real cause can be that its fields are not the ones HeapTrail expects. Check which it is:
 
 - Run the plain summary and look for `android.graphics.Bitmap` in the class table. In the 186 MiB sample dump it lists 20 instances, and `--bitmaps` still fails.
-  If the class is there, the dump has bitmaps but heaptrail cannot size them.
+  If the class is there, the dump has bitmaps but HeapTrail cannot size them.
 - If the class is not there, the app had not used a bitmap when the dump was taken. Capture again after the images load.
 
-When the dump has bitmaps heaptrail cannot size, use these instead:
+When the dump has bitmaps HeapTrail cannot size, use these instead:
 
 - `heaptrail -i heap.hprof --find-referrers android.graphics.Bitmap` to see who holds the bitmaps. On the 186 MiB sample dump, which has 20 of them, that
   shows an image-loading memory cache, `BitmapDrawable` state and Compose image wrappers:

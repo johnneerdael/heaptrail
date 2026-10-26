@@ -1,7 +1,7 @@
 # Exclude weak references
 
 On an Android dump, the first holder of almost any object can be a `WeakReference`, a LeakCanary watcher or one of the collector's own reference lists, and the real strong holder hides
-underneath. `--exclude-soft-weak` tells heaptrail to ignore weak, soft and phantom references, so the holders that actually keep objects alive show through.
+underneath. `--exclude-soft-weak` tells HeapTrail to ignore weak, soft and phantom references, so the holders that actually keep objects alive show through.
 
 It is a modifier. Add it to the mode you are already using:
 
@@ -76,7 +76,7 @@ With the flag, retained sizes move in both directions. See the three rows compar
 ## Differences from Eclipse MAT
 
 MAT's leak-hunting view excludes weak, soft and phantom references by default. `--exclude-soft-weak` is the same idea. MAT also has a separate option for finalizer references (`java.lang.ref.FinalReference` and its
-subclasses). heaptrail does not exclude those, so retained sizes can still differ slightly.
+subclasses). HeapTrail does not exclude those, so retained sizes can still differ slightly.
 
 ## Gotchas
 

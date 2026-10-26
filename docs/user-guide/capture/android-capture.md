@@ -32,7 +32,7 @@ AllocationSites present: false
 Transcript: dumps/com-example-myapp-20261025-165513-transcript.txt
 ```
 
-The `Processing …` line is a quick summary pass that heaptrail runs on the pulled file. It checks that the dump
+The `Processing …` line is a quick summary pass that HeapTrail runs on the pulled file. It checks that the dump
 parses and whether it holds allocation sites. The last line names the transcript.
 
 ## What it does
@@ -49,7 +49,7 @@ parses and whether it holds allocation sites. The last line names the transcript
 9. Writes `<package>-<timestamp>-transcript.txt` next to the dump.
 
 !!! warning "It deletes other `.hprof` files"
-    Step 4 removes *every* `*.hprof` in `/data/local/tmp`, not only heaptrail's own. Move anything you want to keep.
+    Step 4 removes *every* `*.hprof` in `/data/local/tmp`, not only HeapTrail's own. Move anything you want to keep.
     The cleanup stops dumps from piling up on the device and filling `/data`.
 
 ## The transcript
@@ -148,7 +148,7 @@ A single capture is `<package>-<timestamp>.hprof`, where the package has every c
 
 `--auto-mapping` runs *before* the capture. In `strict` mode, the command fails at once if no matching mapping is found,
 so you do not capture a dump you cannot read. In `optional` mode it prints a warning and goes on. Either way the dump
-itself is not changed. heaptrail records the mapping path, how it was found, and its identifiers in the transcript, and you
+itself is not changed. HeapTrail records the mapping path, how it was found, and its identifiers in the transcript, and you
 apply the mapping later with `--mapping` or `--auto-mapping` on the analysis commands. See [Auto-mapping](../android/auto-mapping.md).
 
 ```bash
@@ -185,7 +185,7 @@ error: android capture failed: pidof returned no pid for package com.example.mya
 error: android capture failed: device hprof size did not change for 60s while waiting for dump to finish: /data/local/tmp/com-example-myapp-20261025-165538.hprof (last observed size: 0 bytes)
 ```
 
-When a capture fails, heaptrail still writes the transcript, so you can see which step stopped.
+When a capture fails, HeapTrail still writes the transcript, so you can see which step stopped.
 
 ## Related
 

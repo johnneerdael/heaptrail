@@ -1,29 +1,29 @@
 # Frequently asked questions
 
-## What is heaptrail?
+## What is HeapTrail?
 
 A command-line analyzer for JVM and Android heap dumps. It ranks what takes the space, traces what holds an object, and compares snapshots, and it prints the result as text or JSON. It began as a fork of
 [hprof-slurp](https://github.com/agourlay/hprof-slurp). See [About](about.md).
 
 ## When should I use Eclipse MAT instead? { #when-should-i-use-eclipse-mat-instead }
 
-Use heaptrail first, and MAT when the question needs a graph you can click through.
+Use HeapTrail first, and MAT when the question needs a graph you can click through.
 
-| Reach for heaptrail when… | Reach for MAT or VisualVM when… |
+| Reach for HeapTrail when… | Reach for MAT or VisualVM when… |
 |---|---|
 | You want an answer in seconds from a terminal, a script or a CI job. | You want to click through references and pivot as you go. |
 | The dump is large, or you are on a CI runner or a remote box. | You need OQL for an ad-hoc query. |
 | An agent or a pipeline should read the result. | You need an HTML report for people who will not open a terminal. |
 | The question is narrow and repeatable: who holds X, what changed, what dominates. | The question is open-ended, and you will explore. |
 
-The two work together: heaptrail is the cheap, scriptable first pass, and MAT is the right tool when the question turns into an interactive session. For live captures with allocation tracking, Android Studio's profiler
+The two work together: HeapTrail is the cheap, scriptable first pass, and MAT is the right tool when the question turns into an interactive session. For live captures with allocation tracking, Android Studio's profiler
 is the better fit, and Perfetto is for dumps correlated with a system trace.
 
 ## Do I need Java installed?
 
-No. heaptrail is a single binary. You need a JDK only to take a JVM dump (`jmap`, `jcmd`), and the Android platform tools to capture from a device.
+No. HeapTrail is a single binary. You need a JDK only to take a JVM dump (`jmap`, `jcmd`), and the Android platform tools to capture from a device.
 
-## Does heaptrail change my dump?
+## Does HeapTrail change my dump?
 
 No. It only reads the file. It writes JSON files only when you ask for them.
 
@@ -33,7 +33,7 @@ No. It analyzes a dump file. Take the dump with [`android-capture`](../capture/a
 
 ## Is a suspect a leak?
 
-Not necessarily. A suspect is an object that keeps a lot of memory alive. A cache that is meant to hold 30 MiB is a suspect, and not a bug. A leak is an object you no longer need that is still reachable. heaptrail finds the
+Not necessarily. A suspect is an object that keeps a lot of memory alive. A cache that is meant to hold 30 MiB is a suspect, and not a bug. A leak is an object you no longer need that is still reachable. HeapTrail finds the
 retention and the chain that explains it. You decide whether it is intended. See [Leak suspects](../analyze/leak-suspects.md).
 
 ## Why does my path say `orphan`?
@@ -43,7 +43,7 @@ Because the path walker follows instance fields and array slots, and not class s
 
 ## Why do I see `java.lang.Object[][]`?
 
-On Android dumps, heaptrail's text tables add a pair of brackets to object array names. `java.lang.Object[][]` is an `Object[]`. JSON uses the single-bracket name. See [Summary](../analyze/summary.md#3-the-class-table).
+On Android dumps, HeapTrail's text tables add a pair of brackets to object array names. `java.lang.Object[][]` is an `Object[]`. JSON uses the single-bracket name. See [Summary](../analyze/summary.md#3-the-class-table).
 
 ## Why are class names like `a3.t`?
 
@@ -54,8 +54,8 @@ The build is obfuscated by R8. Add `--mapping <mapping.txt>`, or `--auto-mapping
 Several reasons, in order of how often they matter.
 
 1. MAT excludes weak, soft and phantom references in its leak-hunting view. Add `--exclude-soft-weak`.
-2. MAT also has a separate exclusion for finalizer references, which heaptrail does not offer.
-3. heaptrail's class *retained* column sums each instance's retained size, so nested instances count more than once. See [Shallow and retained size](../concepts/shallow-and-retained.md).
+2. MAT also has a separate exclusion for finalizer references, which HeapTrail does not offer.
+3. HeapTrail's class *retained* column sums each instance's retained size, so nested instances count more than once. See [Shallow and retained size](../concepts/shallow-and-retained.md).
 4. The two tools size objects with their own code, so shallow sizes differ slightly.
 
 ## How big a dump can it handle?
@@ -96,5 +96,5 @@ checked it for secrets. See [Handle dumps safely](../capture/handle-dumps-safely
 ## Related
 
 - [Troubleshooting](troubleshooting.md) starts from a symptom.
-- [Limitations](../reference/limitations.md) lists what heaptrail does not do.
+- [Limitations](../reference/limitations.md) lists what HeapTrail does not do.
 - [Choose the right mode](../getting-started/choose-a-mode.md).

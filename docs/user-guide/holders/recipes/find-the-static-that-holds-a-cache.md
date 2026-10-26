@@ -92,7 +92,7 @@ Download it from [Capture: JVM dumps](../../capture/jvm.md#try-it-a-demo-with-a-
 The path walker follows instance fields and array slots. A class static field is not an instance field, so a path that ends at a static ends in `orphan`, as if nothing held the object. The referrer mode scans the
 statics as well, which is why it finds the owner in one step. The retained-size graph treats statics as roots, so a suspect report finds the map even though its own path section cannot explain it.
 
-The fix lives in the code, not in heaptrail: the cache needs a limit. Bound it by size or age (an LRU map, or a weak or soft reference to the values), or remove entries when sessions end.
+The fix lives in the code, not in HeapTrail: the cache needs a limit. Bound it by size or age (an LRU map, or a weak or soft reference to the values), or remove entries when sessions end.
 
 ## Variations
 

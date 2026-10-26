@@ -2,7 +2,7 @@
 
 Heap analysis has a small vocabulary that every report leans on: shallow and retained size,
 GC roots, reference strength, object ids. These pages explain each idea once, with a
-real example from heaptrail's output, so the how-to pages can link here instead of
+real example from HeapTrail's output, so the how-to pages can link here instead of
 repeating themselves.
 
 You do not need to read them before you start. Read one when a number in a report surprises you.
@@ -15,7 +15,7 @@ You do not need to read them before you start. Read one when a number in a repor
 | What is a GC root, and what does a path to one mean? | [GC roots and paths](gc-roots-and-paths.md) |
 | Why do I see `WeakReference` all through my paths? | [Reference strength](reference-strength.md) |
 | Where do I get an object id, and what can I do with it? | [Object ids](object-ids.md) |
-| Why does one mode take 0.2 seconds and another take 6? | [How heaptrail reads a dump](how-heaptrail-reads-a-dump.md) |
+| Why does one mode take 0.2 seconds and another take 6? | [How HeapTrail reads a dump](how-heaptrail-reads-a-dump.md) |
 
 ## A heap dump in one paragraph
 

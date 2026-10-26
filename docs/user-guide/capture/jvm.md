@@ -1,6 +1,6 @@
 # JVM dumps
 
-Any HotSpot-based JVM can write a heap dump in HPROF format, and heaptrail reads it. You can take one from a
+Any HotSpot-based JVM can write a heap dump in HPROF format, and HeapTrail reads it. You can take one from a
 running process with `jmap` or `jcmd`, or have the JVM write one at the moment it runs out of memory.
 
 The commands below were checked on OpenJDK 21. Other JDKs spell some options differently, so check your
@@ -68,7 +68,7 @@ Start with [`--leak-suspects`](../analyze/leak-suspects.md).
 
 The repository includes a small program with a leak: a session cache that never evicts anything. Its dump is committed
 as [`shop-demo.hprof.gz`](../assets/downloads/shop-demo.hprof.gz) (1.2 MB), so you can follow
-the examples without running a JVM. Unpack it, then run heaptrail on it:
+the examples without running a JVM. Unpack it, then run `heaptrail` on it:
 
 ```bash
 gunzip -c docs/user-guide/assets/downloads/shop-demo.hprof.gz > demo.hprof

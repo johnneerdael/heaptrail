@@ -114,7 +114,7 @@ Found 122154 target instance(s) for java.util.ArrayList
 
 ## Weak references
 
-By default heaptrail counts weak, soft and phantom references like any other, which is the strict definition and is not what Eclipse MAT
+By default HeapTrail counts weak, soft and phantom references like any other, which is the strict definition and is not what Eclipse MAT
 shows. Add `--exclude-soft-weak` to match MAT's leak-hunting view. See [Reference strength](../concepts/reference-strength.md).
 
 ## What it costs

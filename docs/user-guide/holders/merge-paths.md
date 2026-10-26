@@ -75,7 +75,7 @@ For a primitive array, use plain [`--paths-from-id`](paths-to-root.md).
 
 ## What it costs
 
-heaptrail walks every instance on its own, and each hop of each walk reads the file. So the time is roughly *instances × hops × the time of one pass*. On a 224 MiB dump, merging 5 instances to depth 12 took 15 seconds. On a 186 MiB dump, merging 10 instances to depth 8 took 11 seconds.
+HeapTrail walks every instance on its own, and each hop of each walk reads the file. So the time is roughly *instances × hops × the time of one pass*. On a 224 MiB dump, merging 5 instances to depth 12 took 15 seconds. On a 186 MiB dump, merging 10 instances to depth 8 took 11 seconds.
 
 !!! warning "There is no instance cap"
     A class with thousands of instances will run for a very long time. Do not point `--merge-paths` at `java.util.ArrayList` or at a model class with half a million instances. Pick a class with tens of instances, such as an

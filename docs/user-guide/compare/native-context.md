@@ -14,7 +14,7 @@ heaptrail --diff-series launch.hprof play.hprof soak.hprof --diff-by bytes --top
 
 ## What it reads
 
-heaptrail looks for five rows in the **App Summary** block of the file. To print that block:
+HeapTrail looks for five rows in the **App Summary** block of the file. To print that block:
 
 ```bash
 sed -n '/App Summary/,/TOTAL:/p' meminfo.txt

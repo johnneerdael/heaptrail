@@ -109,7 +109,7 @@ Native context (dumpsys meminfo, PSS KiB):
   warning: missing meminfo row: GL
 ```
 
-With `--native-context <meminfo.txt>`, heaptrail adds the totals from `dumpsys meminfo`, so you can see whether the *Java* heap is the part that is growing. See [Native context](native-context.md).
+With `--native-context <meminfo.txt>`, HeapTrail adds the totals from `dumpsys meminfo`, so you can see whether the *Java* heap is the part that is growing. See [Native context](native-context.md).
 
 ## Mapped names
 
@@ -165,7 +165,7 @@ and an array of bytes, one value per snapshot, plus the totals), `monotonic_grow
 
 ## Gotchas
 
-- **Order is yours.** heaptrail does not sort the files by time. The first path is snapshot 0.
+- **Order is yours.** HeapTrail does not sort the files by time. The first path is snapshot 0.
 - **Use the same build.** A new build changes obfuscated names, and every class then looks new.
 - **The growth test follows `--diff-by`.** Counts and bytes can disagree about which classes qualify. Try both.
 - **A short series is noisy.** Three dumps seconds apart show warm-up. Prefer dumps that bracket real work.

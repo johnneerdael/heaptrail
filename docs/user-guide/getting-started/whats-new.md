@@ -25,7 +25,7 @@ To see which version you have, run `heaptrail --version`. To upgrade, see
 
 ## 1.4.1 — October 25, 2026
 
-The user guide is now a site. Nothing about how heaptrail reads a dump changes.
+The user guide is now a site. Nothing about how HeapTrail reads a dump changes.
 
 - The guide you are reading replaces `USERGUIDE.md` and the long `README.md`. Every block of output in it comes from a real run.
 - `README.md` is a short front door, `USERGUIDE.md` maps the old sections to the new pages, and the guide's [glossary](../reference/glossary.md) replaces `glossary.md`.
@@ -78,10 +78,10 @@ See [Android](../android/index.md).
 
 ## 1.1.1 — May 11, 2026
 
-Modern Android dumps no longer crash heaptrail.
+Modern Android dumps no longer crash HeapTrail.
 
 Version 1.1.0 panicked with `class id must have a class definition` on dumps that reference classes the
-dumper left out, which is common for `am dumpheap` on recent Android. Now heaptrail counts those instances at
+dumper left out, which is common for `am dumpheap` on recent Android. Now HeapTrail counts those instances at
 the bare object-header size, names the class `<unknown class #id>`, and prints a single warning at the end
 of the run. Upgrade if you see that panic.
 
@@ -116,7 +116,7 @@ Leak hunting in the style of Eclipse MAT.
 
 ## 0.7.0 — May 9, 2026
 
-heaptrail begins as a rebrand of [hprof-slurp](https://github.com/agourlay/hprof-slurp), keeping its streaming summary parser and adding investigation modes on top.
+HeapTrail begins as a rebrand of [hprof-slurp](https://github.com/agourlay/hprof-slurp), keeping its streaming summary parser and adding investigation modes on top.
 
 - `--find-referrers` with `--hops 1`, `2` or `3`, for a class name or an object id.
 - `--paths-from-id` with `--max-depth`.
@@ -128,4 +128,4 @@ heaptrail begins as a rebrand of [hprof-slurp](https://github.com/agourlay/hprof
 
 - [Download and install](install.md) for the upgrade command.
 - [Command line reference](../reference/command-line.md) for the current flags.
-- [About heaptrail](../help/about.md) for the project's origin and license.
+- [About HeapTrail](../help/about.md) for the project's origin and license.

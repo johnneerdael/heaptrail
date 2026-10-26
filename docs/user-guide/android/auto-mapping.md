@@ -13,7 +13,7 @@ heaptrail -i launch.hprof --auto-mapping --package com.example.myapp --project-r
 - The Android project on this machine, built with Gradle, with the release variant you installed.
 - `--package <PACKAGE>`: the application id. It is required.
 
-`--project-root <DIR>` points at the project. If you leave it out, heaptrail uses the current directory, so you can run the command from the project root.
+`--project-root <DIR>` points at the project. If you leave it out, HeapTrail uses the current directory, so you can run the command from the project root.
 
 ## What it does
 
@@ -41,7 +41,7 @@ The second line, `Matched package … versionCode=… versionName=… variant=�
 | Mode | When no mapping can be found |
 |---|---|
 | `strict` (default) | The command fails. Use it when a mapped report is a requirement. |
-| `optional` | heaptrail prints a warning and analyzes the dump without names restored. |
+| `optional` | HeapTrail prints a warning and analyzes the dump without names restored. |
 
 ```bash
 heaptrail -i launch.hprof --auto-mapping --package com.example.myapp --project-root /nonexistent -t 3
@@ -84,7 +84,7 @@ error: mapping discovery failed: --auto-mapping requires --package
 
 ## Limits
 
-- **The module must be called `app`.** heaptrail looks under `<project-root>/app/build/outputs/`. A project with another module name needs `--mapping`.
+- **The module must be called `app`.** HeapTrail looks under `<project-root>/app/build/outputs/`. A project with another module name needs `--mapping`.
 - **Only Gradle's `output-metadata.json` layout** is read, and only the first element of each file. Builds with several APK outputs per variant may not match.
 - **It needs the device.** It reads the *installed* version. If you analyze a dump that is older than the installed build, use `--mapping` with the mapping of the build that made the dump.
 - **It does not check the mapping against the dump.** It trusts the version. Install the build you captured from before you rely on it.

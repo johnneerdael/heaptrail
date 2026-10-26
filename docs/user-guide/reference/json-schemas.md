@@ -1,6 +1,6 @@
 # JSON schemas
 
-This page lists the fields of every JSON file heaptrail writes with `--json`. Types are JSON types: *integer*, *number*, *string*, *boolean*, *array*, *object*, or `null`. A field marked *optional* is left out of the file when
+This page lists the fields of every JSON file HeapTrail writes with `--json`. Types are JSON types: *integer*, *number*, *string*, *boolean*, *array*, *object*, or `null`. A field marked *optional* is left out of the file when
 it has no value. Read fields by name, and ignore any you do not know: the files carry no schema version.
 
 See [JSON output](../automate/json-output.md) for how to write and query them.
@@ -101,7 +101,7 @@ The file is an array of *diff rows*, sorted by `--diff-by`, limited by `--top`.
 
 | Field | Type | Meaning |
 |---|---|---|
-| `total_heap_bytes` | integer | The sum of shallow sizes in heaptrail's object graph. |
+| `total_heap_bytes` | integer | The sum of shallow sizes in HeapTrail's object graph. |
 | `retained_reachable_bytes` | integer | What the GC roots can reach. Shares are relative to this. |
 | `threshold_pct` | number | The threshold, as a percentage. |
 | `suspects` | array of suspect | In rank order. |

@@ -10,6 +10,8 @@ What it checks (see docs/user-guide/_meta/style.md):
   flags     every `--flag` in code spans and fenced blocks is a flag of heaptrail
             or of a tool the guide names (see EXTERNAL_FLAGS)
   voice     none of the filler words the style guide bans appears in prose
+  name      the product is written HeapTrail in prose and `heaptrail` only as the command
+            (the brand guide's rule; code, URLs and paths are not prose)
   ending    every page ends with a Related, Next steps or What you learned section
 
 Run it from anywhere: python3 scripts/docs-check.py [--no-voice]
@@ -20,6 +22,9 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import docs_prose  # noqa: E402  (shared with the one-off rename; sits next to this script)
 
 ROOT = Path(__file__).resolve().parent.parent
 GUIDE = ROOT / "docs" / "user-guide"
@@ -171,6 +176,9 @@ def check_page(path: Path, flags: set[str], voice: bool) -> None:
     ):
         warn(path, 1, "page has no Related / Next steps / What you learned section")
 
+    for line_no, col, context in docs_prose.find_names(text):
+        err(path, line_no, f"write HeapTrail in prose (`heaptrail` is the command): …{context}…")
+
     captures: dict[str, set[str] | None] = {}
     shell_text = []
     cur_shell: list[str] = []
@@ -226,6 +234,25 @@ def check_page(path: Path, flags: set[str], voice: bool) -> None:
     check_commands(path, shell_text, used)
 
 
+def check_mkdocs_names() -> None:
+    """The site title, description, copyright and nav titles are prose too."""
+    for i, raw in enumerate(MKDOCS.read_text().splitlines(), 1):
+        m = re.match(r"^\s*(?:- )?(site_name|site_description|copyright|name):\s*(.*)$", raw)
+        title = m.group(2) if m else None
+        if title is None:
+            m = re.match(r"^\s*- ([^:]+):\s+\S+\.md\s*$", raw)  # nav entry: - Title: page.md
+            title = m.group(1) if m else None
+        if title and docs_prose.NAME.search(title):
+            errors.append(f"mkdocs.yml:{i}: write HeapTrail in titles and descriptions: {title[:80]}")
+
+
+def check_snippet_names() -> None:
+    """Diagram snippets are included into pages, so their captions and titles are prose too."""
+    for path in sorted((GUIDE / "_snippets").glob("*.html")):
+        for line_no, _col, context in docs_prose.find_names(path.read_text()):
+            err(path, line_no, f"write HeapTrail in prose (`heaptrail` is the command): …{context}…")
+
+
 def check_commands(path: Path, shell_text: list[str], used: dict[str, int]) -> None:
     """Every capture a page embeds must have its command shown on that page."""
     blob = norm_cmd("\n".join(shell_text))
@@ -241,6 +268,8 @@ def check_commands(path: Path, shell_text: list[str], used: dict[str, int]) -> N
 def main() -> int:
     voice = "--no-voice" not in sys.argv
     check_nav()
+    check_mkdocs_names()
+    check_snippet_names()
     flags = known_flags()
     if not any(f.startswith("--find") for f in flags):
         warnings.append("no help captures found; flag check is limited (run scripts/docs-capture.sh)")
