@@ -4,7 +4,7 @@
 <desc id="ht-ret-desc">A GC root points to A and E. A points to B and D, and B points to C. E also points to D. Freeing A frees A, B and C, which is 160 bytes. D stays alive because E still points to it.</desc>
 <defs><marker id="ht-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
 <text x="334" y="22" text-anchor="middle" class="ink" font-size="15" font-weight="600">Freeing A frees A, B and C: 16 + 48 + 96 = 160 bytes retained</text>
-<rect x="130" y="36" width="410" height="82" rx="14" fill="none" stroke="#19C3A1" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="130" y="36" width="410" height="82" rx="14" class="retained" stroke-width="2" stroke-dasharray="6 5"/>
 <circle cx="52" cy="160" r="34" class="box"/>
 <text x="52" y="157" text-anchor="middle" class="ink" font-size="13" font-weight="600">GC</text>
 <text x="52" y="173" text-anchor="middle" class="ink" font-size="13" font-weight="600">roots</text>
@@ -21,7 +21,7 @@
 <rect x="296" y="54" width="92" height="46" rx="8" class="box"/><text x="342" y="75" text-anchor="middle" class="ink" font-size="16" font-weight="700">B</text><text x="342" y="92" text-anchor="middle" class="dim" font-size="13">48 bytes</text>
 <rect x="450" y="54" width="88" height="46" rx="8" class="box"/><text x="494" y="75" text-anchor="middle" class="ink" font-size="16" font-weight="700">C</text><text x="494" y="92" text-anchor="middle" class="dim" font-size="13">96 bytes</text>
 <rect x="146" y="210" width="88" height="46" rx="8" class="box"/><text x="190" y="231" text-anchor="middle" class="ink" font-size="16" font-weight="700">E</text><text x="190" y="248" text-anchor="middle" class="dim" font-size="13">16 bytes</text>
-<rect x="296" y="210" width="92" height="46" rx="8" class="box" stroke="#FFB020" stroke-width="2.6"/><text x="342" y="231" text-anchor="middle" class="ink" font-size="16" font-weight="700">D</text><text x="342" y="248" text-anchor="middle" class="dim" font-size="13">64 bytes</text>
+<rect x="296" y="210" width="92" height="46" rx="8" class="box target" stroke-width="2.6"/><text x="342" y="231" text-anchor="middle" class="ink" font-size="16" font-weight="700">D</text><text x="342" y="248" text-anchor="middle" class="dim" font-size="13">64 bytes</text>
 </g>
 <text x="404" y="228" class="ink" font-size="14" font-weight="600">D stays alive:</text>
 <text x="404" y="247" class="dim" font-size="13">E also points to it, so A does not retain it.</text>

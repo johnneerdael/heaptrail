@@ -1,6 +1,6 @@
 # Download and install
 
-heaptrail is a single binary with no runtime dependencies. You do not need a JVM to
+HeapTrail is a single binary with no runtime dependencies. You do not need a JVM to
 analyze a heap dump. You can get it three ways: a prebuilt binary, `cargo install`, or a
 build from source.
 
@@ -8,8 +8,8 @@ build from source.
 
 | For | You need |
 |---|---|
-| Analyzing a dump | Nothing but the heaptrail binary. |
-| `cargo install` or a source build | Rust 1.88 or newer. heaptrail uses edition 2024 and `let` chains. Run `rustup update` if the build fails on an older toolchain. |
+| Analyzing a dump | Nothing but the `heaptrail` binary. |
+| `cargo install` or a source build | Rust 1.88 or newer. HeapTrail uses edition 2024 and `let` chains. Run `rustup update` if the build fails on an older toolchain. |
 | Capturing from Android (`android-capture`) or `--auto-mapping` | [`adb`](https://developer.android.com/tools/adb) on your `PATH`, and a device or emulator it can reach. |
 | Capturing from a JVM | `jmap` or `jcmd` from a JDK on the machine that runs the process. See [JVM dumps](../capture/jvm.md). |
 
@@ -173,12 +173,12 @@ binary, delete the file.
     1.1.1 fixed a panic on modern Android dumps. [What's new](whats-new.md) lists every
     release.
 
-heaptrail began as a fork of [agourlay/hprof-slurp](https://github.com/agourlay/hprof-slurp). The summary-only
-binaries from that project's releases predate heaptrail and lack every mode in this guide, so install heaptrail
+HeapTrail began as a fork of [agourlay/hprof-slurp](https://github.com/agourlay/hprof-slurp). The summary-only
+binaries from that project's releases predate HeapTrail and lack every mode in this guide, so install HeapTrail
 from the sources above.
 
 ## Related
 
 - [Your first triage](first-triage.md) puts the install to work on a real dump.
 - [Capture a heap dump](../capture/index.md) if you need a file to analyze.
-- [Install the Claude Code plugin](../automate/claude-code-plugin.md) to let an agent run heaptrail for you.
+- [Install the Claude Code plugin](../automate/claude-code-plugin.md) to let an agent run `heaptrail` for you.

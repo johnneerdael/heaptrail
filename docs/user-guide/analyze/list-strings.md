@@ -10,12 +10,12 @@ heaptrail -i heap.hprof -l > strings.txt
 ```
 
 !!! warning "Redirect it to a file"
-    `-l` prints one line per name, more than 100,000 lines on an Android dump. Redirect it. If you pipe the output into `head`, heaptrail ends with a
+    `-l` prints one line per name, more than 100,000 lines on an Android dump. Redirect it. If you pipe the output into `head`, HeapTrail ends with a
     `Broken pipe` panic and exit status 101 once the pipe closes.
 
 ## The string table
 
-HPROF stores every identifier once, in a string table: the names of classes, fields and methods, and source file names. heaptrail's `UTF-8 Strings` count in the summary is the size of that table.
+HPROF stores every identifier once, in a string table: the names of classes, fields and methods, and source file names. HeapTrail's `UTF-8 Strings` count in the summary is the size of that table.
 `-l` prints it. These are *names*, not the contents of `java.lang.String` objects that live in the heap. To read what a `String` holds, look at the array behind it with
 [`--preview-bytes`](preview-bytes.md).
 

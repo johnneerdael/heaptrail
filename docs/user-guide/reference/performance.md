@@ -4,7 +4,7 @@ How long each mode takes, and how much memory it needs. These are measurements f
 
 ## How these were measured
 
-- **Machine:** an Apple silicon Mac running macOS, heaptrail 1.4.0 built with `cargo build --release`.
+- **Machine:** an Apple silicon Mac running macOS, HeapTrail 1.4.0 built with `cargo build --release`.
 - **Dumps:** a 224 MiB Android dump (2.6 million instances, 1.4 million primitive arrays), a 186 MiB one, and an 80 MiB one.
 - **Method:** each command run once, with the dump already in the operating system's file cache. A first read from a cold disk is slower.
 - **Memory** is the *peak resident set size* reported by `/usr/bin/time -l` (macOS). On Linux, `/usr/bin/time -v` reports it as "Maximum resident set size".
@@ -81,6 +81,6 @@ These runs were not repeated on dumps larger than 224 MiB, on Linux or on Window
 
 ## Related
 
-- [How heaptrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md) explains where the time and memory go.
+- [How HeapTrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md) explains where the time and memory go.
 - [Limitations](limitations.md) lists what was not measured.
 - [Gate a build on a leak threshold](../automate/ci-gates.md) for sizing a CI job.

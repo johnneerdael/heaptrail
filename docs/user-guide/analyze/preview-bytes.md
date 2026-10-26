@@ -41,9 +41,9 @@ Largest array instances object ids (for retainer tracing):
 
 Each preview starts with a `content:` label.
 
-- **Text.** The first array is a `char[]`. heaptrail decoded it, labeled it `JSON`, and printed the start of it on one line. Newlines and tabs
+- **Text.** The first array is a `char[]`. HeapTrail decoded it, labeled it `JSON`, and printed the start of it on one line. Newlines and tabs
   appear as `\n` and `\t`, and other control characters as `\xNN`, so one array never breaks the report across many lines. A trailing `...` means more follows.
-- **Binary.** The `int[]` has no text in it. heaptrail labels it `unknown binary` and prints a hex dump: an offset, 16 bytes in hex,
+- **Binary.** The `int[]` has no text in it. HeapTrail labels it `unknown binary` and prints a hex dump: an offset, 16 bytes in hex,
   and the same bytes as ASCII between `|` bars. The header says how big the array is in total, here 428,688 bytes.
 
 The same preview in a trace shows what the object at the end of a path is, without a second command:
@@ -65,7 +65,7 @@ Found 1 target instance(s) for id:1661812752
 
 ## What the labels mean
 
-| Label | How heaptrail decides |
+| Label | How HeapTrail decides |
 |---|---|
 | `JSON` | The text starts with `{` or `[` and contains JSON punctuation such as `"` or `}`. |
 | `XML` | The text starts with `<?xml`, or with `<` followed by a letter, `_` or `:`. |
@@ -76,7 +76,7 @@ Found 1 target instance(s) for id:1661812752
 | `protobuf-like binary` | At least 8 bytes, and at least a quarter of them are plausible protobuf tag bytes. |
 | `unknown binary` | Anything else. |
 
-The labels are heuristics. They name the *shape* of the content and never guess an application format: heaptrail will say `JSON`, not "your catalog cache".
+The labels are heuristics. They name the *shape* of the content and never guess an application format: HeapTrail will say `JSON`, not "your catalog cache".
 
 A `byte[]` that starts with an image or archive signature is shown as hex, even if some of its bytes would also decode as text.
 

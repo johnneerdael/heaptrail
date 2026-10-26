@@ -1,6 +1,6 @@
 # Object ids
 
-Every object in a heap dump has an **object id**: a number the dumper assigns to it. heaptrail
+Every object in a heap dump has an **object id**: a number the dumper assigns to it. HeapTrail
 prints ids in its reports and takes them as input, so you can pick an object out of one report and
 follow it in another.
 
@@ -10,7 +10,7 @@ follow it in another.
 
 ## What an id is, and is not
 
-- It is a decimal number. HPROF stores it in 4 bytes on Android and in 8 bytes on most JVMs. heaptrail
+- It is a decimal number. HPROF stores it in 4 bytes on Android and in 8 bytes on most JVMs. HeapTrail
   reads both and always prints a plain number.
 - It identifies one object *in one dump*. Do not expect the same object to have the same id in another
   dump. That is why [diffs](../compare/diff.md) compare classes, not objects.
@@ -18,7 +18,7 @@ follow it in another.
 
 ## Where to get an id
 
-heaptrail never asks you to guess one. Reports hand them out:
+HeapTrail never asks you to guess one. Reports hand them out:
 
 | Report | Ids it shows |
 |---|---|

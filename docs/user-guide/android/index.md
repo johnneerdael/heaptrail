@@ -6,7 +6,7 @@ Android heap dumps are the same HPROF files as JVM dumps, with a few differences
 ## Start here
 
 - Class names look like `a3.t`? [Deobfuscate release builds](deobfuscate-release-builds.md) with your R8 mapping file.
-- Let heaptrail pick the mapping file for the app on your device: [Auto-mapping](auto-mapping.md).
+- Let HeapTrail pick the mapping file for the app on your device: [Auto-mapping](auto-mapping.md).
 - Wondering why an Android dump looks different from a JVM one? [What is different about Android dumps](android-heaps.md).
 
 ## Your goal, and the page
@@ -26,7 +26,7 @@ Android heap dumps are the same HPROF files as JVM dumps, with a few differences
 
 1. Keep the `mapping.txt` of every build you ship. The dump is only readable with the mapping of *its own* build.
 2. Capture with [`android-capture --auto-mapping`](../capture/android-capture.md#mapping) so the transcript records which mapping belongs to the dump.
-3. Add `--mapping <path>` (or `--auto-mapping`) to every heaptrail command. A report with names like `a3.t` means the mapping was left off.
+3. Add `--mapping <path>` (or `--auto-mapping`) to every `heaptrail` command. A report with names like `a3.t` means the mapping was left off.
 4. Use `--leak-suspects --exclude-soft-weak --preview-bytes 200` as the first pass.
 5. For growth over time, take a series and a `dumpsys meminfo`. See [Capture a series](../capture/capture-a-series.md).
 

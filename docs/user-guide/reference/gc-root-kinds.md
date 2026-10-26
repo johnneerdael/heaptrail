@@ -1,6 +1,6 @@
 # GC root kinds
 
-A **GC root** is a place the runtime treats as always alive. heaptrail names each root by the record that declared it. A path that reaches a root ends with `→ reached GC root: <kind>`, and the summary counts roots by kind.
+A **GC root** is a place the runtime treats as always alive. HeapTrail names each root by the record that declared it. A path that reaches a root ends with `→ reached GC root: <kind>`, and the summary counts roots by kind.
 See [GC roots and paths](../concepts/gc-roots-and-paths.md) for what a root proves.
 
 ## Standard kinds
@@ -21,7 +21,7 @@ These come from the HPROF specification and appear in JVM and Android dumps.
 
 ## Android extension kinds
 
-`JAVA PROFILE 1.0.3` dumps from Android's runtime add kinds that the standard format lacks. heaptrail parses all of them and keeps each as its own kind, where converting the dump with `hprof-conv` would fold
+`JAVA PROFILE 1.0.3` dumps from Android's runtime add kinds that the standard format lacks. HeapTrail parses all of them and keeps each as its own kind, where converting the dump with `hprof-conv` would fold
 them into `RootUnknown`.
 
 | Kind | Tag | Status |

@@ -13,7 +13,7 @@ You run a soak test or a UI test and capture a heap dump at the end. You want th
 
 ## The solution
 
-heaptrail writes the result as JSON, and `jq -e` turns a condition on that JSON into an exit status: `0` if the expression is true, `1` if it is false.
+HeapTrail writes the result as JSON, and `jq -e` turns a condition on that JSON into an exit status: `0` if the expression is true, `1` if it is false.
 
 ### Fail when one suspect retains too much
 
@@ -70,7 +70,7 @@ If the class is not in the report at all, `first` returns `null`, and in jq `nul
 
 ### A script that keeps the two kinds of failure apart
 
-A gate that fails the build must not confuse "the threshold was crossed" with "heaptrail could not read the dump". The exit statuses differ, so check each:
+A gate that fails the build must not confuse "the threshold was crossed" with "HeapTrail could not read the dump". The exit statuses differ, so check each:
 
 ```bash
 #!/usr/bin/env bash
@@ -98,7 +98,7 @@ The text report is kept in `reports/suspects.txt`, so a failed gate leaves the e
 ## How it works
 
 `--json` writes the same numbers as the text report. `jq -e` evaluates a condition and sets the exit status from the result. That is all a gate needs: the numbers, a comparison, and an exit status. The comparison
-lives in your pipeline, where it is simple to change, and not in heaptrail.
+lives in your pipeline, where it is simple to change, and not in HeapTrail.
 
 ## Variations
 
@@ -113,7 +113,7 @@ lives in your pipeline, where it is simple to change, and not in heaptrail.
 - **A runner needs the RAM.** `--leak-suspects` keeps the whole graph in memory, about five to seven and a half times the dump size. Plan the runner for that. See [Performance](../reference/performance.md).
 - **Garbage can rank.** On a JVM, use `jmap -dump:live` so an unreachable object does not become the suspect. See [Leak suspects](../analyze/leak-suspects.md#more-than-100-and-orphans).
 - **The threshold is yours.** A cache that is meant to hold 30 % of the heap will trip a 30 % gate every time. Gate on what should be small.
-- **`jq` is not part of heaptrail.** Install it in the job.
+- **`jq` is not part of HeapTrail.** Install it in the job.
 
 ## Related
 

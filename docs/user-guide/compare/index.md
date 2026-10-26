@@ -27,7 +27,7 @@ before-and-after, or a series of three or more for a timeline.
 
 ## What a comparison can and cannot tell you
 
-- **It compares classes, not objects.** Object ids are not stable between dumps, so heaptrail counts instances and shallow bytes per class name, and compares those totals.
+- **It compares classes, not objects.** Object ids are not stable between dumps, so HeapTrail counts instances and shallow bytes per class name, and compares those totals.
 - **It is shallow.** A diff shows growth in the bytes objects occupy themselves. Use [`--retained-size`](../analyze/retained-size.md) on one dump to see what the growth keeps alive.
 - **It needs the same build.** Obfuscated names change between builds, so compare dumps of one build, or restore names with `--mapping` first.
 - **A diff is a signal, not a proof.** Growth between two dumps taken seconds apart may be warm-up. Capture around a deliberate, repeatable action, and prefer a series.

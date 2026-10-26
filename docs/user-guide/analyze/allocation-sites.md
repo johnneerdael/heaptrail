@@ -73,7 +73,7 @@ Each site is one line:
 | `692 instances` | How many objects were allocated there. |
 | `char[]#<init>` | The class allocated. The `#<init>` suffix is always printed. |
 
-Under each line, heaptrail prints the stack that led to the allocation, one frame per line. The records in this old dump carry no stack frames, so
+Under each line, HeapTrail prints the stack that led to the allocation, one frame per line. The records in this old dump carry no stack frames, so
 nothing follows each row here. In a dump captured on Android with tracking, each site is followed by its frames, in this form:
 
 ```text

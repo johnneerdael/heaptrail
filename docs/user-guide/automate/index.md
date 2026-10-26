@@ -1,13 +1,13 @@
 # Automate
 
-heaptrail's reports are plain text for people. Every mode can also write the same result as JSON, so a script, a CI job or an agent can read it. This section covers the machine-readable side:
-the files heaptrail writes, how to gate a build on a result, and how to hand the whole investigation to Claude Code.
+HeapTrail's reports are plain text for people. Every mode can also write the same result as JSON, so a script, a CI job or an agent can read it. This section covers the machine-readable side:
+the files HeapTrail writes, how to gate a build on a result, and how to hand the whole investigation to Claude Code.
 
 ## Start here
 
 1. [JSON output](json-output.md) shows `--json` and `--json-out`, what each mode writes, and `jq` recipes.
 2. [Gate a build on a leak threshold](ci-gates.md) turns a report into a pass or fail.
-3. [The Claude Code plugin](claude-code-plugin.md) lets an agent run heaptrail for you.
+3. [The Claude Code plugin](claude-code-plugin.md) lets an agent run `heaptrail` for you.
 
 ## Your goal, and the page
 
@@ -20,11 +20,11 @@ the files heaptrail writes, how to gate a build on a result, and how to hand the
 | Let Claude run the triage | [The Claude Code plugin](claude-code-plugin.md) |
 | See every field of every JSON file | [JSON schemas](../reference/json-schemas.md) |
 
-## Why heaptrail suits automation
+## Why HeapTrail suits automation
 
 - **It is a single binary with no runtime.** A CI job downloads it and runs it. See [Install](../getting-started/install.md).
 - **Output is deterministic in shape.** The same command on the same dump prints the same fields. Row order among equal counts can vary, so gate on values, not on positions.
-- **Exit status says what happened.** `0` for success, `1` for a heaptrail error, `2` for a bad command line, `101` for a panic.
+- **Exit status says what happened.** `0` for success, `1` for a HeapTrail error, `2` for a bad command line, `101` for a panic.
 - **JSON paths are yours to choose,** with `--json-out`.
 
 ## Related

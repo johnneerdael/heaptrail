@@ -14,7 +14,7 @@ One-line definitions of the terms this guide uses. Terms link to the page that e
 
 **dominator.** Object A dominates object B when every path from a GC root to B goes through A. A suspect is a dominator that retains a lot. See [Shallow and retained size](../concepts/shallow-and-retained.md).
 
-**dominator tree.** The tree of immediate dominators over the whole object graph. heaptrail builds it with the Lengauer–Tarjan algorithm to compute retained sizes.
+**dominator tree.** The tree of immediate dominators over the whole object graph. HeapTrail builds it with the Lengauer–Tarjan algorithm to compute retained sizes.
 
 ## G
 

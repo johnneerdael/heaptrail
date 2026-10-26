@@ -1,6 +1,6 @@
 # Limitations
 
-What heaptrail does not do, and where it is liable to be misread. Each row says what to do instead. The list comes from using the tool on real dumps for this guide, so it includes behaviors that are quirks
+What HeapTrail does not do, and where it is liable to be misread. Each row says what to do instead. The list comes from using the tool on real dumps for this guide, so it includes behaviors that are quirks
 and not design choices.
 
 ## What it is not
@@ -8,7 +8,7 @@ and not design choices.
 | Not offered | Use instead |
 |---|---|
 | Interactive graph browsing, clicking through references | Eclipse MAT or VisualVM. See [the FAQ](../help/faq.md#when-should-i-use-eclipse-mat-instead). |
-| A query language such as OQL | MAT. heaptrail has fixed flags by design. |
+| A query language such as OQL | MAT. HeapTrail has fixed flags by design. |
 | HTML reports for people who will not use a terminal | MAT's report exporter. |
 | Native heap attribution | A native profiler. `--native-context` records totals only. |
 | Redacting secrets from a dump or a report | Share reports, not dumps. See [Handle dumps safely](../capture/handle-dumps-safely.md). |
@@ -41,7 +41,7 @@ and not design choices.
 | Only classes and fields are restored | Method names, including those in stack frames, stay as they are. |
 | Targets use the dump's names | `--find-referrers` and `--target-glob` match the names in the dump, so use the obfuscated name as the target. |
 | `--auto-mapping` assumptions | It needs `adb`, an `app` module, Gradle's `output-metadata.json`, and reads the first element of each. |
-| The mapping is trusted | heaptrail does not check that a mapping belongs to the dump. |
+| The mapping is trusted | HeapTrail does not check that a mapping belongs to the dump. |
 
 ## Cost
 
@@ -64,7 +64,7 @@ and not design choices.
 | The JSON has no schema version | Read fields by name. See [JSON schemas](json-schemas.md). |
 | The summary JSON is small | It has the two class lists, and no header counts, retained sizes or previews. |
 | A diff compares class names and shallow bytes | It does not follow objects, and obfuscated names change between builds. |
-| A finalizer-reference option is not offered | MAT has a separate exclusion for finalizer references. heaptrail has only `--exclude-soft-weak`. |
+| A finalizer-reference option is not offered | MAT has a separate exclusion for finalizer references. HeapTrail has only `--exclude-soft-weak`. |
 
 ## Related
 

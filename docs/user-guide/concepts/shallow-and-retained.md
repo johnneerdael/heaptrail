@@ -1,7 +1,7 @@
 # Shallow and retained size
 
 **Why does a class whose instances are 8 KiB in total keep 15 MiB alive?** Because there are
-two different ways to measure how big an object is, and heaptrail's default view shows only the
+two different ways to measure how big an object is, and HeapTrail's default view shows only the
 smaller one.
 
 ## Shallow size
@@ -26,7 +26,7 @@ dominates. If B is also reachable another way, freeing A does not free B, so A d
 
 --8<-- "diagram-retained.html"
 
-heaptrail computes this with a dominator tree (the Lengauer–Tarjan algorithm) over an in-memory graph
+HeapTrail computes this with a dominator tree (the Lengauer–Tarjan algorithm) over an in-memory graph
 of every object. Add `--retained-size` to the [summary](../analyze/retained-size.md), to a path walk or to
 referrers, or use [`--leak-suspects`](../analyze/leak-suspects.md), which always computes it.
 
@@ -54,11 +54,11 @@ enclosing instance.
 
 ## Total, reachable and unreachable
 
-A dump can hold objects that no root reaches: garbage the collector has not freed yet. heaptrail keeps them in its
+A dump can hold objects that no root reaches: garbage the collector has not freed yet. HeapTrail keeps them in its
 graph, but counts them differently.
 
 - The summary's **raw shallow heap** counts every object in the dump.
-- A leak-suspects report prints two figures: `total` (every object in heaptrail's graph) and
+- A leak-suspects report prints two figures: `total` (every object in HeapTrail's graph) and
   `retained-reachable` (what the GC roots can reach). Suspect percentages are computed against the
   **retained-reachable** figure.
 - The summary's total and the suspects report's `total` come from different code paths and are not the
@@ -70,7 +70,7 @@ field counts as reachable.
 
 ## Weak references change the answer
 
-A strong reference keeps an object alive. A weak, soft or phantom reference does not, or not for long. By default heaptrail
+A strong reference keeps an object alive. A weak, soft or phantom reference does not, or not for long. By default HeapTrail
 counts all of them, which is the strict graph definition. Eclipse MAT's leak-hunting view leaves them out. Add
 `--exclude-soft-weak` to match. See [Reference strength](reference-strength.md).
 

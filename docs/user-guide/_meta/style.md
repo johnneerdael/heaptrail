@@ -1,4 +1,4 @@
-# heaptrail user guide: style guide
+# HeapTrail user guide: style guide
 
 For anyone who writes or edits the guide. This file is not published (`exclude_docs` in `mkdocs.yml`).
 
@@ -22,10 +22,11 @@ If a page tries to be two of these, split it.
 
 - Plain, direct, second person: "you", "run", "check". Short sentences. One idea per paragraph.
 - Say what happens, then why. Lead with the result, not the history.
-- Name things as heaptrail prints them: `ref count`, `retained`, `orphan`. Bold a term once, where it is defined. Link to the glossary after that, not a second definition.
+- Write HeapTrail in prose and `heaptrail` only where it is the command: in a code span, a fence, a path or a URL. "Run `heaptrail` on the dump" and "HeapTrail ranks the classes" are both right. `scripts/docs-check.py` fails on a lowercase name in a sentence.
+- Name things as HeapTrail prints them: `ref count`, `retained`, `orphan`. Bold a term once, where it is defined. Link to the glossary after that, not a second definition.
 - Be exact about limits. If a flag does nothing, or a number is only measured on one machine, say so on the page. Do not soften it and do not hide it in a footnote. `reference/limitations.md` is where each known quirk lives, and the page that meets the quirk links there.
 - Do not sell. No "powerful", "seamless", "blazing", "robust", "easy", "simply", "just", "leverage", "utilize". `scripts/docs-check.py` warns on these.
-- Do not compare heaptrail with another tool to win. Say what it is not (see `reference/limitations.md`) and when to use Eclipse MAT instead.
+- Do not compare HeapTrail with another tool to win. Say what it is not (see `reference/limitations.md`) and when to use Eclipse MAT instead.
 - No emoji in prose. No exclamation marks.
 - Spell out abbreviations once in `_snippets/abbreviations.md` and let the tooltip do the work. Add an entry there instead of explaining in the text.
 
@@ -60,20 +61,29 @@ Diagrams are inline SVG in `_snippets/`, included with `--8<--`. They take their
 
 ## Brand
 
+The identity is the HeapTrail 1.0 brand kit. `brand.md` in this folder says where each asset came from and how to update it. The rules that matter when you write a page:
+
 | Token | Value | Use |
 |---|---|---|
-| Ink | `#0E1A2B` | Header, hero terminal, text on teal |
-| Teal | `#19C3A1` | Accents, rules, primary buttons (with the gradient) |
-| Amber | `#FFB020` | The one thing to look at: a highlight, a target node |
-| Deep teal | `#0A7C69` | Links on light backgrounds |
+| Night | `#101820` | Header, footer, dark theme background, text on amber |
+| Paper | `#F3F6F5` | Light theme background |
+| Signature | `#F5A623` | The mark, the header rule, filled controls in the dark theme |
+| Highlight | `#FFD38A` | The link between the blocks of the mark, the active tab |
+| Light foreground | `#8C4C00` | Links and filled controls on light surfaces (white text on it) |
+| Dark link | `#FFC56B` | Links on dark surfaces |
 
-The mark is `assets/brand/mark.svg`: three stacked bars (a heap) and a trail of dots to the one object that matters. Do not recolor it.
+- Type: Space Grotesk for headings, Inter for reading, IBM Plex Mono for commands and data. All three are self-hosted from `assets/fonts/`.
+- Scale 12 / 14 / 16 / 20 / 28 / 40 px, a 4 px spacing base, 4 px controls, 8 px panels. Material's `1rem` is 20 px.
+- Status colours (note, tip, warning, danger) always sit next to a label. The product colour is never a severity scale.
+- The mark is `assets/brand/heaptrail-mark-on-dark.svg`. Do not recolour, rotate, stretch or add effects to it.
+- Supporting glyphs are the kit's 16 icons, written `:heaptrail-trace:` and so on. Use them at 24 px, beside a readable label.
+- Write the tagline as the kit does: "Find what is holding your memory." Say what the tool found, what it means and what to inspect next, and keep claims grounded: a retained object is not automatically a leak.
 
 ## Before you commit
 
 ```bash
 python3 scripts/docs-embed.py --check   # no output block is stale
-python3 scripts/docs-check.py           # quotes, flags, commands, nav, voice
+python3 scripts/docs-check.py           # quotes, flags, commands, nav, voice, the product name
 .venv/bin/mkdocs build --strict         # links, anchors, nav
 ```
 

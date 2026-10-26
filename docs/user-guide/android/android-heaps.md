@@ -1,12 +1,12 @@
 # What is different about Android dumps
 
-heaptrail reads Android and JVM dumps with the same modes. A few things differ, and knowing them saves you from reading a quirk as a finding.
+HeapTrail reads Android and JVM dumps with the same modes. A few things differ, and knowing them saves you from reading a quirk as a finding.
 
 ## Format and ids
 
-- **Object ids are 4 bytes.** Android uses 32-bit ids, most JVMs use 64-bit. heaptrail reads both, and prints plain decimal numbers either way. Ids on Android dumps are smaller, such as `1661812752`.
+- **Object ids are 4 bytes.** Android uses 32-bit ids, most JVMs use 64-bit. HeapTrail reads both, and prints plain decimal numbers either way. Ids on Android dumps are smaller, such as `1661812752`.
 - **The format is `JAVA PROFILE 1.0.3`** on current Android (`am dumpheap`). Older JVM dumps are `1.0.1` or `1.0.2`. The summary's first line says which you have.
-- **Android adds extra root kinds** and a few record types. heaptrail parses them all, and keeps the roots as their own kinds on a path, such as `RootVmInternal` and `RootJniMonitor`. [HPROF formats](../reference/hprof-formats.md) lists them.
+- **Android adds extra root kinds** and a few record types. HeapTrail parses them all, and keeps the roots as their own kinds on a path, such as `RootVmInternal` and `RootJniMonitor`. [HPROF formats](../reference/hprof-formats.md) lists them.
 
 ### Converted dumps
 
@@ -32,7 +32,7 @@ Class totals and referrers come out the same either way. Root kinds on a path ar
   `dumpsys meminfo` and `--native-context`. See [Native context](../compare/native-context.md).
 - **Thread names and stacks, most of the time.** The summary usually reports `Found 0 threads with stacktraces`, so a path that ends at a thread root prints raw thread serials instead of a name. See [Paths to a GC root](../holders/paths-to-root.md#how-it-ends).
 - **Allocation sites**, unless you captured with tracking. See [Allocation tracking](../capture/allocation-tracking.md).
-- **Some classes.** Dumps from recent Android versions can reference classes that the dumper left out, such as zygote-shared classes. heaptrail counts those instances at the bare header size, calls the class `<unknown class #id>`, and
+- **Some classes.** Dumps from recent Android versions can reference classes that the dumper left out, such as zygote-shared classes. HeapTrail counts those instances at the bare header size, calls the class `<unknown class #id>`, and
   warns once on stderr. The class totals are then a lower bound. This was a crash before 1.1.1.
 
 ## Noise to expect

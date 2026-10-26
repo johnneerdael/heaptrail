@@ -1,6 +1,6 @@
 # Choose the right mode
 
-heaptrail has one default mode, the summary, and several modes you select with a flag. Pick
+HeapTrail has one default mode, the summary, and several modes you select with a flag. Pick
 the row below that matches your question, then follow the link.
 
 ## By question
@@ -68,5 +68,5 @@ modifiers it does not use.
 ## Related
 
 - [Command line reference](../reference/command-line.md) lists every flag with its default.
-- [How heaptrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md) explains why some modes are fast and others need more memory.
+- [How HeapTrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md) explains why some modes are fast and others need more memory.
 - [Your first triage](first-triage.md) shows the loop in action.

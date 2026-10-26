@@ -141,7 +141,7 @@ The fields are `class_name`, `count_a`, `count_b`, `delta_count`, `bytes_a`, `by
 ## Gotchas
 
 - **Giving only one of the two flags fails** with the generic `conflicting modes` message. Always pass both.
-- **Time order matters to the reader, not to heaptrail.** It subtracts the first from the second. If your "before" is really the later dump, the signs flip.
+- **Time order matters to the reader, not to HeapTrail.** It subtracts the first from the second. If your "before" is really the later dump, the signs flip.
 - **Shallow, not retained.** A class that did not grow in bytes can still keep more alive. Check a suspect with [`--retained-size`](../analyze/retained-size.md).
 - **Short intervals mislead.** Two dumps seconds apart show warm-up and caches filling. Compare around a repeatable action.
 - **Both files are read in full,** one after the other, about 0.3 seconds for the two dumps above.

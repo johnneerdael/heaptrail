@@ -4,29 +4,30 @@ hide:
   - toc
 ---
 
-# heaptrail user guide { .md-visually-hidden }
+# HeapTrail user guide { .md-visually-hidden }
 
 <div class="ht-hero" markdown>
 
 <div markdown>
 
-![](assets/brand/mark.svg){ .ht-hero__mark }
+<p class="ht-eyebrow">JVM + Android heap analysis</p>
 
-## Find what is holding your memory
+## Find what is holding your memory.
 
-heaptrail reads JVM and Android heap dumps from the command line. It ranks what
+HeapTrail reads JVM and Android heap dumps from the command line. It ranks what
 takes the space, traces what keeps an object alive, and compares snapshots. Most
 modes stream the file instead of loading it, so a 224 MiB Android dump takes about
 a fifth of a second on a laptop. Output is plain text, with JSON for scripts and CI.
 
 [Start your first triage](getting-started/first-triage.md){ .md-button .md-button--primary }
-[Install heaptrail](getting-started/install.md){ .md-button }
+[Install HeapTrail](getting-started/install.md){ .md-button }
 
 </div>
 
 <div class="ht-terminal">
-<div class="ht-terminal__bar"><i></i><i></i><i></i><b>heaptrail</b></div>
-<pre><code><span class="p">$</span> heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 1
+<div class="ht-terminal__bar"><i></i><i></i><i></i><b>HPROF / Leak suspects</b></div>
+<pre><code><span class="d"># Start with one question</span>
+<span class="p">$</span> heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --top 1
 
 <span class="hl">Suspect 1 — 27.98MiB (26.2 % of heap)</span>
   dominator: java.util.ArrayList (object_id=361762400)
@@ -41,20 +42,21 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
     hop 6 ── id=327606088  (via androidx.lifecycle.ViewModelStore.map)
     <span class="d">...</span>
     hop 9 ── id=327605632  (via androidx.navigation.NavControllerViewModel.viewModelStores)</code></pre>
+<p class="ht-terminal__note">Real output from an Android heap dump</p>
 </div>
 
 </div>
 
 !!! note "A command-line tool"
-    heaptrail has no window to click through. Each investigation is one command that prints a
+    HeapTrail has no window to click through. Each investigation is one command that prints a
     report you can read in a terminal, paste into a ticket, or parse with `jq`. For
-    interactive graph browsing, [use Eclipse MAT after heaptrail has narrowed the question](help/faq.md#when-should-i-use-eclipse-mat-instead).
+    interactive graph browsing, [use Eclipse MAT after HeapTrail has narrowed the question](help/faq.md#when-should-i-use-eclipse-mat-instead).
 
 ## What do you want to do?
 
 <div class="grid cards" markdown>
 
--   :material-cellphone-arrow-down:{ .lg .middle } **Get a heap dump**
+-   :heaptrail-snapshot:{ .lg .middle } **Get a heap dump**
 
     ---
 
@@ -65,18 +67,18 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [android-capture](capture/android-capture.md) · [JVM dumps](capture/jvm.md)
 
--   :material-chart-bar:{ .lg .middle } **See what is using memory**
+-   :heaptrail-memory:{ .lg .middle } **See what is using memory**
 
     ---
 
     Rank classes by size, find the objects that keep the most alive, and let
-    heaptrail name the likely leak suspects.
+    HeapTrail name the likely leak suspects.
 
     [:octicons-arrow-right-24: Analyze](analyze/index.md)
 
     Popular: [Summary](analyze/summary.md) · [Leak suspects](analyze/leak-suspects.md)
 
--   :material-source-branch:{ .lg .middle } **Find what holds an object**
+-   :heaptrail-trace:{ .lg .middle } **Find what holds an object**
 
     ---
 
@@ -87,7 +89,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [Find referrers](holders/find-referrers.md) · [Paths to a GC root](holders/paths-to-root.md)
 
--   :material-chart-timeline-variant:{ .lg .middle } **Check whether memory grows**
+-   :heaptrail-compare:{ .lg .middle } **Check whether memory grows**
 
     ---
 
@@ -98,7 +100,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [Snapshot diff](compare/diff.md) · [Diff a series](compare/diff-series.md)
 
--   :material-android:{ .lg .middle } **Read an Android release build**
+-   :heaptrail-file:{ .lg .middle } **Read an Android release build**
 
     ---
 
@@ -109,7 +111,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [Deobfuscate](android/deobfuscate-release-builds.md) · [Auto-mapping](android/auto-mapping.md)
 
--   :material-text-search:{ .lg .middle } **Look inside big arrays**
+-   :heaptrail-search:{ .lg .middle } **Look inside big arrays**
 
     ---
 
@@ -120,7 +122,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [Identify a giant array](analyze/recipes/identify-a-giant-array.md) · [Find duplicate payloads](analyze/recipes/find-duplicate-payloads.md)
 
--   :material-robot-outline:{ .lg .middle } **Script it or hand it to an agent**
+-   :heaptrail-json:{ .lg .middle } **Script it or hand it to an agent**
 
     ---
 
@@ -131,7 +133,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [JSON output](automate/json-output.md) · [CI gates](automate/ci-gates.md)
 
--   :material-lightbulb-on-outline:{ .lg .middle } **Understand the numbers**
+-   :heaptrail-root:{ .lg .middle } **Understand the numbers**
 
     ---
 
@@ -142,7 +144,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
     Popular: [Shallow and retained size](concepts/shallow-and-retained.md) · [GC roots and paths](concepts/gc-roots-and-paths.md)
 
--   :material-book-open-variant:{ .lg .middle } **Look something up**
+-   :heaptrail-terminal:{ .lg .middle } **Look something up**
 
     ---
 
@@ -157,7 +159,7 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
 ## New here?
 
-1. [Install heaptrail](getting-started/install.md) with `cargo install heaptrail` or a
+1. [Install HeapTrail](getting-started/install.md) with `cargo install heaptrail` or a
    prebuilt binary.
 2. Work through [Your first triage](getting-started/first-triage.md), a real investigation
    from the first summary to the field that causes the leak.
@@ -166,15 +168,15 @@ a fifth of a second on a laptop. Output is plain text, with JSON for scripts and
 
 No heap dump of your own yet? [Follow along with the files in the repository](getting-started/follow-along.md).
 
-## When to use heaptrail, and when not to
+## When to use HeapTrail, and when not to
 
-| Reach for heaptrail when… | Reach for Eclipse MAT or VisualVM when… |
+| Reach for HeapTrail when… | Reach for Eclipse MAT or VisualVM when… |
 |---|---|
 | You want a first answer in seconds, from a terminal or a script. | You want to click through references and pivot as you go. |
 | The dump is large, or the machine is a CI runner or a remote box. | You need OQL, or an HTML report for people who will not open a terminal. |
 | An agent or a pipeline should read the result. | You are doing an open-ended, exploratory session. |
 
-The two work well together. [Use heaptrail to narrow the question, then open the dump
+The two work well together. [Use HeapTrail to narrow the question, then open the dump
 in MAT](help/faq.md#when-should-i-use-eclipse-mat-instead) if you need a graph session.
 
 Use the search box (press ++s++ or ++slash++) to find a flag, an error message or a class name.
@@ -184,4 +186,4 @@ Use the search box (press ++s++ or ++slash++) to find a flag, an error message o
 Read what changed in each release in [What's new](getting-started/whats-new.md), or on the
 [GitHub releases page](https://github.com/johnneerdael/heaptrail/releases). If a step in this
 guide differs from your build, [report it on GitHub](https://github.com/johnneerdael/heaptrail/issues)
-with your heaptrail version (`heaptrail --version`), your operating system and the command you ran.
+with your HeapTrail version (`heaptrail --version`), your operating system and the command you ran.

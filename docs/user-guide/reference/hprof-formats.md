@@ -1,6 +1,6 @@
 # HPROF formats
 
-heaptrail reads the binary heap dump format that the JVM and Android's runtime write, known as HPROF. This page lists what it accepts, and what it does with each part.
+HeapTrail reads the binary heap dump format that the JVM and Android's runtime write, known as HPROF. This page lists what it accepts, and what it does with each part.
 
 ## Supported formats
 
@@ -10,7 +10,7 @@ heaptrail reads the binary heap dump format that the JVM and Android's runtime w
 | `JAVA PROFILE 1.0.2` | Current JVMs (`jmap`, `jcmd`, `-XX:+HeapDumpOnOutOfMemoryError`) and Android dumps converted to the standard format. | 4 or 8 bytes |
 | `JAVA PROFILE 1.0.3` | Android's runtime (`am dumpheap`), with extension records. | 4 bytes in practice |
 
-The summary's first line says which one you have: `Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.` heaptrail uses the string as it finds it in the header. It does not check
+The summary's first line says which one you have: `Processing 224.34MiB binary hprof file in 'JAVA PROFILE 1.0.2' format.` HeapTrail uses the string as it finds it in the header. It does not check
 the version against a list, so a dump is judged by whether its records parse, not by its label.
 
 CI validates against a 64-bit and a 32-bit fixture, and the project tests both an Android `1.0.2` and a `1.0.3` dump before each release. See [About](../help/about.md).
@@ -58,22 +58,22 @@ Inside a heap dump, each sub-record is one of the [GC root kinds](gc-root-kinds.
 
 Android's `0xC3` (primitive array without data) and `0xFE` (heap dump info) are parsed as well.
 
-## What heaptrail does with them
+## What HeapTrail does with them
 
 - **Strings** form the string table that gives names to classes and fields. `-l` prints it.
-- **Class dumps** give each class's fields, super class and static values. They let heaptrail size instances and find references in them.
+- **Class dumps** give each class's fields, super class and static values. They let HeapTrail size instances and find references in them.
 - **Instances and arrays** are the objects. The summary counts and sizes them, and the tracing modes read the references inside.
 - **Roots** become [GC root kinds](gc-root-kinds.md).
 - **Stack traces, frames and threads** give thread names and stack frames when present.
 - **Allocation sites** feed [`--allocation-sites`](../analyze/allocation-sites.md).
 - **Heap summary, CPU samples and control settings** are counted and not used further.
 
-A class that an instance refers to, but that no record defines, is counted at the bare header size and named `<unknown class #id>`. See [How heaptrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md).
+A class that an instance refers to, but that no record defines, is counted at the bare header size and named `<unknown class #id>`. See [How HeapTrail reads a dump](../concepts/how-heaptrail-reads-a-dump.md).
 
 ## Sizes
 
-heaptrail's **shallow** sizes are the sum of an object's field sizes and header, and of an array's elements. They are close to, and not identical to, what the runtime's own tools report. Compare sizes within one
-heaptrail report, and between heaptrail reports. See [Shallow and retained size](../concepts/shallow-and-retained.md).
+HeapTrail's **shallow** sizes are the sum of an object's field sizes and header, and of an array's elements. They are close to, and not identical to, what the runtime's own tools report. Compare sizes within one
+HeapTrail report, and between HeapTrail reports. See [Shallow and retained size](../concepts/shallow-and-retained.md).
 
 ## Related
 

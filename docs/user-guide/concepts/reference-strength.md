@@ -24,7 +24,7 @@ that follows them finds chains no leak depends on.
 [LeakCanary](https://square.github.io/leakcanary/) watches objects through `KeyedWeakReference`. The Android
 framework holds activities and views through `WeakReference`, and the collector chains reference objects together
 through the `discovered` field of `java.lang.ref.Reference`. When you trace a suspect object, the first holder
-heaptrail meets can be one of those, and the real strong holder sits underneath a dozen hops of reference machinery.
+HeapTrail meets can be one of those, and the real strong holder sits underneath a dozen hops of reference machinery.
 
 ## What `--exclude-soft-weak` does
 
@@ -34,7 +34,7 @@ heaptrail meets can be one of those, and the real strong holder sits underneath 
 
 | Mode | What changes |
 |---|---|
-| `--retained-size`, `--leak-suspects` | A reference object no longer points at its referent when heaptrail builds the graph, so it takes no part in who owns what. |
+| `--retained-size`, `--leak-suspects` | A reference object no longer points at its referent when HeapTrail builds the graph, so it takes no part in who owns what. |
 | `--paths-from-id`, `--merge-paths` | A holder that is a reference object is skipped, and the walk keeps looking for a strong holder. If every holder it finds is weak, the path ends with `orphan [soft/weak/phantom — excluded]`. |
 | `--find-referrers`, `--target-glob` | Reference objects are left out of the holder rows. Arrays that hold the target are still listed. |
 
@@ -70,17 +70,17 @@ the weak path gone, the strong holder owns it alone, and its retained size grows
 as a leak, and do not read a falling one as a fix.
 
 To find out whether something is held only weakly, trace it with `--paths-from-id <id> --exclude-soft-weak`.
-If the path ends with `orphan [soft/weak/phantom — excluded]`, every holder heaptrail found was a weak one.
+If the path ends with `orphan [soft/weak/phantom — excluded]`, every holder HeapTrail found was a weak one.
 
 ## How it compares with MAT
 
 Eclipse MAT's leak-hunting workflow excludes weak, soft and phantom references by default, so its retained sizes
-are smaller than heaptrail's default for objects reachable through them. `--exclude-soft-weak` brings heaptrail in line.
-MAT also has a separate option for finalizer references, and heaptrail does not. Retained sizes can therefore
+are smaller than HeapTrail's default for objects reachable through them. `--exclude-soft-weak` brings HeapTrail in line.
+MAT also has a separate option for finalizer references, and HeapTrail does not. Retained sizes can therefore
 still differ slightly.
 
 !!! tip "Default off, on purpose"
-    Without the flag, heaptrail reports the strict graph. That is the right answer to "what would be freed if this
+    Without the flag, HeapTrail reports the strict graph. That is the right answer to "what would be freed if this
     object disappeared?". It is the wrong answer to "what is leaking?", which is why the recommended
     leak-hunting command includes the flag.
 

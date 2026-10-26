@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{#- Social cards use the brand kit's 1200x630 banner. The theme's favicon is the SVG; the ICO and the
+    Apple touch icon cover browsers and phones that do not read it. -#}
+{% block extrahead %}
+  {% set description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+  {% set title = config.site_name if (not page) or page.is_homepage else page.title ~ " - " ~ config.site_name %}
+  {% set image = config.site_url ~ "assets/brand/heaptrail-social-dark-1200x630.png" %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ page.canonical_url if page else config.site_url }}">
+  <meta property="og:image" content="{{ image }}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HeapTrail. Find what is holding your memory.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ image }}">
+  <link rel="icon" href="{{ 'assets/brand/favicon.ico' | url }}" sizes="any">
+  <link rel="apple-touch-icon" href="{{ 'assets/brand/apple-touch-icon.png' | url }}">
+{% endblock %}

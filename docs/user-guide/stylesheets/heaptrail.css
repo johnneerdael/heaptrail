@@ -1,151 +1,288 @@
-/* heaptrail palette on Material for MkDocs, for both colour schemes.
-   Teal is the brand colour and amber marks "the thing to look at".
-   On white, teal is too light for text, so light-mode links use a deeper
-   teal (#0A7C69, 5.1:1) that passes WCAG AA. */
+/* HeapTrail on Material for MkDocs. Tokens follow the HeapTrail 1.0 brand kit
+   (06-implementation/brand-tokens.css): Signature #F5A623, Highlight #FFD38A,
+   Night #101820, Paper #F3F6F5. On light surfaces, text and filled controls use
+   the darker #8C4C00 (white text on it). In dark mode, links use #FFC56B and filled
+   controls use #F5A623 with Night text. Status colours always come with a label, and
+   the product colour is never a severity scale.
+   Scale: 12 / 14 / 16 / 20 / 28 / 40 px. Spacing base 4 px, controls 4 px, panels 8 px.
+   Material sets 1rem to 20px, so 0.6rem is 12px, 0.7rem 14px, 0.8rem 16px. */
+@font-face{font-family:"Space Grotesk";src:url("../assets/fonts/SpaceGrotesk.woff") format("woff");font-weight:300 700;font-display:swap}
+@font-face{font-family:Inter;src:url("../assets/fonts/Inter.woff") format("woff");font-weight:100 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/IBMPlexMono-Regular.woff") format("woff");font-weight:400;font-display:swap}
+
 :root {
-  --ht-ink: #0E1A2B;
-  --ht-paper: #F7FAFC;
-  --ht-teal: #19C3A1;
-  --ht-teal-deep: #0A7C69;
-  --ht-teal-bright: #3DDBC0;
-  --ht-amber: #FFB020;
-  --ht-blue: #4C8DFF;
-  --ht-gradient: linear-gradient(135deg, #19C3A1 0%, #2FA8E0 62%, #4C8DFF 100%);
+  --ht-signature: #F5A623;
+  --ht-highlight: #FFD38A;
+  --ht-night: #101820;
+  --ht-paper: #F3F6F5;
+  --ht-font-display: "Space Grotesk", Inter, system-ui, sans-serif;
+  --ht-font-ui: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ht-font-data: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --md-text-font: var(--ht-font-ui);
+  --md-code-font: var(--ht-font-data);
 }
 
-/* Light (default) scheme */
+/* Light scheme */
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: var(--ht-ink);
-  --md-primary-fg-color--light: #243650;
-  --md-primary-fg-color--dark: #08111d;
+  --ht-bg: #F3F6F5;
+  --ht-surface: #FFFFFF;
+  --ht-raised: #E8EFF0;
+  --ht-text: #101820;
+  --ht-muted: #50616A;
+  --ht-border: #7B8A91;
+  --ht-divider: #CDD8DB;
+  --ht-accent: #8C4C00;
+  --ht-primary: #8C4C00;
+  --ht-primary-hover: #6E3A00;
+  --ht-on-primary: #FFFFFF;
+  --ht-selection: #FFF0D8;
+  --ht-success: #176447;
+  --ht-warning: #805000;
+  --ht-danger: #AC302B;
+  --ht-focus: #8C4C00;
+
+  --md-primary-fg-color: var(--ht-night);
+  --md-primary-fg-color--light: #21323D;
+  --md-primary-fg-color--dark: #0B1117;
   --md-primary-bg-color: var(--ht-paper);
-  --md-primary-bg-color--light: rgba(247, 250, 252, 0.7);
-  --md-accent-fg-color: var(--ht-teal-deep);
-  --md-accent-fg-color--transparent: rgba(25, 195, 161, 0.1);
-  --md-accent-bg-color: #fff;
-  --md-default-bg-color: #ffffff;
-  --md-typeset-a-color: var(--ht-teal-deep);
-  --md-code-bg-color: #f1f5f7;
-  --md-typeset-mark-color: rgba(255, 176, 32, 0.4);
-  --ht-surface: #f5f9fa;
-  --ht-border: rgba(14, 26, 43, 0.12);
-  --ht-terminal-bg: #0E1A2B;
+  --md-primary-bg-color--light: rgba(243, 246, 245, 0.72);
+  --md-accent-fg-color: var(--ht-accent);
+  --md-accent-fg-color--transparent: rgba(140, 76, 0, 0.1);
+  --md-accent-bg-color: #FFFFFF;
+  --md-accent-bg-color--light: rgba(255, 255, 255, 0.7);
+  --md-default-bg-color: var(--ht-bg);
+  --md-default-bg-color--light: rgba(243, 246, 245, 0.7);
+  --md-default-bg-color--lighter: rgba(243, 246, 245, 0.3);
+  --md-default-bg-color--lightest: rgba(243, 246, 245, 0.12);
+  --md-default-fg-color: var(--ht-text);
+  --md-default-fg-color--light: var(--ht-muted);
+  --md-default-fg-color--lighter: var(--ht-border);
+  --md-default-fg-color--lightest: var(--ht-divider);
+  --md-typeset-color: var(--ht-text);
+  --md-typeset-a-color: var(--ht-accent);
+  --md-typeset-mark-color: rgba(245, 166, 35, 0.34);
+  --md-typeset-kbd-color: var(--ht-surface);
+  --md-typeset-kbd-accent-color: var(--ht-raised);
+  --md-typeset-kbd-border-color: var(--ht-divider);
+  --md-typeset-table-color: var(--ht-divider);
+  --md-typeset-table-color--light: rgba(16, 24, 32, 0.035);
+  --md-admonition-bg-color: var(--ht-surface);
+  --md-admonition-fg-color: var(--ht-text);
+  --md-code-bg-color: var(--ht-raised);
+  --md-code-bg-color--light: var(--ht-raised);
+  --md-code-bg-color--lighter: var(--ht-divider);
+  --md-code-fg-color: var(--ht-text);
+  --md-code-hl-color: rgba(245, 166, 35, 0.2);
+  --md-code-hl-color--light: rgba(245, 166, 35, 0.12);
+  --md-code-hl-keyword-color: #8C4C00;
+  --md-code-hl-function-color: #101820;
+  --md-code-hl-name-color: var(--md-code-fg-color);
+  --md-code-hl-variable-color: #101820;
+  --md-code-hl-string-color: #176447;
+  --md-code-hl-number-color: #805000;
+  --md-code-hl-constant-color: #805000;
+  --md-code-hl-special-color: #8C4C00;
+  --md-code-hl-operator-color: #50616A;
+  --md-code-hl-punctuation-color: #50616A;
+  --md-code-hl-comment-color: #50616A;
+  --md-code-hl-generic-color: #50616A;
+  --md-footer-bg-color: var(--ht-night);
+  --md-footer-bg-color--dark: #0B1117;
+  --md-shadow-z1: 0 0.1rem 0.3rem rgba(16, 24, 32, 0.08);
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(16, 24, 32, 0.12);
+  --md-shadow-z3: 0 0.3rem 0.8rem rgba(16, 24, 32, 0.16);
 }
 
-/* Dark (slate) scheme on the brand ink */
+/* Dark scheme: Night surfaces, lifted foregrounds */
 [data-md-color-scheme="slate"] {
-  --md-hue: 215;
-  --md-primary-fg-color: #08111d;
-  --md-primary-fg-color--light: #16263b;
-  --md-primary-fg-color--dark: #050b13;
+  --ht-bg: #101820;
+  --ht-surface: #18252E;
+  --ht-raised: #21323D;
+  --ht-text: #F3F6F5;
+  --ht-muted: #A7B7BE;
+  --ht-border: #718792;
+  --ht-divider: #324550;
+  --ht-accent: #FFC56B;
+  --ht-primary: #F5A623;
+  --ht-primary-hover: #FFC56B;
+  --ht-on-primary: #101820;
+  --ht-selection: #45331B;
+  --ht-success: #81D9AE;
+  --ht-warning: #FFD38A;
+  --ht-danger: #FFA9A3;
+  --ht-focus: #FFD38A;
+
+  --md-primary-fg-color: var(--ht-night);
+  --md-primary-fg-color--light: #21323D;
+  --md-primary-fg-color--dark: #0B1117;
   --md-primary-bg-color: var(--ht-paper);
-  --md-accent-fg-color: var(--ht-teal-bright);
-  --md-accent-fg-color--transparent: rgba(61, 219, 192, 0.1);
-  --md-default-bg-color: var(--ht-ink);
-  --md-default-bg-color--light: #15263b;
-  --md-default-bg-color--lighter: #1b2f47;
-  --md-default-fg-color: rgba(247, 250, 252, 0.9);
-  --md-default-fg-color--light: rgba(247, 250, 252, 0.68);
-  --md-typeset-color: rgba(247, 250, 252, 0.88);
-  --md-typeset-a-color: var(--ht-teal-bright);
-  --md-code-bg-color: #142437;
-  --md-code-fg-color: #e3eaf1;
-  --md-typeset-mark-color: rgba(255, 176, 32, 0.32);
-  --md-footer-bg-color: #08111d;
-  --md-footer-bg-color--dark: #050b13;
-  --ht-surface: #15263b;
-  --ht-border: rgba(247, 250, 252, 0.12);
-  --ht-terminal-bg: #0a1422;
+  --md-primary-bg-color--light: rgba(243, 246, 245, 0.72);
+  --md-accent-fg-color: var(--ht-accent);
+  --md-accent-fg-color--transparent: rgba(255, 197, 107, 0.12);
+  --md-accent-bg-color: #101820;
+  --md-accent-bg-color--light: rgba(16, 24, 32, 0.7);
+  --md-default-bg-color: var(--ht-bg);
+  --md-default-bg-color--light: rgba(16, 24, 32, 0.54);
+  --md-default-bg-color--lighter: rgba(16, 24, 32, 0.26);
+  --md-default-bg-color--lightest: rgba(16, 24, 32, 0.07);
+  --md-default-fg-color: var(--ht-text);
+  --md-default-fg-color--light: var(--ht-muted);
+  --md-default-fg-color--lighter: var(--ht-border);
+  --md-default-fg-color--lightest: var(--ht-divider);
+  --md-typeset-color: var(--ht-text);
+  --md-typeset-a-color: var(--ht-accent);
+  --md-typeset-mark-color: rgba(245, 166, 35, 0.36);
+  --md-typeset-kbd-color: var(--ht-raised);
+  --md-typeset-kbd-accent-color: var(--ht-surface);
+  --md-typeset-kbd-border-color: var(--ht-divider);
+  --md-typeset-table-color: var(--ht-divider);
+  --md-typeset-table-color--light: rgba(243, 246, 245, 0.04);
+  --md-admonition-bg-color: var(--ht-surface);
+  --md-admonition-fg-color: var(--ht-text);
+  --md-code-bg-color: var(--ht-raised);
+  --md-code-bg-color--light: var(--ht-raised);
+  --md-code-bg-color--lighter: var(--ht-divider);
+  --md-code-fg-color: var(--ht-text);
+  --md-code-hl-color: rgba(245, 166, 35, 0.22);
+  --md-code-hl-color--light: rgba(245, 166, 35, 0.12);
+  --md-code-hl-keyword-color: #FFC56B;
+  --md-code-hl-function-color: #F3F6F5;
+  --md-code-hl-name-color: var(--md-code-fg-color);
+  --md-code-hl-variable-color: #F3F6F5;
+  --md-code-hl-string-color: #81D9AE;
+  --md-code-hl-number-color: #FFD38A;
+  --md-code-hl-constant-color: #FFD38A;
+  --md-code-hl-special-color: #FFC56B;
+  --md-code-hl-operator-color: #A7B7BE;
+  --md-code-hl-punctuation-color: #A7B7BE;
+  --md-code-hl-comment-color: #A7B7BE;
+  --md-code-hl-generic-color: #A7B7BE;
+  --md-footer-bg-color: #0B1117;
+  --md-footer-bg-color--dark: #080D12;
+  --md-shadow-z1: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+  --md-shadow-z2: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.36);
+  --md-shadow-z3: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.42);
 }
 
-/* Header: ink in both schemes, with the brand gradient as a thin rule */
-.md-header { box-shadow: none; border-bottom: 3px solid transparent; border-image: var(--ht-gradient) 1; }
+::selection { background: var(--ht-selection); color: var(--ht-text); }
+:focus-visible { outline: 2px solid var(--ht-focus); outline-offset: 3px; }
+
+/* Header: Night in both schemes, with a Signature rule */
+.md-header { box-shadow: none; border-bottom: 3px solid var(--ht-signature); }
+.md-header__title { font-family: var(--ht-font-display); font-weight: 600; }
+.md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.7rem; width: auto; }
 .md-tabs { background-color: var(--md-primary-fg-color); }
-.md-tabs__link { opacity: 0.78; }
-.md-tabs__link--active, .md-tabs__link:hover { opacity: 1; color: var(--ht-amber); }
-.md-header__button.md-logo img { height: 1.6rem; }
+.md-tabs__link { opacity: 1; color: #A7B7BE; }
+.md-tabs__link--active, .md-tabs__link:hover { color: var(--ht-highlight); }
+.md-nav__title { font-family: var(--ht-font-display); }
 
 /* Page titles that only screen readers need (the home page shows a hero instead) */
 .md-typeset .md-visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Reading rhythm */
-.md-typeset { font-size: 0.8rem; line-height: 1.7; }
-.md-typeset h1 { font-weight: 800; letter-spacing: -0.02em; color: var(--md-default-fg-color); }
-.md-typeset h2 { font-weight: 700; letter-spacing: -0.01em; margin-top: 2em; }
-.md-typeset h3 { font-weight: 650; }
-.md-typeset .lead { font-size: 1.05em; color: var(--md-default-fg-color--light); margin-top: -0.4em; }
-
-/* Inline code in prose: placeholders and flags stand out a little */
+/* Typography: Space Grotesk for headings, Inter for reading, IBM Plex Mono for commands and data */
+.md-typeset { font-size: 0.8rem; line-height: 1.7; font-family: var(--ht-font-ui); }
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 { font-family: var(--ht-font-display); color: var(--md-default-fg-color); }
+.md-typeset h1 { font-size: 2.5em; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.9em; }
+.md-typeset h2 { font-size: 1.75em; font-weight: 600; letter-spacing: -0.01em; margin-top: 2em; }
+.md-typeset h3 { font-size: 1.25em; font-weight: 600; }
+.md-typeset h4 { font-size: 1em; font-weight: 600; }
+.md-typeset .lead { font-size: 1.06em; color: var(--md-default-fg-color--light); margin-top: -0.4em; }
+.md-typeset code, .md-typeset kbd, .md-typeset pre { font-family: var(--ht-font-data); }
 .md-typeset :not(pre) > code { border-radius: 4px; padding: 0.05em 0.35em; }
-
-/* Keyboard keys */
 .md-typeset kbd { border-radius: 4px; font-size: 0.78em; }
 
+/* Small labels: monospace, capitals, letter-spaced */
+.md-typeset .ht-eyebrow { font: 400 0.6rem/1.4 var(--ht-font-data); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ht-accent); margin: 0 0 1em; }
+
 /* Tables */
-.md-typeset table:not([class]) { border-radius: 8px; font-size: 0.74rem; border: 1px solid var(--ht-border); }
-.md-typeset table:not([class]) th { background: var(--ht-surface); font-weight: 650; }
+.md-typeset table:not([class]) { border-radius: 8px; font-size: 0.7rem; border: 1px solid var(--ht-divider); background: var(--ht-surface); }
+.md-typeset table:not([class]) th { background: var(--ht-raised); font-weight: 600; font-family: var(--ht-font-display); }
 .md-typeset table:not([class]) td { vertical-align: top; }
 /* Keep flags and class names intact; let long patterns wrap inside the cell */
 .md-typeset table:not([class]) td code { white-space: pre-wrap; word-break: break-word; }
 
-/* Code and command output: rounded, with a title bar that reads as a prompt */
+/* Code and command output: a bordered panel on the surface colour */
 .md-typeset .highlight, .md-typeset pre > code { border-radius: 8px; }
-.md-typeset .highlight .filename { font-family: var(--md-code-font-family); font-size: 0.68rem; letter-spacing: 0.01em; }
+.md-typeset pre > code { background: var(--ht-surface); border: 1px solid var(--ht-divider); font-size: 0.7rem; }
+.md-typeset .highlight .filename { font-family: var(--ht-font-data); font-size: 0.6rem; letter-spacing: 0.02em; }
+/* The copy button is a control, so it is always readable; Material's hover and focus colours still apply. */
+.md-code__button { color: var(--ht-muted); }
 .md-typeset .tabbed-set { border-radius: 8px; }
 /* Real tool output is wide. Scroll it; never wrap it, so columns stay aligned. */
 .md-typeset pre > code { white-space: pre; }
 
 /* Home hero */
-.ht-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 2rem; align-items: center; margin: 0.5rem 0 2.2rem; }
-.ht-hero__mark { width: 4.2rem; height: 4.2rem; margin: 0 0 0.6rem; }
-.md-typeset .ht-hero h1 { font-size: 2.3rem; margin: 0 0 0.3rem; line-height: 1.15; }
-.md-typeset .ht-hero h2 { font-size: 1.7rem; margin: 0 0 0.7rem; font-weight: 700; line-height: 1.2; color: var(--md-default-fg-color); letter-spacing: 0; }
+.ht-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 2rem; align-items: center; margin: 0.5rem 0 2.2rem; }
+.md-typeset .ht-hero h2 { font-size: 2em; font-weight: 600; margin: 0 0 0.7rem; line-height: 1.12; letter-spacing: -0.02em; }
 .ht-hero p { margin: 0 0 1rem; }
 .ht-hero .md-button { margin: 0.2rem 0.4rem 0.2rem 0; padding: 0.5em 1.2em; }
-.md-typeset .md-button:not(.md-button--primary) { color: var(--md-default-fg-color); border-color: currentColor; }
-.md-typeset .md-button:not(.md-button--primary):is(:hover, :focus) { color: var(--ht-ink); background: var(--ht-amber); border-color: var(--ht-amber); }
-.md-typeset .md-button--primary { background: var(--ht-gradient); border: 0; color: var(--ht-ink); font-weight: 700; }
-.md-typeset .md-button--primary:hover { filter: brightness(1.06); color: var(--ht-ink); }
-@media screen and (max-width: 60em) { .ht-hero { grid-template-columns: 1fr; } }
+/* Below 75em the terminal would be narrower than its longest line, so it takes the full width. */
+@media screen and (max-width: 75em) { .ht-hero { grid-template-columns: 1fr; } }
 @media screen and (max-width: 44.9375em) {
   .ht-hero { margin-top: 0; }
-  .ht-hero__mark { width: 3rem; height: 3rem; }
-  .md-typeset .ht-hero h2 { font-size: 1.4rem; }
+  .md-typeset .ht-hero h2 { font-size: 1.75em; }
   .ht-hero .md-button { display: block; text-align: center; margin-right: 0; }
 }
 
-/* Faux terminal used on the home page. The text inside is real tool output. */
-.ht-terminal { border-radius: 10px; background: var(--ht-terminal-bg); border: 1px solid var(--ht-border); box-shadow: 0 10px 34px rgba(8, 17, 29, 0.28); overflow: hidden; min-width: 0; }
-.ht-terminal__bar { display: flex; align-items: center; gap: 0.38rem; padding: 0.5rem 0.75rem; background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-.ht-terminal__bar i { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255, 255, 255, 0.22); display: inline-block; }
-.ht-terminal__bar b { margin-left: 0.5rem; font: 500 0.68rem var(--md-code-font-family); color: rgba(255, 255, 255, 0.55); }
-.md-typeset .ht-terminal pre { margin: 0; background: transparent; padding: 0.85rem 1rem 1rem; overflow-x: auto; }
-.md-typeset .ht-terminal pre code { background: transparent; padding: 0; font-size: 0.55rem; line-height: 1.65; color: #dbe6ef; white-space: pre; }
-.ht-terminal .p { color: var(--ht-teal-bright); }
-.ht-terminal .d { color: rgba(219, 230, 239, 0.5); }
-.ht-terminal .hl { color: var(--ht-amber); font-weight: 600; }
+/* Buttons: filled controls use the primary colour with its own text colour */
+.md-typeset .md-button { border-radius: 4px; font-family: var(--ht-font-ui); font-weight: 600; }
+.md-typeset .md-button--primary { background: var(--ht-primary); border-color: var(--ht-primary); color: var(--ht-on-primary); }
+.md-typeset .md-button--primary:is(:hover, :focus) { background: var(--ht-primary-hover); border-color: var(--ht-primary-hover); color: var(--ht-on-primary); }
+.md-typeset .md-button:not(.md-button--primary) { color: var(--md-default-fg-color); border-color: var(--ht-border); }
+.md-typeset .md-button:not(.md-button--primary):is(:hover, :focus) { background: var(--ht-raised); border-color: var(--ht-accent); color: var(--ht-accent); }
+
+/* The home terminal: a bordered panel that follows the theme. The text inside is real tool output. */
+.ht-terminal { border-radius: 8px; background: var(--ht-surface); border: 1px solid var(--ht-border); overflow: hidden; min-width: 0; }
+.ht-terminal__bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--ht-divider); }
+.ht-terminal__bar i { width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--ht-muted); display: inline-block; }
+.ht-terminal__bar b { margin-left: auto; font: 400 0.6rem var(--ht-font-data); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ht-muted); }
+.md-typeset .ht-terminal pre { margin: 0; background: transparent; padding: 0.8rem; overflow-x: auto; }
+.ht-terminal .md-code__nav { display: none; }
+.md-typeset .ht-terminal pre code { background: transparent; border: 0; border-radius: 0; padding: 0; font-size: 0.6rem; line-height: 1.7; color: var(--ht-text); white-space: pre; }
+.ht-terminal .p { color: var(--ht-accent); }
+.ht-terminal .d { color: var(--ht-muted); }
+.ht-terminal .hl { color: var(--ht-accent); font-weight: 600; }
+.ht-terminal__note { margin: 0; padding: 0.4rem 0.8rem 0.6rem; font: 400 0.6rem var(--ht-font-data); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ht-muted); }
 
 /* Cards */
 .md-typeset .grid.cards > ul > li,
-.md-typeset .grid > .card { border-radius: 12px; border-color: var(--ht-border); background: var(--ht-surface); transition: border-color 0.2s, transform 0.2s; }
-.md-typeset .grid.cards > ul > li:hover { border-color: var(--ht-teal); transform: translateY(-2px); box-shadow: none; }
-.md-typeset .grid.cards .lg { color: var(--ht-teal); }
+.md-typeset .grid > .card { border-radius: 8px; border-color: var(--ht-divider); background: var(--ht-surface); transition: border-color 0.2s; }
+.md-typeset .grid.cards > ul > li:hover { border-color: var(--ht-accent); box-shadow: none; }
+.md-typeset .grid.cards .lg { color: var(--ht-accent); }
+
+/* Admonitions: the title is the label; the colour is a semantic token, never the product colour alone */
+.md-typeset .admonition, .md-typeset details { border-radius: 8px; border-width: 0.05rem; border-left-width: 0.2rem; font-size: 0.7rem; }
+.md-typeset :is(.admonition, details):is(.note, .info, .abstract) { border-color: var(--ht-accent); }
+.md-typeset :is(.admonition, details):is(.tip, .success) { border-color: var(--ht-success); }
+.md-typeset :is(.admonition, details):is(.warning, .caution) { border-color: var(--ht-warning); }
+.md-typeset :is(.admonition, details):is(.danger, .failure, .bug) { border-color: var(--ht-danger); }
+.md-typeset :is(.admonition, details):is(.example, .question, .quote) { border-color: var(--ht-muted); }
+.md-typeset :is(.note, .info, .abstract) > :is(.admonition-title, summary) { background-color: color-mix(in srgb, var(--ht-accent) 10%, transparent); }
+.md-typeset :is(.tip, .success) > :is(.admonition-title, summary) { background-color: color-mix(in srgb, var(--ht-success) 10%, transparent); }
+.md-typeset :is(.warning, .caution) > :is(.admonition-title, summary) { background-color: color-mix(in srgb, var(--ht-warning) 12%, transparent); }
+.md-typeset :is(.danger, .failure, .bug) > :is(.admonition-title, summary) { background-color: color-mix(in srgb, var(--ht-danger) 10%, transparent); }
+.md-typeset :is(.example, .question, .quote) > :is(.admonition-title, summary) { background-color: color-mix(in srgb, var(--ht-muted) 12%, transparent); }
+.md-typeset :is(.note, .info, .abstract) > :is(.admonition-title, summary)::before { background-color: var(--ht-accent); }
+.md-typeset :is(.tip, .success) > :is(.admonition-title, summary)::before { background-color: var(--ht-success); }
+.md-typeset :is(.warning, .caution) > :is(.admonition-title, summary)::before { background-color: var(--ht-warning); }
+.md-typeset :is(.danger, .failure, .bug) > :is(.admonition-title, summary)::before { background-color: var(--ht-danger); }
+.md-typeset :is(.example, .question, .quote) > :is(.admonition-title, summary)::before { background-color: var(--ht-muted); }
 
 /* Recipe summary box (recipe pages) */
-.md-typeset .recipe-meta { border-left: 4px solid var(--ht-teal); background: var(--ht-surface); padding: 0.6rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.74rem; margin: 0 0 1.4em; }
+.md-typeset .recipe-meta { border-left: 4px solid var(--ht-accent); background: var(--ht-surface); padding: 0.6rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.7rem; margin: 0 0 1.4em; }
 /* md_in_html wraps the spans in one <p>, so the row layout goes on that. */
 .md-typeset .recipe-meta p { display: flex; flex-direction: column; gap: 0.3rem; margin: 0; }
 .md-typeset .recipe-meta strong { color: var(--md-default-fg-color--light); font-weight: 600; margin-right: 0.3em; }
 
-
 /* Diagrams drawn as inline SVG take their colours from the page */
 .ht-diagram { margin: 1.4em auto; max-width: 46rem; }
 .ht-diagram svg { width: 100%; height: auto; display: block; }
-.ht-diagram figcaption { font-size: 0.72rem; color: var(--md-default-fg-color--light); margin-top: 0.4rem; }
+.ht-diagram figcaption { font-size: 0.7rem; color: var(--md-default-fg-color--light); margin-top: 0.4rem; }
 .ht-diagram .stroke { stroke: var(--md-default-fg-color--light); fill: none; }
 .ht-diagram .box { fill: var(--ht-surface); stroke: var(--ht-border); }
-.ht-diagram .hot { fill: var(--ht-amber); stroke: none; }
-.ht-diagram .teal { fill: var(--ht-teal); stroke: none; }
+/* The object the diagram is about, and the set it retains: the theme's accent, so it reads in both schemes */
+.ht-diagram .target { stroke: var(--ht-accent); }
+.ht-diagram .retained { stroke: var(--ht-accent); fill: none; }
 .ht-diagram .ink { fill: var(--md-default-fg-color); font-family: var(--md-text-font-family); }
 .ht-diagram .dim { fill: var(--md-default-fg-color--light); font-family: var(--md-text-font-family); }
 .ht-diagram .mono { font-family: var(--md-code-font-family); }
@@ -154,5 +291,4 @@
 :root { --md-status--draft: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.06 9 15 9.94 5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 0 0 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg>'); }
 .md-status--draft::after { mask-image: var(--md-status--draft); -webkit-mask-image: var(--md-status--draft); }
 
-/* Admonitions: slightly softer corners */
-.md-typeset .admonition, .md-typeset details { border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

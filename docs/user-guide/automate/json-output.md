@@ -1,6 +1,6 @@
 # JSON output
 
-Add `--json` to any mode and heaptrail writes the same result as a JSON file, in addition to the text report on standard output. Scripts read the file, people read the terminal.
+Add `--json` to any mode and HeapTrail writes the same result as a JSON file, in addition to the text report on standard output. Scripts read the file, people read the terminal.
 
 ```bash
 heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --json --json-out reports/suspects.json
@@ -8,7 +8,7 @@ heaptrail -i heap.hprof --leak-suspects --exclude-soft-weak --json --json-out re
 
 ## Choose the path { #choose-the-path }
 
-Without `--json-out`, heaptrail picks a name for you: a prefix for the mode and the time in milliseconds, in the current directory. It prints the name:
+Without `--json-out`, HeapTrail picks a name for you: a prefix for the mode and the time in milliseconds, in the current directory. It prints the name:
 
 ```bash
 heaptrail -i jvm.hprof -t 1 --json
@@ -26,7 +26,7 @@ For anything a script has to find again, use `--json-out <path>`:
 | `--json` | Write the JSON file. |
 | `--json-out <PATH>` | Write it to exactly this path. Needs `--json`. |
 
-`--json-out` without `--json` is an argument error. The parent folder of the path must already exist. heaptrail does not create it, and reports the file error if it is missing:
+`--json-out` without `--json` is an argument error. The parent folder of the path must already exist. HeapTrail does not create it, and reports the file error if it is missing:
 
 ```bash
 heaptrail -i jvm.hprof --json --json-out /no/such/dir/x.json
@@ -156,7 +156,7 @@ On a release build, `--mapping` restores class names in the JSON as well. Summar
 - **The text report still prints.** `--json` adds a file, it does not replace the report. Redirect or ignore standard output if you only want the file.
 - **A second run does not overwrite a default-named file,** because the name has a timestamp. A `--json-out` path is overwritten.
 - **Do not rely on row order among equal values.** Gate on values, not on which row came first.
-- **Read fields by name.** The JSON has no schema version. Ignore fields you do not know, and treat optional fields as possibly absent: heaptrail leaves out some fields when they have no value, such as `obfuscated_class_name` and `preview_snippet`.
+- **Read fields by name.** The JSON has no schema version. Ignore fields you do not know, and treat optional fields as possibly absent: HeapTrail leaves out some fields when they have no value, such as `obfuscated_class_name` and `preview_snippet`.
 
 ## Related
 

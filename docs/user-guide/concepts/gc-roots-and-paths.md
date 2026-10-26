@@ -6,7 +6,7 @@ A **path to a GC root** is one such chain, and it is the proof that something is
 ## GC roots
 
 A GC root is a place the runtime treats as always reachable, without asking who points at it. The kinds
-heaptrail reports are:
+HeapTrail reports are:
 
 | Kind | What it is |
 |---|---|
@@ -28,7 +28,7 @@ the hold goes through. It ends at a root.
 
 --8<-- "diagram-path.html"
 
-This is the text heaptrail prints for a path, read from the object up toward the root:
+This is the text HeapTrail prints for a path, read from the object up toward the root:
 
 ```bash
 heaptrail -i heap.hprof --paths-from-id 1661812752 --preview-bytes 200
@@ -46,12 +46,12 @@ Each `hop` is a holder object, and `via` names the field that holds the object o
 an array shows the slot, such as `java.lang.Object[][13]`.
 
 To free an object you break one hop of the path. Which hop? The one that should not exist: a view model kept
-alive by a back stack, a listener never unregistered, a cache with no size limit. heaptrail tells you where the
+alive by a back stack, a listener never unregistered, a cache with no size limit. HeapTrail tells you where the
 hops are. You decide which one is the mistake.
 
-## How heaptrail finds a path
+## How HeapTrail finds a path
 
-heaptrail finds one holder at a time. For each hop it scans the dump for the **first** object, in file order,
+HeapTrail finds one holder at a time. For each hop it scans the dump for the **first** object, in file order,
 that has a field or an array slot pointing at the current object. It then repeats for that holder.
 
 That has three consequences.
@@ -72,7 +72,7 @@ root, so [leak suspects](../analyze/leak-suspects.md) see statics as reachable.
 
 | Last line | Meaning |
 |---|---|
-| `→ reached GC root: <kind>` | The chain ended at a root. For a thread-owned root, heaptrail adds the thread name and, for a Java frame, the top stack frame. |
+| `→ reached GC root: <kind>` | The chain ended at a root. For a thread-owned root, HeapTrail adds the thread name and, for a Java frame, the top stack frame. |
 | `→ stopped at --max-depth (chain may continue)` | The depth limit (12 by default) ran out first. Raise `--max-depth` if the hops are still informative. |
 | `→ orphan: no holder found in dump` | No instance field or array slot points at the last object. It may be held by a static field, or it may be unreachable. |
 | `→ orphan [soft/weak/phantom — excluded]` | The only holder found was a weak, soft or phantom reference, and `--exclude-soft-weak` is on. |

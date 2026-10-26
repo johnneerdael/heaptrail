@@ -1,6 +1,6 @@
 # Mode compatibility
 
-Each mode reads only some flags. A flag that a mode does not use is accepted and ignored, without a warning. This page shows which flags each mode reads, taken from the way heaptrail builds each mode from the command line.
+Each mode reads only some flags. A flag that a mode does not use is accepted and ignored, without a warning. This page shows which flags each mode reads, taken from the way HeapTrail builds each mode from the command line.
 
 ## Choosing a mode
 
@@ -17,7 +17,7 @@ You select a mode with one of these flags (or none, for the summary). Give at mo
 | Bitmaps | `--bitmaps` |
 | Summary | none of the above |
 
-If you give two, heaptrail stops:
+If you give two, HeapTrail stops:
 
 <!-- output: conflict.txt from="error:" cmd -->
 ```console

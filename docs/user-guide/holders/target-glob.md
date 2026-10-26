@@ -7,7 +7,7 @@ one pass. It matches class names against a shell-style pattern and traces the ho
 heaptrail -i heap.hprof --target-glob 'com.nexio.tv.domain.model.*' --hops 2 --top 8
 ```
 
-Quote the pattern. Without quotes your shell expands `*` and `$` before heaptrail sees them.
+Quote the pattern. Without quotes your shell expands `*` and `$` before HeapTrail sees them.
 
 ## Read the result
 
@@ -110,7 +110,7 @@ Found 1949 target instance(s) for glob:**$Itr
   com.nexio.tv.core.metadata.router.ProviderPlanRunner$run$1.L$5                                          1
 ```
 
-If nothing matches, heaptrail says so and suggests how to look up names:
+If nothing matches, HeapTrail says so and suggests how to look up names:
 
 ```bash
 heaptrail -i test-heap-dumps/hprof-64.bin --target-glob 'nothing.matches.*'

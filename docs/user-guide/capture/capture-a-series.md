@@ -56,7 +56,7 @@ after the series, so you can tell a Java-heap leak from a native one:
 adb shell dumpsys meminfo com.example.myapp > meminfo.txt
 ```
 
-heaptrail reads the *App Summary* block of that file. These are the rows it uses:
+HeapTrail reads the *App Summary* block of that file. These are the rows it uses:
 
 ```bash
 sed -n '/App Summary/,/TOTAL:/p' meminfo.txt
@@ -126,7 +126,7 @@ Native context (dumpsys meminfo, PSS KiB):
 
 `--native-context` does not change any Java number. It adds the totals for correlation. Here the Java heap is
 43,152 KiB and the native heap is 88,852 KiB, about twice as large, so a native-memory leak would not appear in the dumps at
-all. The warning says the file had no `GL:` row; heaptrail reports what it cannot find instead of guessing.
+all. The warning says the file had no `GL:` row; HeapTrail reports what it cannot find instead of guessing.
 
 ## 5. Follow the candidates
 
@@ -150,4 +150,4 @@ If the names look like `a3.t`, add `--mapping` first. See [Deobfuscate release b
 
 - [Diff a series](../compare/diff-series.md) explains every section of that report.
 - [Playback growth](../compare/recipes/playback-growth.md) is the full workflow from the first dump to the owner of the leak.
-- [Native context](../compare/native-context.md) lists the meminfo rows heaptrail reads.
+- [Native context](../compare/native-context.md) lists the meminfo rows HeapTrail reads.

@@ -1,4 +1,4 @@
-# How heaptrail reads a dump
+# How HeapTrail reads a dump
 
 **Why does one mode finish in 0.2 seconds and another take 6, and why does one need 100 MiB of memory and
 another 1.7 GiB?** The answer is how many times each mode reads the file, and what it keeps in memory between reads.
@@ -14,7 +14,7 @@ An HPROF file is a header followed by a stream of records. The header names the 
 - one record per **object**: instances, object arrays and primitive arrays;
 - the **GC roots**, and, if allocation tracking was on, the allocation sites.
 
-Nothing in the file says "this object holds that one". References are numbers inside object records, and heaptrail has to read
+Nothing in the file says "this object holds that one". References are numbers inside object records, and HeapTrail has to read
 them out and match them against object ids.
 
 ## The summary: one streaming pass
@@ -66,13 +66,13 @@ Memory is the other half of the cost.
     runner, run them on a bigger machine, or use the summary and referrers there. Dumps larger than a few hundred MiB
     were not measured for this guide.
 
-## What heaptrail does when a dump is unusual
+## What HeapTrail does when a dump is unusual
 
-- **A class is missing.** Modern Android dumps can reference classes the dumper left out. heaptrail counts those instances at the
+- **A class is missing.** Modern Android dumps can reference classes the dumper left out. HeapTrail counts those instances at the
   bare object-header size, calls the class `<unknown class #id>`, and prints one warning on stderr at the end.
   Class totals are then a lower bound for those classes.
-- **A file is empty.** heaptrail stops with `input hprof is 0 bytes`.
-- **A file is cut short.** heaptrail does not check that a dump is complete. A truncated file can produce a partial report, or
+- **A file is empty.** HeapTrail stops with `input hprof is 0 bytes`.
+- **A file is cut short.** HeapTrail does not check that a dump is complete. A truncated file can produce a partial report, or
   fail with a different error. Compare the file size with what the device or the JVM reported.
 - **Ties.** Rows with equal counts or sizes can appear in a different order from one run to the next.
 

@@ -1,17 +1,17 @@
 # Errors and exit codes
 
-heaptrail prints errors on standard error as `error: <message>` and sets an exit status. This page lists each message, what causes it, and what to do. Every message below was produced by a real run.
+HeapTrail prints errors on standard error as `error: <message>` and sets an exit status. This page lists each message, what causes it, and what to do. Every message below was produced by a real run.
 
 ## Exit codes
 
 | Status | Meaning | Source |
 |---|---|---|
 | `0` | The command succeeded. | |
-| `1` | heaptrail reported an error: a missing file, a bad combination of modes, a failed capture, a mapping problem. | heaptrail |
+| `1` | HeapTrail reported an error: a missing file, a bad combination of modes, a failed capture, a mapping problem. | HeapTrail |
 | `2` | The command line could not be parsed: an unknown flag, a missing value, an invalid value, a conflict between flags. | The argument parser |
-| `101` | heaptrail panicked. | The Rust runtime |
+| `101` | HeapTrail panicked. | The Rust runtime |
 
-A panic prints `thread 'main' panicked at …` and is a bug or an input heaptrail cannot handle. Keep the dump and the command, and [report it](https://github.com/johnneerdael/heaptrail/issues).
+A panic prints `thread 'main' panicked at …` and is a bug or an input HeapTrail cannot handle. Keep the dump and the command, and [report it](https://github.com/johnneerdael/heaptrail/issues).
 
 ## Input errors
 
@@ -58,7 +58,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 ```
 
 A dump that was cut off early can end in a panic rather than a clear error. This is a 4.77 MiB prefix of a 224 MiB dump: the file has a valid header and class table but no heap contents, so
-there is nothing to report and heaptrail stops with status 101. A longer prefix of a dump that holds some objects can produce a partial report with exit status 0, because heaptrail does not check that a dump is complete. Compare
+there is nothing to report and HeapTrail stops with status 101. A longer prefix of a dump that holds some objects can produce a partial report with exit status 0, because HeapTrail does not check that a dump is complete. Compare
 the file size with what the device or JVM reported.
 
 ## Mode and argument errors
@@ -149,11 +149,11 @@ These go to standard error and do not change the exit status.
 
 ## Reading a panic
 
-If a message starts with `thread 'main' panicked`, heaptrail hit a case it did not handle. Besides the truncated dump above, closing the output early panics too: piping a long report into `head` ends with `failed printing to
+If a message starts with `thread 'main' panicked`, HeapTrail hit a case it did not handle. Besides the truncated dump above, closing the output early panics too: piping a long report into `head` ends with `failed printing to
 stdout: Broken pipe` and exit status 101. Redirect to a file, or give `-t` a small value.
 
 ## Related
 
 - [Troubleshooting](../help/troubleshooting.md) starts from the symptom.
 - [Command line](command-line.md) for the valid values of each flag.
-- [Limitations](limitations.md) lists what heaptrail cannot do.
+- [Limitations](limitations.md) lists what HeapTrail cannot do.

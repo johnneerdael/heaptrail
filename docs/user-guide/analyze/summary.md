@@ -1,6 +1,6 @@
 # Summary
 
-The summary is what heaptrail prints when you give it a dump and no mode flag. It reads the file once and reports what the
+The summary is what HeapTrail prints when you give it a dump and no mode flag. It reads the file once and reports what the
 dump contains: record counts, GC roots, and which classes take the most space. It is the fastest mode, and the right
 first command on any dump.
 
@@ -108,7 +108,7 @@ class, ranked by the space its instances take:
 Sizes use binary units: 1 KiB is 1,024 bytes, 1 MiB is 1,048,576.
 
 !!! note "Array names on Android dumps"
-    On a JVM dump, an array of objects prints as `java.lang.Object[]`. On Android dumps heaptrail prints it with a second pair
+    On a JVM dump, an array of objects prints as `java.lang.Object[]`. On Android dumps HeapTrail prints it with a second pair
     of brackets, as in the table above: `java.lang.Object[][]` is an `Object[]`, and `java.util.HashMap$Node[][]` is a
     `HashMap$Node[]`. Read the extra `[]` as a quirk of the label, not as a second dimension.
 
@@ -168,7 +168,7 @@ This list is the hand-off to the other modes. Each `object_id` goes straight int
 | `-l`, `--listStrings` | Lists every string in the dump, and with `--preview-bytes`, large arrays. See [List strings and arrays](list-strings.md). |
 | `--mapping`, `--auto-mapping` | Restores real class names in an R8-obfuscated dump. See [Android](../android/index.md). |
 | `--json`, `--json-out` | Also writes the two tables as JSON. |
-| `-d`, `--debug` | Prints one line for every record in the file. It is for heaptrail's own development and produces more than a hundred thousand lines. |
+| `-d`, `--debug` | Prints one line for every record in the file. It is for HeapTrail's own development and produces more than a hundred thousand lines. |
 
 ## JSON
 
@@ -197,7 +197,7 @@ also carry `largest_object_id`. The JSON does not contain the header counts, the
   header size, their class prints as `<unknown class #id>`, and one warning appears on stderr. The totals for those classes are a
   lower bound.
 - **Ties.** Rows with equal sizes can come out in a different order on different runs.
-- **Redirecting.** If you pipe the output into `head`, heaptrail can end with a `Broken pipe` panic. Redirect to a file, or give `-t` a small value.
+- **Redirecting.** If you pipe the output into `head`, HeapTrail can end with a `Broken pipe` panic. Redirect to a file, or give `-t` a small value.
 
 ## Related
 
