@@ -23,6 +23,12 @@ To see which version you have, run `heaptrail --version`. To upgrade, see
 | `android-capture --series`, stall detection while capturing | 1.3.1 |
 | Cleanup of old dumps on the device | 1.4.0 |
 
+## 1.4.3 — October 26, 2026
+
+The README banner now loads on the crate page in dark mode. Nothing about how HeapTrail reads a dump changes.
+
+- crates.io rewrites the address of the light banner but not the dark one, so a visitor whose browser is set to dark saw a broken image. The README now uses full addresses for both.
+
 ## 1.4.2 — October 26, 2026
 
 HeapTrail has its own identity now. Nothing about how it reads a dump changes.
