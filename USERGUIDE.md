@@ -1,4 +1,4 @@
-# heaptrail user guide
+# HeapTrail user guide
 
 The user guide has moved to **[heaptrail.neerdael.nl](https://heaptrail.neerdael.nl/)**. It is organized by what you want to do, and every block of output in it comes from a real run of the tool.
 

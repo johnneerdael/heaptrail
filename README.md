@@ -1,14 +1,31 @@
-# heaptrail
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/brand/heaptrail-readme-dark-1600x480.png">
+    <img src="docs/assets/brand/heaptrail-readme-light-1600x480.png" alt="HeapTrail. Find what is holding your memory." width="100%">
+  </picture>
+</p>
 
-[![Build status](https://github.com/johnneerdael/heaptrail/actions/workflows/ci.yml/badge.svg)](https://github.com/johnneerdael/heaptrail/actions/workflows/ci.yml)
-[![Crates.io](https://img.shields.io/crates/v/heaptrail.svg)](https://crates.io/crates/heaptrail)
-[![Docs](https://github.com/johnneerdael/heaptrail/actions/workflows/docs.yml/badge.svg)](https://heaptrail.neerdael.nl/)
+<p align="center">
+  <a href="https://github.com/johnneerdael/heaptrail/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/johnneerdael/heaptrail?style=flat-square&color=F5A623&label=release"></a>
+  <a href="https://github.com/johnneerdael/heaptrail/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/johnneerdael/heaptrail/ci.yml?branch=master&style=flat-square&label=CI"></a>
+  <a href="https://crates.io/crates/heaptrail"><img alt="crates.io" src="https://img.shields.io/crates/v/heaptrail?style=flat-square&color=101820"></a>
+  <a href="https://heaptrail.neerdael.nl/"><img alt="User guide" src="https://img.shields.io/badge/user%20guide-online-101820?style=flat-square"></a>
+  <img alt="Platforms" src="https://img.shields.io/badge/Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-101820?style=flat-square">
+  <a href="LICENSE"><img alt="Apache-2.0 license" src="https://img.shields.io/badge/license-Apache--2.0-101820?style=flat-square"></a>
+</p>
 
-**Find what is holding your memory.** heaptrail is a command-line analyzer for JVM and Android heap dumps. It ranks what takes the space, traces what keeps an object alive, and compares snapshots, and every investigation is one command that prints a report you can read, paste into a ticket, or parse as JSON.
+HeapTrail is a command-line analyzer for JVM and Android heap dumps. It ranks what takes the space, traces what keeps an object alive, and compares snapshots. Every investigation is one command that prints a report you can read, paste into a ticket, or parse as JSON.
 
 It is a single binary with no runtime dependencies. Most modes stream the dump instead of loading it: a 224 MiB Android dump summarizes in about a fifth of a second on a laptop.
 
-> **Documentation: [heaptrail.neerdael.nl](https://heaptrail.neerdael.nl/)**. Tutorials, how-tos, recipes, concepts and the full reference, with real output from real dumps. The sources are in [`docs/user-guide/`](docs/user-guide/).
+<p align="center">
+  <a href="https://github.com/johnneerdael/heaptrail/releases/latest"><b>Download</b></a> &nbsp;·&nbsp;
+  <a href="https://heaptrail.neerdael.nl/getting-started/install/"><b>Install</b></a> &nbsp;·&nbsp;
+  <a href="https://heaptrail.neerdael.nl/"><b>User guide</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/johnneerdael/heaptrail/issues"><b>Report an issue</b></a>
+</p>
+
+The [user guide](https://heaptrail.neerdael.nl/) has tutorials, how-tos, recipes, concepts and the full reference, with real output from real dumps. Its sources are in [`docs/user-guide/`](docs/user-guide/).
 
 ## Install
 
@@ -54,7 +71,7 @@ heaptrail --diff-from before.hprof --diff-to after.hprof
 
 Not sure which mode fits? [Choose the right mode](https://heaptrail.neerdael.nl/getting-started/choose-a-mode/) starts from your question.
 
-heaptrail has no window to click through. For interactive graph browsing, an OQL query language, or HTML reports, use [Eclipse MAT](https://www.eclipse.org/mat/) after heaptrail has narrowed the question. [Limitations](https://heaptrail.neerdael.nl/reference/limitations/) lists what it does not do and where a result can mislead.
+HeapTrail has no window to click through. For interactive graph browsing, an OQL query language, or HTML reports, use [Eclipse MAT](https://www.eclipse.org/mat/) after HeapTrail has narrowed the question. A retained object is not automatically a leak, and [Limitations](https://heaptrail.neerdael.nl/reference/limitations/) lists what HeapTrail does not do and where a result can mislead.
 
 ## Capture a dump
 
@@ -68,7 +85,7 @@ On Android, `heaptrail android-capture --package <app> --out dumps` takes the du
 
 ## Use it from Claude Code
 
-This repository is also a [Claude Code](https://claude.com/claude-code) plugin marketplace. The plugin adds a skill that runs heaptrail for you when you mention a heap dump:
+This repository is also a [Claude Code](https://claude.com/claude-code) plugin marketplace. The plugin adds a skill that runs `heaptrail` for you when you mention a heap dump:
 
 ```
 /plugin marketplace add johnneerdael/heaptrail
@@ -95,7 +112,7 @@ When a change touches a feature, run it against both reference dumps, `JAVA_PROF
 
 ## Credits
 
-heaptrail is a fork of [agourlay/hprof-slurp](https://github.com/agourlay/hprof-slurp) by Arnaud Gourlay, which contributes the streaming parser. The design of that parser is described in [his blog series](https://agourlay.github.io/tags/hprof-slurp/). The HPROF format is documented in the [OpenJDK heap dumper source](https://hg.openjdk.java.net/jdk/jdk/file/ee1d592a9f53/src/hotspot/share/services/heapDumper.cpp#l62). These parsers were useful while researching it:
+HeapTrail is a fork of [agourlay/hprof-slurp](https://github.com/agourlay/hprof-slurp) by Arnaud Gourlay, which contributes the streaming parser. The design of that parser is described in [his blog series](https://agourlay.github.io/tags/hprof-slurp/). The HPROF format is documented in the [OpenJDK heap dumper source](https://hg.openjdk.java.net/jdk/jdk/file/ee1d592a9f53/src/hotspot/share/services/heapDumper.cpp#l62). These parsers were useful while researching it:
 
 - [monoid/hprof_dump_parser](https://github.com/monoid/hprof_dump_parser)
 - [eaftan/hprof-parser](https://github.com/eaftan/hprof-parser)
