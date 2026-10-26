@@ -34,7 +34,7 @@ Two copies are changed on purpose:
 
 | Asset | Used by |
 |---|---|
-| `heaptrail-readme-{light,dark}-1600x480.png` | `README.md`, in a `<picture>` that follows the reader's colour scheme, and the top of each release's notes (see `release-notes.md`) |
+| `heaptrail-readme-{light,dark}-1600x480.png` | `README.md`, in a `<picture>` that follows the reader's colour scheme, and the top of each release's notes (see `release-notes.md`). The README uses full `https://github.com/.../raw/HEAD/...` addresses for both banners, not relative paths: crates.io rewrites the `<img>` address but leaves the `<source srcset>` relative, so a relative dark banner is a broken image for dark-mode visitors on the crate page. A published crate's README cannot be edited, so a mistake here costs a release |
 | `heaptrail-github-dark-1280x640.png` | GitHub's social preview. GitHub has no API for it: upload the file in Settings, General, Social preview |
 | `heaptrail-social-dark-1200x630.png` | `og:image` and `twitter:image` on every page, from `overrides/main.html` |
 | `heaptrail-mark-on-dark.svg` | The header logo. The header is Night in both colour schemes, so the on-dark mark is always right |

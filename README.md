@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/brand/heaptrail-readme-dark-1600x480.png">
-    <img src="docs/assets/brand/heaptrail-readme-light-1600x480.png" alt="HeapTrail. Find what is holding your memory." width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/johnneerdael/heaptrail/raw/HEAD/docs/assets/brand/heaptrail-readme-dark-1600x480.png">
+    <img src="https://github.com/johnneerdael/heaptrail/raw/HEAD/docs/assets/brand/heaptrail-readme-light-1600x480.png" alt="HeapTrail. Find what is holding your memory." width="100%">
   </picture>
 </p>
 
